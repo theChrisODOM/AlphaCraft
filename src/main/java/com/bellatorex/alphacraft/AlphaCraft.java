@@ -47,7 +47,7 @@ public class AlphaCraft
     public static final ItemGroup TAB = new ItemGroup("alphaCraftTab") {
         @Override
         public ItemStack createIcon() {
-            return new ItemStack(RegistryHandler.BALL.get());
+            return new ItemStack(RegistryHandler.ENDERITE_INGOT.get());
         }
     };
 }
