@@ -20,6 +20,7 @@ public class RegistryHandler {
     }
     //Items
     public static final RegistryObject<Item> BALL = ITEMS.register("ball", ItemBase::new);
+    public static final RegistryObject<Item> ENDERITE_INGOT = ITEMS.register("enderite_ingot", ItemBase::new);
 
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, AlphaCraft.MOD_ID);
 
