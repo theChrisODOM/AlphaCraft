@@ -8,7 +8,7 @@ import java.util.function.Supplier;
 
 public enum AlphaMaterials implements IItemTier {
 
-    ENDERITE(3, 1690, 10.0f, 2.0f, 10, () -> {
+    ENDERITE(3, 1690, 10.0f, 3.0f, 10, () -> {
         return Ingredient.fromItems(RegistryHandler.ENDERITE_SWORD.get());  // the game automatically fetches the Ingredients from the item passed to get repair material
     });
 

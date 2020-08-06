@@ -8,9 +8,7 @@ import com.bellatorex.alphacraft.blocks.EnderiteOreBlock;
 import com.bellatorex.alphacraft.items.ItemBase;
 import com.bellatorex.alphacraft.tools.AlphaMaterials;
 import net.minecraft.block.Block;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemGroup;
-import net.minecraft.item.SwordItem;
+import net.minecraft.item.*;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.DeferredRegister;
@@ -35,6 +33,14 @@ public class RegistryHandler {
     //Tools
     public static final RegistryObject<SwordItem> ENDERITE_SWORD = ITEMS.register("enderite_sword", () ->
             new SwordItem(AlphaMaterials.ENDERITE, 3, -2.4f, new Item.Properties().group(ItemGroup.COMBAT)));
+    public static final RegistryObject<PickaxeItem> ENDERITE_PICKAXE = ITEMS.register("enderite_pickaxe", () ->
+            new PickaxeItem(AlphaMaterials.ENDERITE, 1, -2.4f, new Item.Properties().group(ItemGroup.TOOLS)));
+    public static final RegistryObject<AxeItem> ENDERITE_AXE = ITEMS.register("enderite_axe", () ->
+            new AxeItem(AlphaMaterials.ENDERITE, 5, -3.0f, new Item.Properties().group(ItemGroup.TOOLS)));
+    public static final RegistryObject<ShovelItem> ENDERITE_SHOVEL = ITEMS.register("enderite_shovel", () ->
+            new ShovelItem(AlphaMaterials.ENDERITE, 0, -2.4f, new Item.Properties().group(ItemGroup.TOOLS)));
+    public static final RegistryObject<HoeItem> ENDERITE_HOE = ITEMS.register("enderite_hoe", () ->
+            new HoeItem(AlphaMaterials.ENDERITE, 0, -2.0f, new Item.Properties().group(ItemGroup.TOOLS)));
     //Blocks
     public static final RegistryObject<Block> CASTLE_WALL_BLOCK = BLOCKS.register("castle_wall_block", CastleWallBlock::new);
     public static final RegistryObject<Block> ENDERITE_BLOCK = BLOCKS.register("enderite_block", EnderiteBlock::new);
