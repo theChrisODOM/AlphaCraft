@@ -1,5 +1,6 @@
 package com.bellatorex.alphacraft;
 
+import com.bellatorex.alphacraft.util.RegistryHandler;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraftforge.common.MinecraftForge;
@@ -29,6 +30,9 @@ public class AlphaCraft
     public AlphaCraft() {
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::doClientStuff);
+
+
+        RegistryHandler.init();
 
         MinecraftForge.EVENT_BUS.register(this);
     }
