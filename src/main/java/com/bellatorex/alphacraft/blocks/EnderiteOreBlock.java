@@ -1,17 +1,18 @@
-package com.bellatorex.alphacraft.Blocks;
+package com.bellatorex.alphacraft.blocks;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraftforge.common.ToolType;
 
-public class CastleWallBlock extends Block {
+public class EnderiteOreBlock extends Block {
 
-    public CastleWallBlock() {
+    public EnderiteOreBlock() {
         super(Block.Properties.create(Material.ROCK)
-                .hardnessAndResistance(4.0f,6.0f)
+                .hardnessAndResistance(6.0f,8.0f)
                 .sound(SoundType.STONE)
-                .harvestLevel(1)
+                .harvestLevel(3)
                 .harvestTool(ToolType.PICKAXE));
+
     }
 }

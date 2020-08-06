@@ -1,10 +1,22 @@
 {
   "item.alphacraft.ball": "Ball",
+  "item.alphacraft.castle_brick": "Castle Brick",
+  "item.alphacraft.dark_clay": "Dark Clay",
+  "item.alphacraft.poop": "Skat",
   "item.alphacraft.enderite_ingot": "Enderite Ingot",
   "item.alphacraft.enderite_dust": "Enderite Dust",
+  "item.alphacraft.enderite_sword": "Enderite Sword",
+  "item.alphacraft.enderite_axe": "Enderite Axe",
+  "item.alphacraft.enderite_pickaxe": "Enderite Pickaxe",
+  "item.alphacraft.enderite_shovel": "Enderite Shovel",
+  "item.alphacraft.enderite_hoe": "Enderite Hoe",
   "block.alphacraft.enderite_ore_block": "Enderite Ore",
   "block.alphacraft.castle_wall_block": "Castle Wall",
   "block.alphacraft.enderite_block": "Block of Enderite",
+<<<<<<< HEAD
   "block.alphacraft.poop_block": "Block of Poop",
+=======
+  "block.alphacraft.poop_block": "Block of Skat",
+>>>>>>> 8d7ef005673cd14e7a19b54f42f0e6abcff697c9
   "itemGroup.alphaCraftTab": "AlphaCraft"
 }

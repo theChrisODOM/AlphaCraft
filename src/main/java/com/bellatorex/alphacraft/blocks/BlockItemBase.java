@@ -1,4 +1,4 @@
-package com.bellatorex.alphacraft.Blocks;
+package com.bellatorex.alphacraft.blocks;
 
 import com.bellatorex.alphacraft.AlphaCraft;
 import net.minecraft.block.Block;

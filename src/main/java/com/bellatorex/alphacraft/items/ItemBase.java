@@ -1,8 +1,7 @@
-package com.bellatorex.alphacraft.Items;
+package com.bellatorex.alphacraft.items;
 
 import com.bellatorex.alphacraft.AlphaCraft;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemGroup;
 
 public class ItemBase extends Item {
 
