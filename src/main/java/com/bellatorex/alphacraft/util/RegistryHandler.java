@@ -25,6 +25,7 @@ public class RegistryHandler {
     }
     //Items
     public static final RegistryObject<Item> BALL = ITEMS.register("ball", ItemBase::new);
+    public static final RegistryObject<Item> ENDERITE_INGOT = ITEMS.register("enderite_ingot", ItemBase::new);
 
     //Blocks
     public static final RegistryObject<Block> CASTLE_WALL_BLOCK = BLOCKS.register("castle_wall_block", CastleWallBlock::new);

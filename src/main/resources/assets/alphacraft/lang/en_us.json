@@ -1,5 +1,9 @@
 {
   "item.alphacraft.ball": "Ball",
+<<<<<<< HEAD
   "block.alphacraft.castle_wall_block": "Castle Wall",
   "itemGroup.alphaCraftTab": "AlphaCraft"
+=======
+  "item.alphacraft.enderite_ingot": "Enderite Ingot"
+>>>>>>> 42638889e3d849f2dfe20851e2844ac7162f10ae
 }
