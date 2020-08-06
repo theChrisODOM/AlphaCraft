@@ -33,6 +33,7 @@ authors="Noxeramas, Bellatorex" #optional
 # The description text for the mod (multi line!) (#mandatory)
 description='''
 This mod adds an additional dimension to minecraft with lots of new blocks.
+penis
 '''
 # A dependency - use the . to indicate dependency for a specific modid. Dependencies are optional.
 [[dependencies.alphacraft]] #optional
