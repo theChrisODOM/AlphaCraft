@@ -1,10 +1,7 @@
 package com.bellatorex.alphacraft.util;
 
 import com.bellatorex.alphacraft.AlphaCraft;
-import com.bellatorex.alphacraft.blocks.BlockItemBase;
-import com.bellatorex.alphacraft.blocks.CastleWallBlock;
-import com.bellatorex.alphacraft.blocks.EnderiteBlock;
-import com.bellatorex.alphacraft.blocks.EnderiteOreBlock;
+import com.bellatorex.alphacraft.blocks.*;
 import com.bellatorex.alphacraft.items.ItemBase;
 import com.bellatorex.alphacraft.tools.AlphaMaterials;
 import net.minecraft.block.Block;
@@ -47,9 +44,11 @@ public class RegistryHandler {
     public static final RegistryObject<Block> CASTLE_WALL_BLOCK = BLOCKS.register("castle_wall_block", CastleWallBlock::new);
     public static final RegistryObject<Block> ENDERITE_BLOCK = BLOCKS.register("enderite_block", EnderiteBlock::new);
     public static final RegistryObject<Block> ENDERITE_ORE_BLOCK = BLOCKS.register("enderite_ore_block", EnderiteOreBlock::new);
+    public static final RegistryObject<Block> POOP_BLOCK = BLOCKS.register("poop_block", PoopBlock::new);
     //Block Items
     public static final RegistryObject<Item> CASTLE_WALL_BLOCK_ITEM = ITEMS.register("castle_wall_block", () -> new BlockItemBase(CASTLE_WALL_BLOCK.get()));
     public static final RegistryObject<Item> ENDERITE_BLOCK_ITEM = ITEMS.register("enderite_block", () -> new BlockItemBase(ENDERITE_BLOCK.get()));
     public static final RegistryObject<Item> ENDERITE_ORE_BLOCK_ITEM = ITEMS.register("enderite_ore_block", () -> new BlockItemBase(ENDERITE_ORE_BLOCK.get()));
+    public static final RegistryObject<Item> POOP_BLOCK_ITEM = ITEMS.register("poop_block_item", () -> new BlockItemBase(POOP_BLOCK.get()));
 
 }
