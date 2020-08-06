@@ -1,0 +1,5 @@
+{
+  "variants": {
+    "": { "model": "alphacraft:block/castle_wall_block" }
+  }
+}
