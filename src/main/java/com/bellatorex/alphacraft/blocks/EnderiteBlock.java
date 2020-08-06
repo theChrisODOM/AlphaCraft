@@ -1,4 +1,4 @@
-package com.bellatorex.alphacraft.Blocks;
+package com.bellatorex.alphacraft.blocks;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
