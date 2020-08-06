@@ -1,20 +1,15 @@
 {
   "type": "minecraft:crafting_shaped",
-  "pattern":
-  [
-    "xxx",
-    "xxx",
-    "xxx"
+  "pattern": [
+    "##",
+    "##"
   ],
-  "key":
-  {
-    "x":
-    {
+  "key": {
+    "#": {
       "item": "alphacraft:castle_brick"
     }
   },
-  "result":
-  {
+  "result": {
     "item": "alphacraft:castle_wall_block",
     "count": 1
   }

@@ -1,4 +1,4 @@
-package com.bellatorex.alphacraft.Blocks;
+package com.bellatorex.alphacraft.blocks;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
@@ -8,9 +8,9 @@ import net.minecraftforge.common.ToolType;
 public class PoopBlock extends Block {
 
     public PoopBlock() {
-        super(Block.Properties.create(Material.CLAY)
+        super(Block.Properties.create(Material.EARTH)
                 .hardnessAndResistance(2.0f,4.0f)
-                .sound(SoundType.CROP)
+                .sound(SoundType.SLIME)
                 .harvestLevel(0)
                 .harvestTool(ToolType.SHOVEL));
 

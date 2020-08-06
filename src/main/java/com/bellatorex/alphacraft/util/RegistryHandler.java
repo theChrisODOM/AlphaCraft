@@ -1,14 +1,10 @@
 package com.bellatorex.alphacraft.util;
 
 import com.bellatorex.alphacraft.AlphaCraft;
-<<<<<<< HEAD
-import com.bellatorex.alphacraft.Blocks.*;
-import com.bellatorex.alphacraft.Items.ItemBase;
-=======
+
 import com.bellatorex.alphacraft.blocks.*;
 import com.bellatorex.alphacraft.items.ItemBase;
 import com.bellatorex.alphacraft.tools.AlphaMaterials;
->>>>>>> 8d7ef005673cd14e7a19b54f42f0e6abcff697c9
 import net.minecraft.block.Block;
 import net.minecraft.item.*;
 import net.minecraftforge.fml.RegistryObject;
@@ -26,7 +22,6 @@ public class RegistryHandler {
     public static void init() {
 
         ITEMS.register(FMLJavaModLoadingContext.get().getModEventBus());
-        BLOCKS.register(FMLJavaModLoadingContext.get().getModEventBus());
         BLOCKS.register(FMLJavaModLoadingContext.get().getModEventBus());
     }
     //Items
