@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "alphacraft:dark_clay"
+  },
+  "result": "alphacraft:castle_brick",
+  "experience": 0.0,
+  "cookingtime": 140
+}

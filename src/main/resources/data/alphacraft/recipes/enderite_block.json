@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern":
+  [
+    "xxx",
+    "xxx",
+    "xxx"
+  ],
+  "key":
+  {
+    "x":
+    {
+      "item": "alphacraft:enderite_dust"
+    }
+  },
+  "result":
+  {
+    "item": "alphacraft:enderite_block",
+    "count": 1
+  }
+}
