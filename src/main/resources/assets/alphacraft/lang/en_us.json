@@ -1,3 +1,5 @@
 {
-  "item.alphacraft.ball": "Ball"
+  "item.alphacraft.ball": "Ball",
+  "block.alphacraft.castle_wall_block": "Castle Wall",
+  "itemGroup.alphaCraftTab": "AlphaCraft"
 }
