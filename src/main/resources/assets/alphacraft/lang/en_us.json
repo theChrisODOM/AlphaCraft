@@ -1,6 +1,8 @@
 {
   "item.alphacraft.ball": "Ball",
   "item.alphacraft.enderite_ingot": "Enderite Ingot",
+  "item.alphacraft.enderite_dust": "Enderite Dust",
+  "block.alphacraft.enderite_ore_block": "Enderite Ore",
   "block.alphacraft.castle_wall_block": "Castle Wall",
   "block.alphacraft.enderite_block": "Block of Enderite",
   "itemGroup.alphaCraftTab": "AlphaCraft"
