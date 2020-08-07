@@ -1,6 +1,6 @@
 package com.bellatorex.alphacraft.world.biome;
 
-import com.bellatorex.alphacraft.util.RegistryHandler;
+import com.bellatorex.alphacraft.util.BlockRegistry;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.EntityClassification;
@@ -16,7 +16,7 @@ public class NastyPlains extends Biome
 
     public static final BlockState GRAVEL = Blocks.GRAVEL.getDefaultState();
     public static final BlockState COARSE_DIRT = Blocks.COARSE_DIRT.getDefaultState();
-    public static final BlockState POOP_BLOCK = RegistryHandler.POOP_BLOCK.get().getDefaultState();
+    public static final BlockState POOP_BLOCK = BlockRegistry.POOP_BLOCK.get().getDefaultState();
     public NastyPlains()
     {
 

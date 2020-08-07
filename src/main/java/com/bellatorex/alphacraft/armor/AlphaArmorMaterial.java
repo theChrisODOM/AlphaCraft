@@ -2,7 +2,7 @@ package com.bellatorex.alphacraft.armor;
 
 import com.bellatorex.alphacraft.AlphaCraft;
 
-import com.bellatorex.alphacraft.util.RegistryHandler;
+import com.bellatorex.alphacraft.util.BaseItemRegistry;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.IArmorMaterial;
 import net.minecraft.item.crafting.Ingredient;
@@ -17,7 +17,7 @@ import java.util.function.Supplier;
 public enum AlphaArmorMaterial implements IArmorMaterial {
     // enderite_armor_layer_1 enderite_armor_layer_2
     ENDERITE(AlphaCraft.MOD_ID + ":enderite_armor", 33, new int[] { 3, 6, 8 ,3 }, 18,
-            SoundEvents.ITEM_ARMOR_EQUIP_GENERIC, 3.5F, () -> { return Ingredient.fromItems(RegistryHandler.ENDERITE_INGOT.get()); }, 2);
+            SoundEvents.ITEM_ARMOR_EQUIP_GENERIC, 3.5F, () -> { return Ingredient.fromItems(BaseItemRegistry.ENDERITE_INGOT.get()); }, 2);
 
 
     private static final int[] MAX_DAMAGE_ARRAY = new int[] {11, 16, 15, 13};

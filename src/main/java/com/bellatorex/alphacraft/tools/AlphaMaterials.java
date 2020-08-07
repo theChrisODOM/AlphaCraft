@@ -1,6 +1,6 @@
 package com.bellatorex.alphacraft.tools;
 
-import com.bellatorex.alphacraft.util.RegistryHandler;
+import com.bellatorex.alphacraft.util.ToolRegistry;
 import net.minecraft.item.IItemTier;
 import net.minecraft.item.crafting.Ingredient;
 
@@ -9,7 +9,7 @@ import java.util.function.Supplier;
 public enum AlphaMaterials implements IItemTier {
 
     ENDERITE(3, 1690, 10.0f, 3.0f, 10, () -> {
-        return Ingredient.fromItems(RegistryHandler.ENDERITE_SWORD.get());  // the game automatically fetches the Ingredients from the item passed to get repair material
+        return Ingredient.fromItems(ToolRegistry.ENDERITE_SWORD.get());  // the game automatically fetches the Ingredients from the item passed to get repair material
     });
 
     private final int harvestLevel;

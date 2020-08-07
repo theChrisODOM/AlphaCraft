@@ -1,10 +1,7 @@
 package com.bellatorex.alphacraft;
 
-import com.bellatorex.alphacraft.util.AlphaCraftBiomesManager;
-import com.bellatorex.alphacraft.util.RegistryHandler;
+import com.bellatorex.alphacraft.util.*;
 
-import net.minecraft.block.Block;
-import net.minecraft.block.Blocks;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 
@@ -18,6 +15,8 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
+import javax.tools.Tool;
 
 
 // The value here should match an entry in the META-INF/mods.toml file
@@ -38,7 +37,11 @@ public class AlphaCraft
 
         AlphaCraftBiomesManager.register(modEventBus);
 
-        RegistryHandler.init();
+        // All mod registry initializations
+        BaseItemRegistry.init();
+        ToolRegistry.init();
+        ArmorRegistry.init();
+        BlockRegistry.init();
 
         MinecraftForge.EVENT_BUS.register(this);
     }
@@ -58,7 +61,7 @@ public class AlphaCraft
     public static final ItemGroup TAB = new ItemGroup("alphaCraftTab") {
         @Override
         public ItemStack createIcon() {
-            return new ItemStack(RegistryHandler.ENDERITE_INGOT.get());
+            return new ItemStack(BaseItemRegistry.ENDERITE_INGOT.get());
         }
     };
 }
