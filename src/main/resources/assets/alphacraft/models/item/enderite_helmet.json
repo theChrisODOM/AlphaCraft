@@ -1,6 +1,6 @@
 {
   "parent": "item/handheld",
   "textures": {
-    "layer0": "alphacraft:items/enderite_hoe"
+    "layer0": "alphacraft:items/enderite_helmet"
   }
 }
