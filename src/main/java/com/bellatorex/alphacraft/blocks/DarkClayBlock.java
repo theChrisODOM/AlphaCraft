@@ -6,7 +6,7 @@ import net.minecraft.block.material.Material;
 import net.minecraftforge.common.ToolType;
 
 public class DarkClayBlock extends Block {
-
+    //stinky
     public DarkClayBlock() {
         super(Block.Properties.create(Material.EARTH)
                 .hardnessAndResistance(4.0f,6.0f)
