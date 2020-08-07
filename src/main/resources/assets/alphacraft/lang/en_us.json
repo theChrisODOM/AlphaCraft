@@ -10,6 +10,11 @@
   "item.alphacraft.enderite_pickaxe": "Enderite Pickaxe",
   "item.alphacraft.enderite_shovel": "Enderite Shovel",
   "item.alphacraft.enderite_hoe": "Enderite Hoe",
+
+  "item.alphacraft.enderite_helmet": "Enderite Helmet",
+  "item.alphacraft.enderite_chestplate": "Enderite Chestplate",
+  "item.alphacraft.enderite_leggings": "Enderite Leggings",
+  "item.alphacraft.enderite_boots": "Enderite Boots",
   "block.alphacraft.enderite_ore_block": "Enderite Ore",
   "block.alphacraft.dark_clay_block": "Dark Clay",
   "block.alphacraft.castle_block": "Castle Wall",
