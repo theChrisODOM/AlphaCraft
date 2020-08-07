@@ -2,10 +2,12 @@ package com.bellatorex.alphacraft.util;
 
 import com.bellatorex.alphacraft.AlphaCraft;
 
+import com.bellatorex.alphacraft.armor.AlphaArmorMaterial;
 import com.bellatorex.alphacraft.blocks.*;
 import com.bellatorex.alphacraft.items.ItemBase;
 import com.bellatorex.alphacraft.tools.AlphaMaterials;
 import net.minecraft.block.Block;
+import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.*;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
@@ -42,6 +44,21 @@ public class RegistryHandler {
             new ShovelItem(AlphaMaterials.ENDERITE, 0, -2.4f, new Item.Properties().group(ItemGroup.TOOLS)));
     public static final RegistryObject<HoeItem> ENDERITE_HOE = ITEMS.register("enderite_hoe", () ->
             new HoeItem(AlphaMaterials.ENDERITE, 0, -2.0f, new Item.Properties().group(ItemGroup.TOOLS)));
+
+
+    //Armor
+    public static final RegistryObject<ArmorItem> ENDERITE_HELMET = ITEMS.register("enderite_helmet", () ->
+            new ArmorItem(AlphaArmorMaterial.ENDERITE, EquipmentSlotType.HEAD, new Item.Properties().group(AlphaCraft.TAB)));
+
+    public static final RegistryObject<ArmorItem> ENDERITE_CHESTPLATE = ITEMS.register("enderite_chestplate", () ->
+            new ArmorItem(AlphaArmorMaterial.ENDERITE, EquipmentSlotType.CHEST, new Item.Properties().group(AlphaCraft.TAB)));
+
+    public static final RegistryObject<ArmorItem> ENDERITE_LEGGINGS = ITEMS.register("enderite_leggings", () ->
+            new ArmorItem(AlphaArmorMaterial.ENDERITE, EquipmentSlotType.LEGS, new Item.Properties().group(AlphaCraft.TAB)));
+
+    public static final RegistryObject<ArmorItem> ENDERITE_BOOTS = ITEMS.register("enderite_boots", () ->
+            new ArmorItem(AlphaArmorMaterial.ENDERITE, EquipmentSlotType.FEET, new Item.Properties().group(AlphaCraft.TAB)));
+
     //Blocks
     public static final RegistryObject<Block> CASTLE_BLOCK = BLOCKS.register("castle_block", CastleBlock::new);
     public static final RegistryObject<Block> ENDERITE_BLOCK = BLOCKS.register("enderite_block", EnderiteBlock::new);
