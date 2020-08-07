@@ -46,11 +46,13 @@ public class RegistryHandler {
     public static final RegistryObject<Block> CASTLE_WALL_BLOCK = BLOCKS.register("castle_wall_block", CastleWallBlock::new);
     public static final RegistryObject<Block> ENDERITE_BLOCK = BLOCKS.register("enderite_block", EnderiteBlock::new);
     public static final RegistryObject<Block> ENDERITE_ORE_BLOCK = BLOCKS.register("enderite_ore_block", EnderiteOreBlock::new);
+    public static final RegistryObject<Block> DARK_CLAY_BLOCK = BLOCKS.register("dark_clay_block", DarkClayBlock::new);
     public static final RegistryObject<Block> POOP_BLOCK = BLOCKS.register("poop_block", PoopBlock::new);
     //Block Items
     public static final RegistryObject<Item> CASTLE_WALL_BLOCK_ITEM = ITEMS.register("castle_wall_block", () -> new BlockItemBase(CASTLE_WALL_BLOCK.get()));
     public static final RegistryObject<Item> ENDERITE_BLOCK_ITEM = ITEMS.register("enderite_block", () -> new BlockItemBase(ENDERITE_BLOCK.get()));
     public static final RegistryObject<Item> ENDERITE_ORE_BLOCK_ITEM = ITEMS.register("enderite_ore_block", () -> new BlockItemBase(ENDERITE_ORE_BLOCK.get()));
+    public static final RegistryObject<Item> DARK_CLAY_BLOCK_ITEM = ITEMS.register("dark_clay_block", () -> new BlockItemBase(DARK_CLAY_BLOCK.get()));
     public static final RegistryObject<Item> POOP_BLOCK_ITEM = ITEMS.register("poop_block", () -> new BlockItemBase(POOP_BLOCK.get()));
 
 }
