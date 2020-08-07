@@ -6,7 +6,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "alphacraft:castle_wall_block"
+          "name": "alphacraft:castle_block"
         }
       ]
     }
