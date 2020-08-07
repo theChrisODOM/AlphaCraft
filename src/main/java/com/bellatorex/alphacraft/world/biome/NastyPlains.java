@@ -39,6 +39,6 @@ public class NastyPlains extends Biome
         this.addSpawn(EntityClassification.CREATURE, new SpawnListEntry(EntityType.SALMON, 12, 2, 8));
         this.addSpawn(EntityClassification.CREATURE, new SpawnListEntry(EntityType.COD, 12, 2, 8));
         this.addSpawn(EntityClassification.CREATURE, new SpawnListEntry(EntityType.SLIME, 12, 2, 8));
-        this.addFeature();
+
     }
 }
