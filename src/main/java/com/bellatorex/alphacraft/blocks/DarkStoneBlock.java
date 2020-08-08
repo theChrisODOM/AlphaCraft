@@ -5,14 +5,12 @@ import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraftforge.common.ToolType;
 
-public class EnderiteBlock extends Block {
-
-    public EnderiteBlock() {
-        super(Block.Properties.create(Material.IRON)
-                .hardnessAndResistance(6.0f,8.0f)
-                .sound(SoundType.NETHERITE)
-                .harvestLevel(3)
+public class DarkStoneBlock extends Block {
+    public DarkStoneBlock() {
+        super(Block.Properties.create(Material.ROCK)
+                .hardnessAndResistance(0.5f,2.0f)
+                .sound(SoundType.STONE)
+                .harvestLevel(1)
                 .harvestTool(ToolType.PICKAXE));
-
     }
 }
