@@ -38,7 +38,7 @@ public class NastySwamp extends Biome
                         .setWaterColor(3108412)
                         .setWaterFogColor(1196810)
                         .setAmbientSound(SoundEvents.AMBIENT_CRIMSON_FOREST_LOOP)
-                        .setParticle(new net.minecraft.world.biome.ParticleEffectAmbience(ParticleTypes.MYCELIUM.getType(), 0.5f))
+                        .setParticle(new net.minecraft.world.biome.ParticleEffectAmbience(ParticleTypes.MYCELIUM.getType(), 0.01f))
                         .build())
                 .parent((String)null));
 
