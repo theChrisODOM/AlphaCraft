@@ -2,7 +2,7 @@
   "textures": {
     "1": "alphacraft:blocks/nasty_stem_top",
     "2": "alphacraft:blocks/nasty_stem",
-    "particle": "nasty_stem"
+    "particle": "alphacraft:blocks/nasty_stem"
   },
   "elements": [
     {

@@ -9,7 +9,7 @@ public class DarkStemBlock extends Block {
     public DarkStemBlock() {
         super(Block.Properties.create(Material.WOOD)
                 .hardnessAndResistance(1.5f,3.0f)
-                .sound(SoundType.NETHER_SPROUT)
+                .sound(SoundType.WOOD)
                 .harvestLevel(1)
                 .harvestTool(ToolType.AXE));
     }

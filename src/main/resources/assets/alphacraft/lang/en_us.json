@@ -18,12 +18,13 @@
 
   "block.alphacraft.dark_grass_block": "Dark Grass Block",
   "block.alphacraft.dark_dirt_block": "Dark Dirt",
+  "block.alphacraft.dark_stone": "Dark Stone",
   "block.alphacraft.nasty_stem": "Nasty Stem",
   "block.alphacraft.enderite_ore_block": "Enderite Ore",
   "block.alphacraft.dark_clay_block": "Dark Clay",
+  "block.alphacraft.poop_block": "Block of Skat",
   "block.alphacraft.castle_block": "Castle Wall",
   "block.alphacraft.enderite_block": "Block of Enderite",
-  "block.alphacraft.poop_block": "Block of Skat",
 
   "biome.alphacraft.nasty_swamp": "Nasty Swamp",
 
