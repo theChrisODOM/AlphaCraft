@@ -1,7 +1,7 @@
 package com.bellatorex.alphacraft.util;
 
 import com.bellatorex.alphacraft.AlphaCraft;
-import com.bellatorex.alphacraft.world.biome.NastyPlains;
+import com.bellatorex.alphacraft.world.biome.NastySwamp;
 import net.minecraft.world.biome.Biome;
 import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.common.BiomeDictionary.Type;
@@ -14,9 +14,6 @@ import net.minecraftforge.registries.ForgeRegistries;
 public class AlphaCraftBiomesManager
 {
     public static final DeferredRegister<Biome> BIOMES = DeferredRegister.create(ForgeRegistries.BIOMES, AlphaCraft.MOD_ID);
-
-    public static final RegistryObject<Biome> NASTY_PLAINS = BIOMES.register("nasty_plains", NastyPlains::new);
-
     public static void register(IEventBus modEventBus)
     {
         BIOMES.register(modEventBus);
@@ -24,8 +21,15 @@ public class AlphaCraftBiomesManager
 
     public static void setupBiomes()
     {
-        BiomeManager.addBiome(BiomeManager.BiomeType.COOL, new BiomeManager.BiomeEntry(NASTY_PLAINS.get(), 10));
+        BiomeManager.addBiome(BiomeManager.BiomeType.COOL, new BiomeManager.BiomeEntry(NASTY_SWAMP.get(), 10));
 
-        BiomeDictionary.addTypes(NASTY_PLAINS.get(), Type.PLAINS, Type.OVERWORLD);
+        BiomeDictionary.addTypes(NASTY_SWAMP.get(), Type.FOREST, Type.OVERWORLD);
     }
+
+    //Biomes
+    public static final RegistryObject<Biome> NASTY_SWAMP = BIOMES.register("nasty_swamp", NastySwamp::new);
+
+
+
+
 }

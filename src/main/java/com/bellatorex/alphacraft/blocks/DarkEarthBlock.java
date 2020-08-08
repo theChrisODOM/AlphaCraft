@@ -8,7 +8,7 @@ import net.minecraftforge.common.ToolType;
 public class DarkEarthBlock extends Block {
     public DarkEarthBlock() {
         super(Block.Properties.create(Material.EARTH)
-                .hardnessAndResistance(4.0f,6.0f)
+                .hardnessAndResistance(0.5f,2.0f)
                 .sound(SoundType.GROUND)
                 .harvestLevel(1)
                 .harvestTool(ToolType.SHOVEL));

@@ -10,7 +10,7 @@ public class EnderiteOreBlock extends Block {
     public EnderiteOreBlock() {
         super(Block.Properties.create(Material.ROCK)
                 .hardnessAndResistance(6.0f,8.0f)
-                .sound(SoundType.STONE)
+                .sound(SoundType.NETHER_GOLD)
                 .harvestLevel(3)
                 .harvestTool(ToolType.PICKAXE));
 
