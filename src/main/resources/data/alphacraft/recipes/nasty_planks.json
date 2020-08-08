@@ -2,12 +2,12 @@
   "type": "minecraft:crafting_shapeless",
   "ingredients": [
     {
-      "item": "minecraft:slime_ball"
+      "item": "alphacraft:nasty_stem"
     }
   ],
   "result":
   {
-    "item": "alphacraft:ball",
-    "count": 1
+    "item": "alphacraft:nasty_planks",
+    "count": 4
   }
 }
