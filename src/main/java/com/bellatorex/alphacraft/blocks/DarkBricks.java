@@ -5,9 +5,9 @@ import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraftforge.common.ToolType;
 
-public class CastleBlock extends Block {
+public class DarkBricks extends Block {
 
-    public CastleBlock() {
+    public DarkBricks() {
         super(Block.Properties.create(Material.ROCK)
                 .hardnessAndResistance(4.0f,6.0f)
                 .sound(SoundType.NETHER_BRICK)

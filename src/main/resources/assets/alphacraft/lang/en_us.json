@@ -1,7 +1,7 @@
 {
 
   "item.alphacraft.ball": "Ball",
-  "item.alphacraft.castle_brick": "Castle Brick",
+  "item.alphacraft.dark_brick": "Dark Brick",
   "item.alphacraft.dark_clay": "Dark Clay",
   "item.alphacraft.poop": "Poop",
   "item.alphacraft.enderite_ingot": "Enderite Ingot",
@@ -26,7 +26,7 @@
   "block.alphacraft.enderite_ore_block": "Enderite Ore",
   "block.alphacraft.dark_clay_block": "Dark Clay",
   "block.alphacraft.poop_block": "Block of Poop",
-  "block.alphacraft.castle_block": "Castle Wall",
+  "block.alphacraft.dark_bricks": "Dark Bricks",
   "block.alphacraft.enderite_block": "Block of Enderite",
   "block.alphacraft.ultra_ore": "Ultra Ore",
 

@@ -6,11 +6,11 @@
   ],
   "key": {
     "#": {
-      "item": "alphacraft:castle_brick"
+      "item": "alphacraft:dark_brick"
     }
   },
   "result": {
-    "item": "alphacraft:castle_block",
+    "item": "alphacraft:dark_bricks",
     "count": 1
   }
 }
