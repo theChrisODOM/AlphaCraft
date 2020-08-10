@@ -1,0 +1,83 @@
+{
+  "type": "alphacraft:the_alpha",
+  "generator": {
+    "type": "minecraft:noise",
+    "seed": 0,
+    "settings": {
+      "bedrock_roof_position": -10,
+      "bedrock_floor_position": 0,
+      "sea_level": 47,
+      "disable_mob_generation": false,
+      "default_block": {
+        "Name": "alphacraft:dark_stone"
+      },
+      "default_fluid": {
+        "Name": "minecraft:water",
+        "Properties": {
+          "level": "0"
+        }
+      },
+      "structures": {
+        "stronghold": {
+          "distance": 0,
+          "count": 0,
+          "spread": 0
+        },
+        "structures": {}
+      },
+      "noise": {
+        "top_slide": {
+          "target": -4000,
+          "size": 40,
+          "offset": -35
+        },
+        "bottom_slide": {
+          "target": 15,
+          "size": 5,
+          "offset": 1
+        },
+        "sampling": {
+          "xz_scale": 0.5,
+          "xz_factor": 80,
+          "y_scale": 1,
+          "y_factor": 160
+        },
+        "size_vertical": 2,
+        "size_horizontal": 1,
+        "height": 200,
+        "density_factor": 1,
+        "density_offset": -0.4696969,
+        "random_density_offset": true,
+        "simplex_surface_noise": true,
+        "island_noise_override": true,
+        "amplified": false
+      }
+    },
+    "biome_source": {
+      "seed": 0,
+      "type": "minecraft:multi_noise",
+      "biomes": [
+        {
+          "biome": "alphacraft:dark_forest",
+          "parameters": {
+            "altitude": 0.4,
+            "weirdness": 0.0,
+            "offset": 0.0,
+            "temperature": 0.0,
+            "humidity": 0.0
+          }
+        },
+        {
+          "biome": "alphacraft:nasty_swamp",
+          "parameters": {
+            "altitude": 0.2,
+            "weirdness": 0.8,
+            "offset": 0.0,
+            "temperature": 0.0,
+            "humidity": 0.0
+          }
+        }
+      ]
+    }
+  }
+}
