@@ -2,6 +2,7 @@ package com.bellatorex.alphacraft;
 
 import com.bellatorex.alphacraft.util.*;
 
+import net.minecraft.fluid.Fluid;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 
@@ -15,8 +16,6 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
-import javax.tools.Tool;
 
 
 // The value here should match an entry in the META-INF/mods.toml file
@@ -35,7 +34,7 @@ public class AlphaCraft
         modEventBus.addListener(this::doClientStuff);
         modEventBus.addListener(EventPriority.LOWEST, this::commonSetup);
 
-        AlphaCraftBiomesManager.register(modEventBus);
+        AlphaBiomes.register(modEventBus);
 
         // All mod registry initializations
         BaseItemRegistry.init();
@@ -48,11 +47,11 @@ public class AlphaCraft
 
     private void commonSetup(final FMLCommonSetupEvent event)
     {
-        AlphaCraftBiomesManager.setupBiomes();
+        AlphaBiomes.setupBiomes();
     }
 
     private void setup(final FMLCommonSetupEvent event) {
-        AlphaCraftBiomesManager.setupBiomes();
+        AlphaBiomes.setupBiomes();
     }
 
     private void doClientStuff(final FMLClientSetupEvent event) { }

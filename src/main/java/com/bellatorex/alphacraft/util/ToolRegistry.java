@@ -2,7 +2,6 @@ package com.bellatorex.alphacraft.util;
 
 import com.bellatorex.alphacraft.AlphaCraft;
 import com.bellatorex.alphacraft.tools.AlphaMaterials;
-import net.minecraft.block.Block;
 import net.minecraft.item.*;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
@@ -29,4 +28,6 @@ public class ToolRegistry {
             new ShovelItem(AlphaMaterials.ENDERITE, 0, -2.4f, new Item.Properties().group(ItemGroup.TOOLS)));
     public static final RegistryObject<HoeItem> ENDERITE_HOE = ITEMS.register("enderite_hoe", () ->
             new HoeItem(AlphaMaterials.ENDERITE, 0, -2.0f, new Item.Properties().group(ItemGroup.TOOLS)));
+
+
 }
