@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "alphacraft:ultra_ore"
+  },
+  "result": "alphacraft:ultra_ingot",
+  "experience": 0.1,
+  "cookingtime": 70
+}
