@@ -2,9 +2,13 @@ package com.bellatorex.alphacraft.util;
 
 import com.bellatorex.alphacraft.AlphaCraft;
 import com.bellatorex.alphacraft.blocks.*;
+import com.bellatorex.alphacraft.world.AlphaBiomeFeatures;
+import com.bellatorex.alphacraft.world.gen.feature.DarkAshTree;
+import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemGroup;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.DeferredRegister;
@@ -16,7 +20,6 @@ public class BlockRegistry {
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, AlphaCraft.MOD_ID);
 
     public static void init() {
-
         ITEMS.register(FMLJavaModLoadingContext.get().getModEventBus());
         BLOCKS.register(FMLJavaModLoadingContext.get().getModEventBus());
     }
@@ -34,8 +37,9 @@ public class BlockRegistry {
     public static final RegistryObject<Block> DARK_BRICKS = BLOCKS.register("dark_bricks", DarkBricks::new);
     public static final RegistryObject<Block> ENDERITE_BLOCK = BLOCKS.register("enderite_block", EnderiteBlock::new);
     public static final RegistryObject<Block> ULTRA_ORE = BLOCKS.register("ultra_ore", UltraOre::new);
-
     public static final RegistryObject<Block> ALPHA_PORTAL_BLOCK = BLOCKS.register("alpha_portal_block", AlphaPortalBlock::new);
+    public static final RegistryObject<Block> DARK_TREE_SAPLING = BLOCKS.register("dark_tree_sapling",
+            () -> new DarkSappling(()-> new DarkAshTree(), Block.Properties.from(Blocks.OAK_SAPLING)));
 
 
 
@@ -58,6 +62,8 @@ public class BlockRegistry {
     public static final RegistryObject<Item> DARK_BRICKS_ITEM = ITEMS.register("dark_bricks", () -> new BlockItemBase(DARK_BRICKS.get()));
     public static final RegistryObject<Item> ENDERITE_BLOCK_ITEM = ITEMS.register("enderite_block", () -> new BlockItemBase(ENDERITE_BLOCK.get()));
     public static final RegistryObject<Item> ULTRA_ORE_ITEM = ITEMS.register("ultra_ore", () -> new BlockItemBase(ULTRA_ORE.get()));
+
+    public static final RegistryObject<Item> DARK_TEE_SAPLING_ITEM = ITEMS.register("dark_tree_sapling_item", () -> new BlockItemBase(DARK_TREE_SAPLING.get()));
 
 
 

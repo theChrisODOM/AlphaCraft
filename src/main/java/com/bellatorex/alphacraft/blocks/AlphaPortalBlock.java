@@ -21,7 +21,7 @@ import net.minecraft.world.server.ServerWorld;
 
 import java.awt.*;
 
-public class AlphaPortalBlock extends Block {
+public class AlphaPortalBlock extends ContainerBlock {
 
     protected static final VoxelShape SHAPE = Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 12.0D, 16.0D);
 
@@ -64,5 +64,10 @@ public class AlphaPortalBlock extends Block {
     @Override
     public boolean isReplaceable(BlockState state, Fluid fluid) {
         return false;
+    }
+
+    @Override
+    public TileEntity createNewTileEntity(IBlockReader worldIn) {
+        return null;
     }
 }
