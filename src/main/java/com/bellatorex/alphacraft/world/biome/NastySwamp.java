@@ -29,7 +29,7 @@ public class NastySwamp extends Biome
                 .surfaceBuilder(SurfaceBuilder.DEFAULT, new SurfaceBuilderConfig(DARK_DIRT_BLOCK, DARK_DIRT_BLOCK, DARK_DIRT_BLOCK))
                 .precipitation(RainType.RAIN)
                 .category(Category.SWAMP)
-                .depth(1.3F)
+                .depth(0.0F)
                 .scale(0.2F)
                 .temperature(0.7F)
                 .downfall(0.8F))

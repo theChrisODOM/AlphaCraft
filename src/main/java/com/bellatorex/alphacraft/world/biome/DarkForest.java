@@ -29,7 +29,7 @@ public class DarkForest extends Biome
                 .surfaceBuilder(SurfaceBuilder.DEFAULT, new SurfaceBuilderConfig(DARK_GRASS_BLOCK, DARK_DIRT_BLOCK, DARK_DIRT_BLOCK))
                 .precipitation(RainType.RAIN)
                 .category(Category.FOREST)
-                .depth(0.3F)
+                .depth(1.3F)
                 .scale(0.4F)
                 .temperature(0.6F)
                 .downfall(1.0F))

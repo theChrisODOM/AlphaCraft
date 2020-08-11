@@ -35,6 +35,10 @@ public class BlockRegistry {
     public static final RegistryObject<Block> ENDERITE_BLOCK = BLOCKS.register("enderite_block", EnderiteBlock::new);
     public static final RegistryObject<Block> ULTRA_ORE = BLOCKS.register("ultra_ore", UltraOre::new);
 
+    public static final RegistryObject<Block> ALPHA_PORTAL_BLOCK = BLOCKS.register("alpha_portal_block", AlphaPortalBlock::new);
+
+
+
     //Block Items
     public static final RegistryObject<Item> DARK_STONE_ITEM = ITEMS.register("dark_stone", () -> new BlockItemBase(DARK_STONE.get()));
 
@@ -54,5 +58,7 @@ public class BlockRegistry {
     public static final RegistryObject<Item> DARK_BRICKS_ITEM = ITEMS.register("dark_bricks", () -> new BlockItemBase(DARK_BRICKS.get()));
     public static final RegistryObject<Item> ENDERITE_BLOCK_ITEM = ITEMS.register("enderite_block", () -> new BlockItemBase(ENDERITE_BLOCK.get()));
     public static final RegistryObject<Item> ULTRA_ORE_ITEM = ITEMS.register("ultra_ore", () -> new BlockItemBase(ULTRA_ORE.get()));
+
+
 
 }
