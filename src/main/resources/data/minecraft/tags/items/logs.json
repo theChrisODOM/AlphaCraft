@@ -1,9 +1,7 @@
 {
   "replace": false,
   "values": [
-    "#minecraft:logs_that_burn",
-    "#minecraft:crimson_stems",
-    "#minecraft:warped_stems",
-    "alphacraft:nasty_stem"
+    "alphacraft:nasty_stem",
+    "alphacraft:dark_log"
   ]
 }

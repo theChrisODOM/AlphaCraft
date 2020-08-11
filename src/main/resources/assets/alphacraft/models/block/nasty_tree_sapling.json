@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "alphacraft:blocks/nasty_tree_sapling"
+  }
+}

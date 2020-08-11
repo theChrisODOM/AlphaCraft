@@ -4,6 +4,7 @@ import com.bellatorex.alphacraft.util.AlphaDimensionsRegistry;
 import com.bellatorex.alphacraft.world.AlphaTeleporter;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.Blocks;
 import net.minecraft.block.ContainerBlock;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.Entity;
@@ -21,13 +22,12 @@ import net.minecraft.world.server.ServerWorld;
 
 import java.awt.*;
 
-public class AlphaPortalBlock extends ContainerBlock {
+public class AlphaPortalBlock extends Block {
 
     protected static final VoxelShape SHAPE = Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 12.0D, 16.0D);
 
     public AlphaPortalBlock() {
-        super(Block.Properties.create(Material.PORTAL)
-                .hardnessAndResistance(-0F,-0F));
+        super(Block.Properties.from(Blocks.END_PORTAL));
     }
 
     @Override
@@ -65,9 +65,9 @@ public class AlphaPortalBlock extends ContainerBlock {
     public boolean isReplaceable(BlockState state, Fluid fluid) {
         return false;
     }
-
     @Override
-    public TileEntity createNewTileEntity(IBlockReader worldIn) {
-        return null;
+    public int getLightValue(BlockState state, IBlockReader world, BlockPos pos) {
+        return 15;
     }
+
 }

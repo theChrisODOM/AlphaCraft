@@ -4,10 +4,10 @@ import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 
-public class DarkGrassBlock extends Block {
+public class DarkLeavesBlock extends Block {
 
-    public DarkGrassBlock() {
-        super(AbstractBlock.Properties.from(Blocks.GRASS_BLOCK));
+    public DarkLeavesBlock() {
+        super(AbstractBlock.Properties.from(Blocks.OAK_LEAVES));
 
     }
 }

@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/inner_stairs",
+  "textures": {
+    "bottom": "alphacraft:blocks/dark_bricks",
+    "top": "alphacraft:blocks/dark_bricks",
+    "side": "alphacraft:blocks/dark_bricks"
+  }
+}

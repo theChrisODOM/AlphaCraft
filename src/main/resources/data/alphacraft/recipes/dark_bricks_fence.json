@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#b#",
+    "#b#"
+  ],
+  "key": {
+    "#": {
+      "item": "alphacraft:dark_bricks"
+    },
+    "b": {
+      "item": "alphacraft:dark_brick"
+    }
+  },
+  "result": {
+    "item": "alphacraft:dark_bricks_fence",
+    "count": 6
+  }
+}

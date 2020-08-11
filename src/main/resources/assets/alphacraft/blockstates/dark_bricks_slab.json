@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "alphacraft:block/dark_bricks_slab"
+    },
+    "type=double": {
+      "model": "alphacraft:block/dark_bricks"
+    },
+    "type=top": {
+      "model": "alphacraft:block/dark_bricks_slab_top"
+    }
+  }
+}

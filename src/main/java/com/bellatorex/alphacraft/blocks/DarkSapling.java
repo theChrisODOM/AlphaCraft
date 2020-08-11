@@ -19,13 +19,13 @@ import net.minecraftforge.event.ForgeEventFactory;
 import java.util.Random;
 import java.util.function.Supplier;
 
-public class DarkSappling extends BushBlock implements IGrowable {
+public class DarkSapling extends BushBlock implements IGrowable {
 
     public static final IntegerProperty STAGE = BlockStateProperties.STAGE_0_1;
     protected static final VoxelShape SHAPE = Block.makeCuboidShape(2.0D, 0.0D, 2.0D, 14.0D, 12.0D, 14.0D);
     private final Supplier<Tree> tree;
 
-    public DarkSappling(Supplier<Tree> treeIn, Properties properties) {
+    public DarkSapling(Supplier<Tree> treeIn, Properties properties) {
         super(properties);
         this.tree = treeIn;
     }

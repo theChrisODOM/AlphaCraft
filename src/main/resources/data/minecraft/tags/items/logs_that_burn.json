@@ -1,12 +1,8 @@
 {
   "replace": false,
   "values": [
-    "#minecraft:dark_oak_logs",
-    "#minecraft:oak_logs",
-    "#minecraft:acacia_logs",
-    "#minecraft:birch_logs",
-    "#minecraft:jungle_logs",
-    "#minecraft:spruce_logs",
-    "alphacraft:nasty_stem"
+    "alphacraft:nasty_stem",
+    "alphacraft:dark_log"
+
   ]
 }
