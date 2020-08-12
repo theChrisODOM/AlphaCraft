@@ -25,7 +25,6 @@ public class AlphaCraftBiomesManager
         BiomeManager.addBiome(BiomeManager.BiomeType.COOL, new BiomeManager.BiomeEntry(NASTY_SWAMP.get(), 10));
         BiomeManager.addBiome(BiomeManager.BiomeType.COOL, new BiomeManager.BiomeEntry(DARK_FOREST.get(), 10));
 
-
         BiomeDictionary.addTypes(NASTY_SWAMP.get(), Type.SWAMP, Type.OVERWORLD);
         BiomeDictionary.addTypes(DARK_FOREST.get(), Type.FOREST, Type.OVERWORLD);
 

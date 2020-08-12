@@ -21,14 +21,14 @@ public class ArmorRegistry {
 
     //Armor
     public static final RegistryObject<ArmorItem> ENDERITE_HELMET = ITEMS.register("enderite_helmet", () ->
-            new ArmorItem(AlphaArmorMaterial.ENDERITE, EquipmentSlotType.HEAD, new Item.Properties().group(AlphaCraft.TAB)));
+            new ArmorItem(AlphaArmorMaterial.ENDERITE, EquipmentSlotType.HEAD, new Item.Properties().group(AlphaCraft.ALPHA_TOOLS)));
 
     public static final RegistryObject<ArmorItem> ENDERITE_CHESTPLATE = ITEMS.register("enderite_chestplate", () ->
-            new ArmorItem(AlphaArmorMaterial.ENDERITE, EquipmentSlotType.CHEST, new Item.Properties().group(AlphaCraft.TAB)));
+            new ArmorItem(AlphaArmorMaterial.ENDERITE, EquipmentSlotType.CHEST, new Item.Properties().group(AlphaCraft.ALPHA_TOOLS)));
 
     public static final RegistryObject<ArmorItem> ENDERITE_LEGGINGS = ITEMS.register("enderite_leggings", () ->
-            new ArmorItem(AlphaArmorMaterial.ENDERITE, EquipmentSlotType.LEGS, new Item.Properties().group(AlphaCraft.TAB)));
+            new ArmorItem(AlphaArmorMaterial.ENDERITE, EquipmentSlotType.LEGS, new Item.Properties().group(AlphaCraft.ALPHA_TOOLS)));
 
     public static final RegistryObject<ArmorItem> ENDERITE_BOOTS = ITEMS.register("enderite_boots", () ->
-            new ArmorItem(AlphaArmorMaterial.ENDERITE, EquipmentSlotType.FEET, new Item.Properties().group(AlphaCraft.TAB)));
+            new ArmorItem(AlphaArmorMaterial.ENDERITE, EquipmentSlotType.FEET, new Item.Properties().group(AlphaCraft.ALPHA_TOOLS)));
 }

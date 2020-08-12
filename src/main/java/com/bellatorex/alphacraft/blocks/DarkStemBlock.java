@@ -23,6 +23,4 @@ public class DarkStemBlock extends RotatedPillarBlock {
         super(Block.Properties.from(Blocks.CRIMSON_STEM));
     }
 
-
-
 }

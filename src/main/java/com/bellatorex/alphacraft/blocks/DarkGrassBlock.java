@@ -1,5 +1,6 @@
 package com.bellatorex.alphacraft.blocks;
 
+import com.bellatorex.alphacraft.util.BlockRegistry;
 import net.minecraft.block.*;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockReader;
@@ -12,7 +13,7 @@ import net.minecraft.world.server.ServerWorld;
 import java.util.List;
 import java.util.Random;
 
-public class DarkGrassBlock extends BushBlock implements IGrowable {
+public class DarkGrassBlock extends SpreadableSnowyDirtBlock implements IGrowable {
 
     public DarkGrassBlock() {
         super(AbstractBlock.Properties.from(Blocks.GRASS_BLOCK));
@@ -31,7 +32,7 @@ public class DarkGrassBlock extends BushBlock implements IGrowable {
 
     public void grow(ServerWorld worldIn, Random rand, BlockPos pos, BlockState state) {
         BlockPos blockpos = pos.up();
-        BlockState blockstate = Blocks.GRASS.getDefaultState();
+        BlockState blockstate = BlockRegistry.DARK_GRASS_BLOCK.get().getDefaultState();
 
         for(int i = 0; i < 128; ++i) {
             BlockPos blockpos1 = blockpos;

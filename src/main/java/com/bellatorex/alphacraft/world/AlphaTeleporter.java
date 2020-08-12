@@ -6,6 +6,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.world.World;
+import net.minecraft.world.gen.Heightmap;
 import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.common.util.ITeleporter;
 
@@ -30,7 +31,7 @@ public class AlphaTeleporter implements ITeleporter {
             currentWorld.getProfiler().startSection("placing");
 
             if(entity.world.func_234923_W_() == World.field_234918_g_){
-                player.setLocationAndAngles(0, 200, 0, f1, f);
+                player.setLocationAndAngles(0, 162, 48, f1, f);
             }else{
                 BlockPos player_spawn = player.func_241140_K_();
                 if (player_spawn == null){
@@ -59,7 +60,7 @@ public class AlphaTeleporter implements ITeleporter {
             if (newEntity != null) {
                 newEntity.copyDataFromOld(entity);
                 if(entity.world.func_234923_W_() == World.field_234918_g_) {
-                    newEntity.moveToBlockPosAndAngles(new BlockPos(0,200,0), newEntity.rotationYaw, newEntity.rotationPitch);
+                    newEntity.moveToBlockPosAndAngles(new BlockPos(0, 162,48), newEntity.rotationYaw, newEntity.rotationPitch);
                 }else{
                     newEntity.moveToBlockPosAndAngles(new BlockPos(destWorld.getWorldInfo().getSpawnX(), destWorld.getWorldInfo().getSpawnY(), destWorld.getWorldInfo().getSpawnZ()), newEntity.rotationYaw, newEntity.rotationPitch);
                 }
