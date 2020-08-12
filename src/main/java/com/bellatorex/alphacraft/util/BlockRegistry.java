@@ -2,11 +2,15 @@ package com.bellatorex.alphacraft.util;
 
 import com.bellatorex.alphacraft.AlphaCraft;
 import com.bellatorex.alphacraft.blocks.*;
+import com.bellatorex.alphacraft.world.AlphaBiomeFeatures;
 import com.bellatorex.alphacraft.world.gen.feature.DarkAshTree;
 import com.bellatorex.alphacraft.world.gen.feature.NastyPoopTree;
+import com.mojang.serialization.Codec;
 import net.minecraft.block.*;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
+import net.minecraft.world.gen.feature.Feature;
+import net.minecraft.world.gen.feature.HugeFungusConfig;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.DeferredRegister;
@@ -79,8 +83,8 @@ public class BlockRegistry {
     public static final RegistryObject<Item> ENDERITE_ORE_BLOCK_ITEM = ITEMS.register("enderite_ore_block", () -> new BlockItemBase(ENDERITE_ORE_BLOCK.get()));
     public static final RegistryObject<Item> ULTRA_ORE_ITEM = ITEMS.register("ultra_ore", () -> new BlockItemBase(ULTRA_ORE.get()));
     // Saplings
-    public static final RegistryObject<Item> DARK_TREE_SAPLING_ITEM = ITEMS.register("dark_tree_sapling_item", () -> new BlockItemBase(DARK_TREE_SAPLING.get()));
-    public static final RegistryObject<Item> NASTY_TREE_SAPLING_ITEM = ITEMS.register("nasty_tree_sapling_item", () -> new BlockItemBase(NASTY_TREE_SAPLING.get()));
+    public static final RegistryObject<Item> DARK_TREE_SAPLING_ITEM = ITEMS.register("dark_tree_sapling", () -> new BlockItemBase(DARK_TREE_SAPLING.get()));
+    public static final RegistryObject<Item> NASTY_TREE_SAPLING_ITEM = ITEMS.register("nasty_tree_sapling", () -> new BlockItemBase(NASTY_TREE_SAPLING.get()));
     // Misc
     public static final RegistryObject<Item> POOP_BLOCK_ITEM = ITEMS.register("poop_block", () -> new BlockItemBase(POOP_BLOCK.get()));
 

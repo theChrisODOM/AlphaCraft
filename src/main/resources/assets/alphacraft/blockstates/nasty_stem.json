@@ -1,5 +1,16 @@
 {
   "variants": {
-    "": { "model": "alphacraft:block/nasty_stem"}
+    "axis=x": {
+      "model": "alphacraft:block/nasty_stem_horizontal",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "alphacraft:block/nasty_stem"
+    },
+    "axis=z": {
+      "model": "alphacraft:block/nasty_stem_horizontal",
+      "x": 90
+    }
   }
 }

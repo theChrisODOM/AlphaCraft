@@ -9,10 +9,8 @@ import net.minecraft.world.gen.feature.Feature;
 import java.util.Random;
 
 public class DarkAshTree extends Tree {
-
-
     @Override
     protected ConfiguredFeature<BaseTreeFeatureConfig, ?> getTreeFeature(Random randomIn, boolean largeHive) {
-        return Feature.field_236291_c_.withConfiguration(AlphaBiomeFeatures.DARK_TREE_CONFIG);
+        return Feature.field_236291_c_.withConfiguration(AlphaBiomeFeatures.DARK_TREE_SAPLING_CONFIG);
     }
 }

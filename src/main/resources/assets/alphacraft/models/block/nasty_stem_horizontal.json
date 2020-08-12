@@ -1,5 +1,5 @@
 {
-  "parent": "minecraft:block/cube_column",
+  "parent": "minecraft:block/cube_column_horizontal",
   "textures": {
     "end": "alphacraft:blocks/nasty_stem_top",
     "side": "alphacraft:blocks/nasty_stem"

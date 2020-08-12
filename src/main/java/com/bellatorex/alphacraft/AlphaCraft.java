@@ -2,6 +2,8 @@ package com.bellatorex.alphacraft;
 
 import com.bellatorex.alphacraft.util.*;
 
+import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.RenderTypeLookup;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 
@@ -55,7 +57,12 @@ public class AlphaCraft
         AlphaCraftBiomesManager.setupBiomes();
     }
 
-    private void doClientStuff(final FMLClientSetupEvent event) { }
+    private void doClientStuff(final FMLClientSetupEvent event) {
+        RenderTypeLookup.setRenderLayer(BlockRegistry.NASTY_LEAVES.get(), RenderType.getCutout());
+        RenderTypeLookup.setRenderLayer(BlockRegistry.DARK_LEAVES.get(), RenderType.getCutout());
+        RenderTypeLookup.setRenderLayer(BlockRegistry.NASTY_TREE_SAPLING.get(), RenderType.getCutout());
+        RenderTypeLookup.setRenderLayer(BlockRegistry.DARK_TREE_SAPLING.get(), RenderType.getCutout());
+    }
 
 
     public static final ItemGroup TAB = new ItemGroup("alphaCraftTab") {
