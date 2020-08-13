@@ -3,6 +3,8 @@ package com.bellatorex.alphacraft.world.gen;
 import com.bellatorex.alphacraft.AlphaCraft;
 import com.bellatorex.alphacraft.util.BlockRegistry;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.Blocks;
+import net.minecraft.block.pattern.BlockMatcher;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.gen.GenerationStage;
 import net.minecraft.world.gen.feature.Feature;
@@ -19,6 +21,10 @@ import net.minecraftforge.registries.ForgeRegistries;
 
 
 public class OreGenRegistry {
+
+    public static OreFeatureConfig.FillerBlockType END_STONE = OreFeatureConfig.FillerBlockType.create("END_STONE", "end_stone", new BlockMatcher(Blocks.END_STONE));
+
+
     @SubscribeEvent
     public static void generateOres(FMLLoadCompleteEvent event) {
         for (Biome biome : ForgeRegistries.BIOMES) {
@@ -27,11 +33,10 @@ public class OreGenRegistry {
 
             // End Generation
             } else if (biome.getCategory() == Biome.Category.THEEND) {
-
+                genOre(biome, 20, 8, 5, 50, END_STONE, BlockRegistry.ENDERITE_ORE.get().getDefaultState(), 12);
             // World Generation
             } else {
                 genOre(biome, 20, 8, 5, 50, OreFeatureConfig.FillerBlockType.NATURAL_STONE, BlockRegistry.ULTRA_ORE.get().getDefaultState(), 12);
-
             }
         }
     }

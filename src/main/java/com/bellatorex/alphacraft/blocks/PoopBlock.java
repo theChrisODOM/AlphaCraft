@@ -14,10 +14,9 @@ public class PoopBlock extends FallingBlock {
     public PoopBlock() {
         super(Block.Properties.create(Material.EARTH)
                 .hardnessAndResistance(5.0f, 6.0f)
-                .sound(SoundType.GROUND)
+                .sound(SoundType.SLIME)
                 .harvestLevel(0)
-                .harvestTool(ToolType.AXE)
-                .setRequiresTool());
+                .harvestTool(ToolType.SHOVEL));
     }
     public void onFallenUpon(World worldIn, BlockPos pos, Entity entityIn, float fallDistance) {
         entityIn.onLivingFall(fallDistance, 0.2F);

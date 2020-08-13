@@ -31,6 +31,7 @@ import javax.tools.Tool;
 
 // The value here should match an entry in the META-INF/mods.toml file
 @Mod("alphacraft")
+
 public class AlphaCraft
 {
     // Directly reference a log4j logger.

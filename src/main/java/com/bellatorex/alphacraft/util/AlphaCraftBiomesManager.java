@@ -35,6 +35,4 @@ public class AlphaCraftBiomesManager
     public static final RegistryObject<Biome> DARK_FOREST = BIOMES.register("dark_forest", DarkForest::new);
 
 
-
-
 }

@@ -37,7 +37,7 @@ public class BlockRegistry {
     public static final RegistryObject<Block> DARK_PLANKS = BLOCKS.register("dark_planks", DarkPlankBlock::new);
     public static final RegistryObject<Block> DARK_LEAVES = BLOCKS.register("dark_leaves", DarkLeavesBlock::new);
     public static final RegistryObject<Block> DARK_COBBLESTONE = BLOCKS.register("dark_cobblestone", DarkStoneBlock::new);
-    public static final RegistryObject<Block> ENDERITE_ORE_BLOCK = BLOCKS.register("enderite_ore_block", EnderiteOreBlock::new);
+    public static final RegistryObject<Block> ENDERITE_ORE = BLOCKS.register("enderite_ore_block", EnderiteOreBlock::new);
     public static final RegistryObject<Block> DARK_CLAY_BLOCK = BLOCKS.register("dark_clay_block", DarkEarthBlock::new);
     public static final RegistryObject<Block> POOP_BLOCK = BLOCKS.register("poop_block", PoopBlock::new);
     public static final RegistryObject<Block> DARK_BRICKS = BLOCKS.register("dark_bricks", DarkBricks::new);
@@ -74,7 +74,7 @@ public class BlockRegistry {
     public static final RegistryObject<Item> DARK_LEAVES_ITEM = ITEMS.register("dark_leaves", () -> new BlockItem(DARK_LEAVES.get(), new Item.Properties().group(AlphaCraft.ALPHA_DECOR)));
     public static final RegistryObject<Item> NASTY_LEAVES_ITEM = ITEMS.register("nasty_leaves", () -> new BlockItem(NASTY_LEAVES.get(), new Item.Properties().group(AlphaCraft.ALPHA_DECOR)));
     // Ores
-    public static final RegistryObject<Item> ENDERITE_ORE_BLOCK_ITEM = ITEMS.register("enderite_ore_block", () -> new BlockItem(ENDERITE_ORE_BLOCK.get(), new Item.Properties().group(AlphaCraft.ALPHA_BLOCKS)));
+    public static final RegistryObject<Item> ENDERITE_ORE_BLOCK_ITEM = ITEMS.register("enderite_ore_block", () -> new BlockItem(ENDERITE_ORE.get(), new Item.Properties().group(AlphaCraft.ALPHA_BLOCKS)));
     public static final RegistryObject<Item> ULTRA_ORE_ITEM = ITEMS.register("ultra_ore", () -> new BlockItem(ULTRA_ORE.get(), new Item.Properties().group(AlphaCraft.ALPHA_BLOCKS)));
     // Stairs
     public static final RegistryObject<Item> DARK_BRICKS_STAIRS_ITEM = ITEMS.register("dark_bricks_stairs", () -> new BlockItem(DARK_BRICKS_STAIRS.get(), new Item.Properties().group(AlphaCraft.ALPHA_BLOCKS)));
