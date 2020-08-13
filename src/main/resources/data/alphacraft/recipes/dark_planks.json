@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "alphacraft:dark_log"
+    }
+  ],
+  "result":
+  {
+    "item": "alphacraft:dark_planks",
+    "count": 4
+  }
+}

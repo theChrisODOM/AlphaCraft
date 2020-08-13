@@ -36,6 +36,12 @@
   "block.alphacraft.dark_bricks_fence": "Dark Bricks Fence",
   "block.alphacraft.dark_bricks_stairs": "Dark Bricks Stairs",
   "block.alphacraft.dark_bricks_slab": "Dark Bricks Slab",
+  "block.alphacraft.dark_planks_fence": "Dark Planks Fence",
+  "block.alphacraft.dark_planks_stairs": "Dark Planks Stairs",
+  "block.alphacraft.dark_planks_slab": "Dark Planks Slab",
+  "block.alphacraft.nasty_planks_fence": "Nasty Planks Fence",
+  "block.alphacraft.nasty_planks_stairs": "Nasty Planks Stairs",
+  "block.alphacraft.nasty_planks_slab": "Nasty Planks Slab",
   "block.alphacraft.enderite_block": "Block of Enderite",
   "block.alphacraft.ultra_ore": "Ultra Ore",
   "block.alphacraft.alpha_portal_block": "The Alpha",
@@ -44,7 +50,7 @@
   "biome.alphacraft.dark_forest": "Darker Forest",
 
   "itemGroup.alphaCraftBlocksTab": "A: Building Blocks",
-  "itemGroup.alphaCraftDecorTab": "A: Decorations",
+  "itemGroup.alphaCraftDecorTab": "A: Decoration Blocks",
   "itemGroup.alphaCraftToolsTab": "A: Tools",
   "itemGroup.alphaCraftItemsTab": "A: Items"
 

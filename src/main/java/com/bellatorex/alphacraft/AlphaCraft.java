@@ -49,10 +49,10 @@ public class AlphaCraft
         AlphaCraftBiomesManager.register(modEventBus);
 
         // All mod registry initializations
-        BaseItemRegistry.init();
+        BlockRegistry.init();
         ToolRegistry.init();
         ArmorRegistry.init();
-        BlockRegistry.init();
+        BaseItemRegistry.init();
 
         MinecraftForge.EVENT_BUS.register(this);
     }

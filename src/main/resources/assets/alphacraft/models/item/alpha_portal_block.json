@@ -1,3 +1,6 @@
 {
-  "parent": "alphacraft:block/alpha_portal_block"
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "alphacraft:blocks/alpha_portal_block"
+  }
 }

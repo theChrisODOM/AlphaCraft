@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab_top",
+  "textures": {
+    "bottom": "alphacraft:blocks/nasty_planks",
+    "top": "alphacraft:blocks/nasty_planks",
+    "side": "alphacraft:blocks/nasty_planks"
+  }
+}

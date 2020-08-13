@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#b#",
+    "#b#"
+  ],
+  "key": {
+    "#": {
+      "item": "alphacraft:nasty_planks"
+    },
+    "b": {
+      "item": "minecraft:stick"
+    }
+  },
+  "result": {
+    "item": "alphacraft:nasty_planks_fence",
+    "count": 6
+  }
+}

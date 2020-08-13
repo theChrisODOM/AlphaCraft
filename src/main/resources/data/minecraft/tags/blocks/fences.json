@@ -1,6 +1,8 @@
 {
   "replace": false,
   "values": [
-    "alphacraft:dark_bricks_fence"
+    "alphacraft:dark_bricks_fence",
+    "alphacraft:dark_planks_fence",
+    "alphacraft:nasty_planks_fence"
   ]
 }

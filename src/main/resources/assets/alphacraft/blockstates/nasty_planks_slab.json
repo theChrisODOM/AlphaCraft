@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "alphacraft:block/nasty_planks_slab"
+    },
+    "type=double": {
+      "model": "alphacraft:block/nasty_planks"
+    },
+    "type=top": {
+      "model": "alphacraft:block/nasty_planks_slab_top"
+    }
+  }
+}

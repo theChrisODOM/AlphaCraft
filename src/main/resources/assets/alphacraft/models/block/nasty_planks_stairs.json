@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/stairs",
+  "textures": {
+    "bottom": "alphacraft:blocks/nasty_planks",
+    "top": "alphacraft:blocks/nasty_planks",
+    "side": "alphacraft:blocks/nasty_planks"
+  }
+}
