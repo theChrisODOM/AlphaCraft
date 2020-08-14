@@ -1,8 +1,10 @@
 package com.bellatorex.alphacraft;
 
+import com.bellatorex.alphacraft.client.gui.SmelterScreen;
 import com.bellatorex.alphacraft.util.*;
 
 import com.bellatorex.alphacraft.world.AlphaBiomeFeatures;
+import net.minecraft.client.gui.ScreenManager;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.RenderTypeLookup;
 import net.minecraft.item.ItemGroup;
@@ -49,10 +51,12 @@ public class AlphaCraft
         AlphaCraftBiomesManager.register(modEventBus);
 
         // All mod registry initializations
+        BaseItemRegistry.init();
         BlockRegistry.init();
+        AlphaTileEntityRegistry.init();
+        AlphaContainerRegistry.init();
         ToolRegistry.init();
         ArmorRegistry.init();
-        BaseItemRegistry.init();
 
         MinecraftForge.EVENT_BUS.register(this);
     }
@@ -70,6 +74,8 @@ public class AlphaCraft
         RenderTypeLookup.setRenderLayer(BlockRegistry.DARK_LEAVES.get(), RenderType.getCutout());
         RenderTypeLookup.setRenderLayer(BlockRegistry.NASTY_TREE_SAPLING.get(), RenderType.getCutout());
         RenderTypeLookup.setRenderLayer(BlockRegistry.DARK_TREE_SAPLING.get(), RenderType.getCutout());
+
+
     }
 
 

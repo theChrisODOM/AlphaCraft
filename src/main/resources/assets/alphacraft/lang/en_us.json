@@ -45,6 +45,9 @@
   "block.alphacraft.enderite_block": "Block of Enderite",
   "block.alphacraft.ultra_ore": "Ultra Ore",
   "block.alphacraft.alpha_portal_block": "The Alpha",
+  "block.alphacraft.smelter": "Smelter",
+
+  "container.smelter": "Two Item Smelter",
 
   "biome.alphacraft.nasty_swamp": "Nasty Swamp",
   "biome.alphacraft.dark_forest": "Darker Forest",
