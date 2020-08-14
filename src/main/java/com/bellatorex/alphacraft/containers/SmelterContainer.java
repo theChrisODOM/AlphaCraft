@@ -21,6 +21,7 @@ public class SmelterContainer extends Container {
 
     public final SmelterTileEntity tileEntity;
     private final IWorldPosCallable canIteractWithCallable;
+
     public SmelterContainer(final int windowId, final PlayerInventory playerInventory, final SmelterTileEntity tileEntity) {
         super(AlphaContainerRegistry.SMELTER.get(), windowId);
         this.tileEntity = tileEntity;

@@ -15,6 +15,5 @@ public class AlphaClientEventsMOD {
     @SubscribeEvent
     public static void clientSetup(FMLClientSetupEvent event){
 
-        ScreenManager.registerFactory(AlphaContainerRegistry.SMELTER.get(), SmelterScreen::new);
     }
 }

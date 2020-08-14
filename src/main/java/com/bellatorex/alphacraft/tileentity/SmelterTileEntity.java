@@ -20,6 +20,7 @@ import net.minecraft.util.SoundCategory;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.IBlockReader;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.util.LazyOptional;
@@ -42,7 +43,7 @@ public class SmelterTileEntity extends LockableLootTileEntity {
 
     @Override
     protected ITextComponent getDefaultName() {
-        return null;
+        return new TranslationTextComponent("container.smelter");
     }
 
     @Override
@@ -87,7 +88,7 @@ public class SmelterTileEntity extends LockableLootTileEntity {
         double dx = (double)this.pos.getX() + 0.5D;
         double dy = (double)this.pos.getY() + 0.5D;
         double dz = (double)this.pos.getZ() + 0.5D;
-        this.world.playSound((PlayerEntity)null, dx, dy, dz, sound, SoundCategory.BLOCKS, 0.5f, this.world.rand.nextFloat() * 0.1f + 0.9f);
+        this.world.playSound((PlayerEntity)null, dx, dy, dz, sound, SoundCategory.AMBIENT, 0.5f, this.world.rand.nextFloat() * 0.1f + 0.9f);
     }
 
     @Override

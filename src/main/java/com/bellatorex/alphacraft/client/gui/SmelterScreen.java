@@ -5,6 +5,7 @@ import com.bellatorex.alphacraft.containers.SmelterContainer;
 import com.mojang.blaze3d.matrix.MatrixStack;
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.minecraft.client.gui.screen.inventory.ContainerScreen;
+import net.minecraft.client.renderer.RenderHelper;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
@@ -27,30 +28,32 @@ public class SmelterScreen extends ContainerScreen<SmelterContainer> {
 
     @Override
     public void render(MatrixStack matrixStack,final int mouseX,final int mouseY,final float partialTicks) {
-        AlphaCraft.LOGGER.debug("Starting Smelter Render");
         this.renderBackground(matrixStack);
-        AlphaCraft.LOGGER.debug("Render Background complete");
         super.render(matrixStack, mouseX, mouseY, partialTicks);
-        AlphaCraft.LOGGER.debug("Super Render complete");
         this.func_230459_a_(matrixStack, mouseX, mouseY);
-        AlphaCraft.LOGGER.debug("Render tooltips complete");
     }
 
     @Override
     protected void drawGuiContainerForegroundLayer(MatrixStack matrixStack, int mouseX, int mouseY) {
-
-        AlphaCraft.LOGGER.debug(matrixStack.getLast());
         super.drawGuiContainerForegroundLayer(matrixStack, mouseX, mouseY);
-        this.font.drawString(matrixStack, "Smelter", 8.0f,6.0f, 4210752);
-        this.font.drawString(matrixStack, "Inventory", 8.0f,73.0f, 4210752);
+        this.font.drawString(matrixStack, this.title.getString(), 8.0f,6.0f, 4210752);
     }
 
     @Override
     protected void drawGuiContainerBackgroundLayer(MatrixStack matrixStack, float partialTicks, int mouseX, int mouseY) {
-        RenderSystem.color4f(1,1,1,1);
-        this.minecraft.getTextureManager().bindTexture(BACKGROUND_TEXTURE);
-        int x = (this.width - this.xSize)/2;
-        int y = (this.height - this.ySize)/2;
-        this.blit(matrixStack, x, y, 0, 0, this.xSize, this.ySize);
+        RenderSystem.color4f(1.0F, 1.0F, 1.0F, 1.0F);
+        this.minecraft.getTextureManager().bindTexture(this.BACKGROUND_TEXTURE);
+        int i = this.guiLeft;
+        int j = this.guiTop;
+        this.blit(matrixStack, i, j, 0, 0, this.xSize, this.ySize);
+        /* will add later, when furnace logic is set up
+        if (this.container.isBurning()) {
+            int k = this.container.getBurnLeftScaled();
+            this.blit(matrixStack, i + 56, j + 36 + 12 - k, 176, 12 - k, 14, k + 1);
+        }
+
+        int l = this.container.getCookProgressionScaled();
+        this.blit(matrixStack, i + 79, j + 34, 176, 14, l + 1, 16);
+        */
     }
 }
