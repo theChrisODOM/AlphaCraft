@@ -1,0 +1,14 @@
+{
+  "type": "alphacraft:smelter",
+
+  "output": {
+    "item": "alphacraft:enderite_ingot"
+  },
+  "primary": {
+    "item": "minecraft:iron_ingot"
+  },
+  "secondary": {
+    "item": "alphacraft:enderite_dust"
+  }
+
+}

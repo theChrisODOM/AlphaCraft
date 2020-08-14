@@ -57,7 +57,7 @@ public class AlphaCraft
         AlphaContainerRegistry.init();
         ToolRegistry.init();
         ArmorRegistry.init();
-
+        RecipeSerializerRegistry.init();
         MinecraftForge.EVENT_BUS.register(this);
     }
 
