@@ -1,6 +1,7 @@
 package com.bellatorex.alphacraft.inventory.containers;
 
 import com.bellatorex.alphacraft.inventory.containers.slots.SmelterFuelSlot;
+import com.bellatorex.alphacraft.inventory.containers.slots.SmelterResultSlot;
 import com.bellatorex.alphacraft.recipes.IAlphaRecipeType;
 import com.bellatorex.alphacraft.recipes.SmelterRecipe;
 import com.bellatorex.alphacraft.tileentity.SmelterTileEntity;
@@ -48,7 +49,7 @@ public class SmelterContainer extends RecipeBookContainer<IInventory> {
         this.addSlot(new Slot(tileEntity, 0, 33, 17));
         this.addSlot(new Slot(tileEntity, 1, 59, 17));
         this.addSlot(new SmelterFuelSlot(this, tileEntity, 2, 46, 53));
-        this.addSlot(new FurnaceResultSlot(playerInventoryIn.player, tileEntity, 3, 116, 35));
+        this.addSlot(new SmelterResultSlot(playerInventoryIn.player, tileEntity, 3, 116, 35));
         // Player Inventory
         int playerInventoryY = 84;
         for(int row = 0; row < 3; row++){

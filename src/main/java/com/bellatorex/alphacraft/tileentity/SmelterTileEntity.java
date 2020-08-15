@@ -1,8 +1,10 @@
 package com.bellatorex.alphacraft.tileentity;
 
+import com.bellatorex.alphacraft.AlphaCraft;
 import com.bellatorex.alphacraft.blocks.SmelterBlock;
 import com.bellatorex.alphacraft.inventory.containers.SmelterContainer;
 import com.bellatorex.alphacraft.recipes.IAlphaRecipeType;
+import com.bellatorex.alphacraft.util.AlphaContainerRegistry;
 import com.bellatorex.alphacraft.util.AlphaTileEntityRegistry;
 import com.google.common.collect.Lists;
 import it.unimi.dsi.fastutil.objects.Object2IntMap;
@@ -50,7 +52,7 @@ public class SmelterTileEntity extends LockableLootTileEntity implements ISidedI
     private int burnTime;
     private int recipesUsed;
     private int cookTime;
-    private int cookTimeTotal;
+    private int cookTimeTotal = 200;
     public final IIntArray furnaceData = new IIntArray() {
         public int get(int index) { switch(index) {
                 case 0:
@@ -276,7 +278,7 @@ public class SmelterTileEntity extends LockableLootTileEntity implements ISidedI
                 // this runs if the furnace is on and there is a recipe in the furnace
                 if (this.isBurning() && this.canSmelt(irecipe)) {
                     ++this.cookTime;
-                    if (this.cookTime == this.cookTimeTotal) {
+                    if (this.cookTime >= this.cookTimeTotal) {
                         this.cookTime = 0;
                         this.cookTimeTotal = this.getCookTime();
                         this.smelt(irecipe);
@@ -341,7 +343,7 @@ public class SmelterTileEntity extends LockableLootTileEntity implements ISidedI
                 this.setRecipeUsed(recipe);
             }
 
-            itemstackPrimary.shrink(0); // remove 1 ingredient from both primary slot
+            itemstackPrimary.shrink(1); // remove 1 ingredient from both primary slot
             itemstackSecondary.shrink(1); // and from secondary slot
         }
     }
@@ -412,28 +414,29 @@ public class SmelterTileEntity extends LockableLootTileEntity implements ISidedI
         return 200;
     }
 
-    public void func_235645_d_(PlayerEntity p_235645_1_) {
-        List<IRecipe<?>> list = this.func_235640_a_(p_235645_1_.world, p_235645_1_.getPositionVec());
-        p_235645_1_.unlockRecipes(list);
+    public void func_235645_d_(PlayerEntity player) {
+        List<IRecipe<?>> list = this.func_235640_a_(player.world, player.getPositionVec());
+        player.unlockRecipes(list);
         this.recipes.clear();
     }
 
-    public List<IRecipe<?>> func_235640_a_(World p_235640_1_, Vector3d p_235640_2_) {
+    public List<IRecipe<?>> func_235640_a_(World worldIn, Vector3d vector) {
         List<IRecipe<?>> list = Lists.newArrayList();
 
         for(Object2IntMap.Entry<ResourceLocation> entry : this.recipes.object2IntEntrySet()) {
-            p_235640_1_.getRecipeManager().getRecipe(entry.getKey()).ifPresent((p_235642_4_) -> {
-                list.add(p_235642_4_);
-                func_235641_a_(p_235640_1_, p_235640_2_, entry.getIntValue(), ((AbstractCookingRecipe)p_235642_4_).getExperience());
+            worldIn.getRecipeManager().getRecipe(entry.getKey()).ifPresent((recipe) -> {
+                list.add(recipe);
+                AlphaCraft.LOGGER.debug("Xp from recipe: "+((AbstractCookingRecipe)recipe).getExperience());
+                giveExperience(worldIn, vector, entry.getIntValue(), ((AbstractCookingRecipe)recipe).getExperience());
             });
         }
 
         return list;
     }
 
-    private static void func_235641_a_(World p_235641_0_, Vector3d p_235641_1_, int p_235641_2_, float p_235641_3_) {
-        int i = MathHelper.floor((float)p_235641_2_ * p_235641_3_);
-        float f = MathHelper.frac((float)p_235641_2_ * p_235641_3_);
+    private static void giveExperience(World worldIn, Vector3d vector3d, int p_235641_2_, float recipeExperienceAmount) {
+        int i = MathHelper.floor((float)p_235641_2_ * recipeExperienceAmount);
+        float f = MathHelper.frac((float)p_235641_2_ * recipeExperienceAmount);
         if (f != 0.0F && Math.random() < (double)f) {
             ++i;
         }
@@ -441,7 +444,7 @@ public class SmelterTileEntity extends LockableLootTileEntity implements ISidedI
         while(i > 0) {
             int j = ExperienceOrbEntity.getXPSplit(i);
             i -= j;
-            p_235641_0_.addEntity(new ExperienceOrbEntity(p_235641_0_, p_235641_1_.x, p_235641_1_.y, p_235641_1_.z, j));
+            worldIn.addEntity(new ExperienceOrbEntity(worldIn, vector3d.x, vector3d.y, vector3d.z, j));
         }
 
     }
