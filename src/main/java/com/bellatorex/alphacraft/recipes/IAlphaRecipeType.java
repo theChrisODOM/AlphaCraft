@@ -11,7 +11,7 @@ import net.minecraft.world.World;
 
 public interface IAlphaRecipeType<T extends AbstractCookingRecipe> {
 
-    IRecipeType<SmelterRecipe> SMELTER = register("smelter");
+    IRecipeType<AbstractCookingRecipe> SMELTER = register("smelter");
 
     static <T extends IRecipe<?>> IRecipeType<T> register(final String key) {
         return Registry.register(Registry.RECIPE_TYPE, new ResourceLocation(key), new IRecipeType<T>() {

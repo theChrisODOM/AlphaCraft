@@ -3,12 +3,14 @@ package com.bellatorex.alphacraft.tileentity;
 import com.bellatorex.alphacraft.blocks.SmelterBlock;
 import com.bellatorex.alphacraft.inventory.containers.SmelterContainer;
 import com.bellatorex.alphacraft.recipes.IAlphaRecipeType;
-import com.bellatorex.alphacraft.recipes.SmelterRecipe;
 import com.bellatorex.alphacraft.util.AlphaTileEntityRegistry;
+import com.google.common.collect.Lists;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
 import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import net.minecraft.block.AbstractFurnaceBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
+import net.minecraft.entity.item.ExperienceOrbEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.*;
@@ -24,19 +26,26 @@ import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.tileentity.*;
 import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.MathHelper;
+import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.IBlockReader;
+import net.minecraft.world.World;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.items.IItemHandlerModifiable;
 import net.minecraftforge.items.wrapper.InvWrapper;
 
 import javax.annotation.Nullable;
+import java.util.List;
 
 public class SmelterTileEntity extends LockableLootTileEntity implements ISidedInventory, IRecipeHolder, IRecipeHelperPopulator, ITickableTileEntity {
 
 
+    private static final int[] SLOTS_UP = new int[]{0};
+    private static final int[] SLOTS_DOWN = new int[]{2, 1};
+    private static final int[] SLOTS_HORIZONTAL = new int[]{1};
     private NonNullList<ItemStack> itemsInSmelter = NonNullList.withSize(4, ItemStack.EMPTY);
     private int burnTime;
     private int recipesUsed;
@@ -75,7 +84,7 @@ public class SmelterTileEntity extends LockableLootTileEntity implements ISidedI
         }
     };
     private final Object2IntOpenHashMap<ResourceLocation> recipes = new Object2IntOpenHashMap<>();
-    protected final IRecipeType<SmelterRecipe> recipeType;
+    protected final IRecipeType<? extends AbstractCookingRecipe> recipeType;
     protected int numPlayersUsing;
     private IItemHandlerModifiable items = createHandler();
     private LazyOptional<IItemHandlerModifiable> itemHandler = LazyOptional.of(()->items);
@@ -102,7 +111,7 @@ public class SmelterTileEntity extends LockableLootTileEntity implements ISidedI
 
     @Override
     public int getSizeInventory() {
-        return 5;
+        return 4;
     }
 
     public NonNullList<ItemStack> getItems() {
@@ -115,18 +124,33 @@ public class SmelterTileEntity extends LockableLootTileEntity implements ISidedI
 
     public CompoundNBT write(CompoundNBT compound) {
         super.write(compound);
-        if(!this.checkLootAndWrite(compound)) {
-            ItemStackHelper.saveAllItems(compound, this.itemsInSmelter);
-        }
+        compound.putInt("BurnTime", this.burnTime);
+        compound.putInt("CookTime", this.cookTime);
+        compound.putInt("CookTimeTotal", this.cookTimeTotal);
+        ItemStackHelper.saveAllItems(compound, this.itemsInSmelter);
+        CompoundNBT compoundnbt = new CompoundNBT();
+        this.recipes.forEach((p_235643_1_, p_235643_2_) -> {
+            compoundnbt.putInt(p_235643_1_.toString(), p_235643_2_);
+        });
+        compound.put("RecipesUsed", compoundnbt);
         return compound;
     }
 
     @Override
     public void read(BlockState state, CompoundNBT nbt) {
-        super.read(state, nbt);this.itemsInSmelter = NonNullList.withSize(this.getSizeInventory(), ItemStack.EMPTY);
-        if(!this.checkLootAndRead(nbt)){
-            ItemStackHelper.loadAllItems(nbt,this.itemsInSmelter);
+        super.read(state, nbt);
+        this.itemsInSmelter = NonNullList.withSize(this.getSizeInventory(), ItemStack.EMPTY);
+        ItemStackHelper.loadAllItems(nbt, this.itemsInSmelter);
+        this.burnTime = nbt.getInt("BurnTime");
+        this.cookTime = nbt.getInt("CookTime");
+        this.cookTimeTotal = nbt.getInt("CookTimeTotal");
+        this.recipesUsed = this.getBurnTime(this.itemsInSmelter.get(2));
+        CompoundNBT compoundnbt = nbt.getCompound("RecipesUsed");
+
+        for(String s : compoundnbt.keySet()) {
+            this.recipes.put(new ResourceLocation(s), compoundnbt.getInt(s));
         }
+
     }
 
     private void playSound(SoundEvent sound){
@@ -220,21 +244,79 @@ public class SmelterTileEntity extends LockableLootTileEntity implements ISidedI
         }
     }
 
+    public void tick() {
+        boolean ifSmelterIsCurrentlyBurning = this.isBurning();
+        boolean flag1 = false;
+        if (this.isBurning()) {
+            --this.burnTime;
+        }
+
+        if (!this.world.isRemote) {
+            ItemStack fuelItemStack = this.itemsInSmelter.get(2);
+            if ((this.isBurning() || !fuelItemStack.isEmpty()) && !this.itemsInSmelter.get(0).isEmpty() && !this.itemsInSmelter.get(1).isEmpty()) {
+                IRecipe<?> irecipe = this.world.getRecipeManager().getRecipe((IRecipeType<AbstractCookingRecipe>)this.recipeType, this, this.world).orElse(null);
+                // this runs if the furnace is off but there is a recipe in the furnace
+                if (!this.isBurning() && this.canSmelt(irecipe)) {
+                    this.burnTime = this.getBurnTime(fuelItemStack);
+                    this.recipesUsed = this.burnTime;
+                    if (this.isBurning()) {
+                        flag1 = true;
+                        if (fuelItemStack.hasContainerItem())
+                            this.itemsInSmelter.set(2, fuelItemStack.getContainerItem());
+                        else
+                        if (!fuelItemStack.isEmpty()) {
+                            Item item = fuelItemStack.getItem();
+                            fuelItemStack.shrink(1);
+                            if (fuelItemStack.isEmpty()) {
+                                this.itemsInSmelter.set(1, fuelItemStack.getContainerItem());
+                            }
+                        }
+                    }
+                }
+                // this runs if the furnace is on and there is a recipe in the furnace
+                if (this.isBurning() && this.canSmelt(irecipe)) {
+                    ++this.cookTime;
+                    if (this.cookTime == this.cookTimeTotal) {
+                        this.cookTime = 0;
+                        this.cookTimeTotal = this.getCookTime();
+                        this.smelt(irecipe);
+                        flag1 = true;
+                    }
+                } else {
+                    this.cookTime = 0;
+                }
+            } else if (!this.isBurning() && this.cookTime > 0) {
+                this.cookTime = MathHelper.clamp(this.cookTime - 2, 0, this.cookTimeTotal);
+            }
+
+            if (ifSmelterIsCurrentlyBurning != this.isBurning()) {
+                flag1 = true;
+                this.world.setBlockState(this.pos, this.world.getBlockState(this.pos).with(AbstractFurnaceBlock.LIT, Boolean.valueOf(this.isBurning())), 3);
+            }
+        }
+
+        if (flag1) {
+            this.markDirty();
+        }
+
+    }
+
+
     protected boolean canSmelt(@Nullable IRecipe<?> recipeIn) {
         if (!this.itemsInSmelter.get(0).isEmpty() && !this.itemsInSmelter.get(1).isEmpty() && recipeIn != null) {
-            ItemStack itemstack = recipeIn.getRecipeOutput();
-            if (itemstack.isEmpty()) {
+            ItemStack recipeOutputStack = recipeIn.getRecipeOutput();
+            if (recipeOutputStack.isEmpty()) {
                 return false;
             } else {
-                ItemStack itemstack1 = this.itemsInSmelter.get(3);
-                if (itemstack1.isEmpty()) {
+                ItemStack outPutItemStack = this.itemsInSmelter.get(3);
+                if (outPutItemStack.isEmpty()) {
                     return true;
-                } else if (!itemstack1.isItemEqual(itemstack)) {
+                } else if (!outPutItemStack.isItemEqual(recipeOutputStack)) {
                     return false;
-                } else if (itemstack1.getCount() + itemstack.getCount() <= this.getInventoryStackLimit() && itemstack1.getCount() + itemstack.getCount() <= itemstack1.getMaxStackSize()) { // Forge fix: make furnace respect stack sizes in furnace recipes
+                } else if (outPutItemStack.getCount() + recipeOutputStack.getCount() <= this.getInventoryStackLimit() && outPutItemStack.getCount() + recipeOutputStack.getCount() <= outPutItemStack.getMaxStackSize()) { // Forge fix: make furnace respect stack sizes in furnace recipes
                     return true;
                 } else {
-                    return itemstack1.getCount() + itemstack.getCount() <= itemstack.getMaxStackSize(); // Forge fix: make furnace respect stack sizes in furnace recipes
+                    return outPutItemStack.getCount() + recipeOutputStack.getCount() <= recipeOutputStack.getMaxStackSize(); // Forge fix: make furnace respect stack sizes in furnace recipes
                 }
             }
         } else {
@@ -259,18 +341,26 @@ public class SmelterTileEntity extends LockableLootTileEntity implements ISidedI
                 this.setRecipeUsed(recipe);
             }
 
-            itemstackPrimary.shrink(1); // remove 1 ingredient from both primary slot
-            itemstackSecondary.shrink(2); // and from secondary slot
+            itemstackPrimary.shrink(0); // remove 1 ingredient from both primary slot
+            itemstackSecondary.shrink(1); // and from secondary slot
         }
     }
-    
+
+    private boolean isBurning() {
+        return this.burnTime > 0;
+    }
+
     public static boolean isFuel(ItemStack stack) {
         return net.minecraftforge.common.ForgeHooks.getBurnTime(stack) > 0;
     }
 
     @Override
     public int[] getSlotsForFace(Direction side) {
-        return new int[0];
+        if (side == Direction.DOWN) {
+            return SLOTS_DOWN;
+        } else {
+            return side == Direction.UP ? SLOTS_UP : SLOTS_HORIZONTAL;
+        }
     }
 
     @Override
@@ -297,7 +387,10 @@ public class SmelterTileEntity extends LockableLootTileEntity implements ISidedI
 
     @Override
     public void setRecipeUsed( IRecipe<?> recipe) {
-
+        if (recipe != null) {
+            ResourceLocation resourcelocation = recipe.getId();
+            this.recipes.addTo(resourcelocation, 1);
+        }
     }
 
     @Override
@@ -305,10 +398,7 @@ public class SmelterTileEntity extends LockableLootTileEntity implements ISidedI
         return null;
     }
 
-    @Override
-    public void tick() {
 
-    }
     protected int getBurnTime(ItemStack fuel) {
         if (fuel.isEmpty()) {
             return 0;
@@ -321,4 +411,40 @@ public class SmelterTileEntity extends LockableLootTileEntity implements ISidedI
     protected int getCookTime() {
         return 200;
     }
+
+    public void func_235645_d_(PlayerEntity p_235645_1_) {
+        List<IRecipe<?>> list = this.func_235640_a_(p_235645_1_.world, p_235645_1_.getPositionVec());
+        p_235645_1_.unlockRecipes(list);
+        this.recipes.clear();
+    }
+
+    public List<IRecipe<?>> func_235640_a_(World p_235640_1_, Vector3d p_235640_2_) {
+        List<IRecipe<?>> list = Lists.newArrayList();
+
+        for(Object2IntMap.Entry<ResourceLocation> entry : this.recipes.object2IntEntrySet()) {
+            p_235640_1_.getRecipeManager().getRecipe(entry.getKey()).ifPresent((p_235642_4_) -> {
+                list.add(p_235642_4_);
+                func_235641_a_(p_235640_1_, p_235640_2_, entry.getIntValue(), ((AbstractCookingRecipe)p_235642_4_).getExperience());
+            });
+        }
+
+        return list;
+    }
+
+    private static void func_235641_a_(World p_235641_0_, Vector3d p_235641_1_, int p_235641_2_, float p_235641_3_) {
+        int i = MathHelper.floor((float)p_235641_2_ * p_235641_3_);
+        float f = MathHelper.frac((float)p_235641_2_ * p_235641_3_);
+        if (f != 0.0F && Math.random() < (double)f) {
+            ++i;
+        }
+
+        while(i > 0) {
+            int j = ExperienceOrbEntity.getXPSplit(i);
+            i -= j;
+            p_235641_0_.addEntity(new ExperienceOrbEntity(p_235641_0_, p_235641_1_.x, p_235641_1_.y, p_235641_1_.z, j));
+        }
+
+    }
+
+
 }

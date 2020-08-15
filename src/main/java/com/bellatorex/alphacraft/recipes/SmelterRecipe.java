@@ -1,7 +1,9 @@
 package com.bellatorex.alphacraft.recipes;
 
 import com.bellatorex.alphacraft.util.RecipeSerializerRegistry;
+import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.item.crafting.IRecipeSerializer;
 import net.minecraft.item.crafting.IRecipeType;
 import net.minecraft.item.crafting.Ingredient;
@@ -10,7 +12,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 import net.minecraftforge.items.wrapper.RecipeWrapper;
 
-public class SmelterRecipe implements IAlphaRecipe {
+public class SmelterRecipe implements IRecipe<IInventory> {
 
 
     protected final IRecipeType<?> type = IAlphaRecipeType.SMELTER;
@@ -30,28 +32,23 @@ public class SmelterRecipe implements IAlphaRecipe {
         this.experience = experience;
     }
 
-
     @Override
-    public boolean matches(RecipeWrapper inv, World worldIn) {
+    public boolean matches(IInventory inv, World worldIn) {
         if(this.primary.test(inv.getStackInSlot(0)) && this.secondary.test(inv.getStackInSlot(1))){
             return true;
         }return false;
     }
 
     @Override
-    public ItemStack getCraftingResult(RecipeWrapper inv) {
-        return this.output;
-    }
+    public ItemStack getCraftingResult(IInventory inv) { return this.output; }
 
     @Override
     public boolean canFit(int width, int height) {
         return false;
     }
 
-    @Override
-    public Ingredient[] getInputs() {
-        return new Ingredient[]{this.primary, this.secondary};
-    }
+    public Ingredient getPrimary() { return this.primary; }
+    public Ingredient getSecondary() { return this.secondary; }
 
     @Override
     public ItemStack getRecipeOutput() {
@@ -66,6 +63,11 @@ public class SmelterRecipe implements IAlphaRecipe {
     @Override
     public IRecipeSerializer<?> getSerializer() {
         return RecipeSerializerRegistry.SMELTER_SERIALIZER.get();
+    }
+
+    @Override
+    public IRecipeType<?> getType() {
+        return type;
     }
 
     @Override

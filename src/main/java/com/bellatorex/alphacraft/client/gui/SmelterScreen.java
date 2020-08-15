@@ -46,14 +46,14 @@ public class SmelterScreen extends ContainerScreen<SmelterContainer> {
         int i = this.guiLeft;
         int j = this.guiTop;
         this.blit(matrixStack, i, j, 0, 0, this.xSize, this.ySize);
-        /* will add later, when furnace logic is set up
+
         if (this.container.isBurning()) {
             int k = this.container.getBurnLeftScaled();
-            this.blit(matrixStack, i + 56, j + 36 + 12 - k, 176, 12 - k, 14, k + 1);
+            this.blit(matrixStack, i + 47, j + 37 + 12 - k, 176, 12 - k, 14, k + 1);
         }
 
         int l = this.container.getCookProgressionScaled();
         this.blit(matrixStack, i + 79, j + 34, 176, 14, l + 1, 16);
-        */
+
     }
 }

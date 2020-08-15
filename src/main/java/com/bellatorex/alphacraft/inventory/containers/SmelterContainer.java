@@ -13,10 +13,7 @@ import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.inventory.container.*;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.IRecipe;
-import net.minecraft.item.crafting.IRecipeType;
-import net.minecraft.item.crafting.RecipeItemHelper;
-import net.minecraft.item.crafting.ServerRecipePlacerFurnace;
+import net.minecraft.item.crafting.*;
 import net.minecraft.network.PacketBuffer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.IIntArray;
@@ -33,7 +30,7 @@ public class SmelterContainer extends RecipeBookContainer<IInventory> {
     protected final World world;
     public final SmelterTileEntity tileEntity;
     private final IWorldPosCallable canInteractWithCallable;
-    private final IRecipeType<SmelterRecipe> recipeType = IAlphaRecipeType.SMELTER; // hard coding to the smelter recipe type
+    private final IRecipeType<AbstractCookingRecipe> recipeType = IAlphaRecipeType.SMELTER; // hard coding to the smelter recipe type
 
     public SmelterContainer(final int windowId, final PlayerInventory playerInventory, final PacketBuffer data){
         this(windowId, playerInventory, getTileEntity(playerInventory, data));
@@ -71,10 +68,6 @@ public class SmelterContainer extends RecipeBookContainer<IInventory> {
         this.tileEntity.clear();
     }
 
-    @Override
-    public void func_217056_a(boolean p_217056_1_, IRecipe<?> p_217056_2_, ServerPlayerEntity player) {
-        (new ServerRecipePlacerFurnace<>(this)).place(player, (IRecipe<IInventory>) p_217056_2_, p_217056_1_);
-    }
 
     @Override
     public void fillStackedContents(RecipeItemHelper itemHelperIn) {

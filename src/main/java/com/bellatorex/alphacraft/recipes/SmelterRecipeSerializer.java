@@ -41,8 +41,8 @@ public class SmelterRecipeSerializer extends ForgeRegistryEntry<IRecipeSerialize
 
     @Override
     public void write(PacketBuffer buffer, SmelterRecipe recipe) {
-        Ingredient primary = recipe.getIngredients().get(0);
-        Ingredient secondary = recipe.getIngredients().get(1);
+        Ingredient primary = recipe.getPrimary();
+        Ingredient secondary = recipe.getSecondary();
         primary.write(buffer);
         secondary.write(buffer);
 
