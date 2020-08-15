@@ -267,10 +267,9 @@ public class SmelterTileEntity extends LockableLootTileEntity implements ISidedI
                             this.itemsInSmelter.set(2, fuelItemStack.getContainerItem());
                         else
                         if (!fuelItemStack.isEmpty()) {
-                            Item item = fuelItemStack.getItem();
                             fuelItemStack.shrink(1);
                             if (fuelItemStack.isEmpty()) {
-                                this.itemsInSmelter.set(1, fuelItemStack.getContainerItem());
+                                this.itemsInSmelter.set(2, fuelItemStack.getContainerItem());
                             }
                         }
                     }
