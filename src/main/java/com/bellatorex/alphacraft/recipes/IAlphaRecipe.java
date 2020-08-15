@@ -10,7 +10,7 @@ import net.minecraftforge.items.wrapper.RecipeWrapper;
 
 import javax.annotation.Nonnull;
 
-public interface ISmelterRecipe extends IRecipe<RecipeWrapper> {
+public interface IAlphaRecipe extends IRecipe<RecipeWrapper> {
 
     ResourceLocation RECIPE_TYPE_ID = new ResourceLocation(AlphaCraft.MOD_ID, "smelter");
 
@@ -23,5 +23,5 @@ public interface ISmelterRecipe extends IRecipe<RecipeWrapper> {
     @Override
     boolean canFit(int width, int height);
 
-    Ingredient getInput();
+    Ingredient[] getInputs();
 }

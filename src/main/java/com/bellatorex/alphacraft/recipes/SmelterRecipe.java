@@ -3,25 +3,31 @@ package com.bellatorex.alphacraft.recipes;
 import com.bellatorex.alphacraft.util.RecipeSerializerRegistry;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipeSerializer;
+import net.minecraft.item.crafting.IRecipeType;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 import net.minecraftforge.items.wrapper.RecipeWrapper;
 
-public class SmelterRecipe implements ISmelterRecipe{
+public class SmelterRecipe implements IAlphaRecipe {
 
 
+    protected final IRecipeType<?> type = IAlphaRecipeType.SMELTER;
     private final ResourceLocation id;
     private Ingredient primary;
     private Ingredient secondary;
     private final ItemStack output;
+    protected final float experience;
+    protected final int cookTime;
 
-    public SmelterRecipe(ResourceLocation id, Ingredient primary, Ingredient secondary, ItemStack output){
+    public SmelterRecipe(ResourceLocation id, Ingredient primary, Ingredient secondary, ItemStack output, float experience, int cookTime){
         this.id = id;
         this.primary = primary;
         this.secondary = secondary;
         this.output = output;
+        this.cookTime = cookTime;
+        this.experience = experience;
     }
 
 
@@ -43,6 +49,11 @@ public class SmelterRecipe implements ISmelterRecipe{
     }
 
     @Override
+    public Ingredient[] getInputs() {
+        return new Ingredient[]{this.primary, this.secondary};
+    }
+
+    @Override
     public ItemStack getRecipeOutput() {
         return this.output;
     }
@@ -55,11 +66,6 @@ public class SmelterRecipe implements ISmelterRecipe{
     @Override
     public IRecipeSerializer<?> getSerializer() {
         return RecipeSerializerRegistry.SMELTER_SERIALIZER.get();
-    }
-
-    @Override
-    public Ingredient getInput() {
-        return this.primary;
     }
 
     @Override

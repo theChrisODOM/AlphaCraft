@@ -1,7 +1,7 @@
 package com.bellatorex.alphacraft.client.gui;
 
 import com.bellatorex.alphacraft.AlphaCraft;
-import com.bellatorex.alphacraft.inventory.containers.SmelterContainer;
+import com.bellatorex.alphacraft.inventory.containers.DarkChestContainer;
 import com.mojang.blaze3d.matrix.MatrixStack;
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.minecraft.client.gui.screen.inventory.ContainerScreen;
@@ -13,18 +13,16 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 
 
 @OnlyIn(Dist.CLIENT)
-public class SmelterScreen extends ContainerScreen<SmelterContainer> {
+public class DarkChestScreen extends ContainerScreen<DarkChestContainer> {
 
-    private static final ResourceLocation BACKGROUND_TEXTURE = new ResourceLocation(AlphaCraft.MOD_ID, "textures/gui/containers/smelter.png");
+    private static final ResourceLocation BACKGROUND_TEXTURE = new ResourceLocation(AlphaCraft.MOD_ID, "textures/gui/containers/dark_chest.png");
 
-    public SmelterScreen(SmelterContainer screenContainer, PlayerInventory inv, ITextComponent titleIn) {
+    public DarkChestScreen(DarkChestContainer screenContainer, PlayerInventory inv, ITextComponent titleIn) {
         super(screenContainer, inv, titleIn);
         this.guiLeft = 0;
         this.guiTop = 0;
         this.xSize = 175;
-        this.ySize = 165;
-        this.titleX = 45;
-        this.titleY = 6;
+        this.ySize = 183;
     }
 
     @Override
@@ -36,7 +34,8 @@ public class SmelterScreen extends ContainerScreen<SmelterContainer> {
 
     @Override
     protected void drawGuiContainerForegroundLayer(MatrixStack matrixStack, int mouseX, int mouseY) {
-        super.drawGuiContainerForegroundLayer(matrixStack, mouseX, mouseY);
+        this.font.drawString(matrixStack, this.title.getString(), 8.0f,6.0f, 4210752);
+        this.font.drawString(matrixStack, this.playerInventory.getDisplayName().getString(), 8.0f, 90.0f, 4210752);
     }
 
     @Override

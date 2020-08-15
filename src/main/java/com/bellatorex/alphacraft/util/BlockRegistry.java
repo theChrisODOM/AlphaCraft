@@ -56,6 +56,7 @@ public class BlockRegistry {
     public static final RegistryObject<Block> DARK_TREE_SAPLING = BLOCKS.register("dark_tree_sapling", () -> new DarkSapling(()-> new DarkAshTree(), Block.Properties.from(Blocks.OAK_SAPLING)));
     public static final RegistryObject<Block> NASTY_TREE_SAPLING = BLOCKS.register("nasty_tree_sapling", () -> new DarkSapling(()-> new NastyPoopTree(), Block.Properties.from(Blocks.OAK_SAPLING)));
     public static final RegistryObject<Block> SMELTER = BLOCKS.register("smelter", ()-> new SmelterBlock());
+    public static final RegistryObject<Block> DARK_CHEST = BLOCKS.register("dark_chest", ()-> new DarkChestBlock());
 
 
 
@@ -98,6 +99,7 @@ public class BlockRegistry {
     public static final RegistryObject<Item> DARK_LEAVES_ITEM = ITEMS.register("dark_leaves", () -> new BlockItem(DARK_LEAVES.get(), new Item.Properties().group(AlphaCraft.ALPHA_DECOR)));
     public static final RegistryObject<Item> NASTY_LEAVES_ITEM = ITEMS.register("nasty_leaves", () -> new BlockItem(NASTY_LEAVES.get(), new Item.Properties().group(AlphaCraft.ALPHA_DECOR)));
     public static final RegistryObject<Item> SMELTER_ITEM = ITEMS.register("smelter", () -> new BlockItem(SMELTER.get(), new Item.Properties().group(AlphaCraft.ALPHA_DECOR)));
+    public static final RegistryObject<Item> DARK_CHEST_ITEM = ITEMS.register("dark_chest", () -> new BlockItem(DARK_CHEST.get(), new Item.Properties().group(AlphaCraft.ALPHA_DECOR)));
     // Saplings
     public static final RegistryObject<Item> DARK_TREE_SAPLING_ITEM = ITEMS.register("dark_tree_sapling", () -> new BlockItem(DARK_TREE_SAPLING.get(), new Item.Properties().group(AlphaCraft.ALPHA_DECOR)));
     public static final RegistryObject<Item> NASTY_TREE_SAPLING_ITEM = ITEMS.register("nasty_tree_sapling", () -> new BlockItem(NASTY_TREE_SAPLING.get(), new Item.Properties().group(AlphaCraft.ALPHA_DECOR)));

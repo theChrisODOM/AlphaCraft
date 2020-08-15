@@ -1,7 +1,8 @@
 package com.bellatorex.alphacraft.util;
 
 import com.bellatorex.alphacraft.AlphaCraft;
-import com.bellatorex.alphacraft.containers.SmelterContainer;
+import com.bellatorex.alphacraft.inventory.containers.DarkChestContainer;
+import com.bellatorex.alphacraft.inventory.containers.SmelterContainer;
 import net.minecraft.inventory.container.ContainerType;
 import net.minecraftforge.common.extensions.IForgeContainerType;
 import net.minecraftforge.fml.RegistryObject;
@@ -18,4 +19,5 @@ public class AlphaContainerRegistry {
     }
 
     public static final RegistryObject<ContainerType<SmelterContainer>> SMELTER = CONTAINER_TYPES.register("smelter", () -> IForgeContainerType.create(SmelterContainer::new));
+    public static final RegistryObject<ContainerType<DarkChestContainer>> DARK_CHEST = CONTAINER_TYPES.register("dark_chest", () -> IForgeContainerType.create(DarkChestContainer::new));
 }

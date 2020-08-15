@@ -1,6 +1,7 @@
 package com.bellatorex.alphacraft.util;
 
 import com.bellatorex.alphacraft.AlphaCraft;
+import com.bellatorex.alphacraft.tileentity.DarkChestTileEntity;
 import com.bellatorex.alphacraft.tileentity.SmelterTileEntity;
 import net.minecraft.block.Block;
 import net.minecraft.tileentity.TileEntityType;
@@ -20,4 +21,8 @@ public class AlphaTileEntityRegistry {
     public static final RegistryObject<TileEntityType<SmelterTileEntity>> SMELTER = TILE_ENTITY_TYPES
             .register("smelter", ()->TileEntityType.Builder
                     .create(SmelterTileEntity::new, BlockRegistry.SMELTER.get()).build(null));
+
+    public static final RegistryObject<TileEntityType<DarkChestTileEntity>> DARK_CHEST = TILE_ENTITY_TYPES
+            .register("dark_chest", ()->TileEntityType.Builder
+                    .create(DarkChestTileEntity::new, BlockRegistry.DARK_CHEST.get()).build(null));
 }

@@ -2,7 +2,7 @@
   "parent": "minecraft:block/orientable",
   "textures": {
     "top": "alphacraft:blocks/smelter",
-    "front": "alphacraft:blocks/smelter_front",
+    "front": "alphacraft:blocks/smelter_front_on",
     "side": "alphacraft:blocks/smelter_side"
   }
 }

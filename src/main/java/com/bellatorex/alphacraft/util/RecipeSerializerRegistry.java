@@ -1,7 +1,7 @@
 package com.bellatorex.alphacraft.util;
 
 import com.bellatorex.alphacraft.AlphaCraft;
-import com.bellatorex.alphacraft.recipes.ISmelterRecipe;
+import com.bellatorex.alphacraft.recipes.IAlphaRecipe;
 import com.bellatorex.alphacraft.recipes.SmelterRecipeSerializer;
 import com.bellatorex.alphacraft.recipes.SmelterRecipe;
 import net.minecraft.item.crafting.IRecipe;
@@ -15,8 +15,8 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 
 public class RecipeSerializerRegistry {
-    public static final IRecipeSerializer<SmelterRecipe> SMELTER_RECIPE_SERIALIZER = new SmelterRecipeSerializer();
-    public static final IRecipeType<ISmelterRecipe> SMELTER_TYPE = registerType(ISmelterRecipe.RECIPE_TYPE_ID);
+    public static final IRecipeSerializer<SmelterRecipe> SMELTER_RECIPE_SERIALIZER = new SmelterRecipeSerializer(200);
+    public static final IRecipeType<IAlphaRecipe> SMELTER_TYPE = registerType(IAlphaRecipe.RECIPE_TYPE_ID);
     public static void init() {
         RECIPE_SERIALIZERS.register(FMLJavaModLoadingContext.get().getModEventBus());
     }

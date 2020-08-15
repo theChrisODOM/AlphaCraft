@@ -46,8 +46,10 @@
   "block.alphacraft.ultra_ore": "Ultra Ore",
   "block.alphacraft.alpha_portal_block": "The Alpha",
   "block.alphacraft.smelter": "Smelter",
+  "block.alphacraft.dark_chest": "Dark Chest",
 
   "container.smelter": "Two Item Smelter",
+  "container.dark_chest": "Dark Chest",
 
   "biome.alphacraft.nasty_swamp": "Nasty Swamp",
   "biome.alphacraft.dark_forest": "Darker Forest",
