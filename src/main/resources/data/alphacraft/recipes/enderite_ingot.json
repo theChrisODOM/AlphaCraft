@@ -1,0 +1,32 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "alphacraft:enderite_trash"
+    },
+    {
+      "item": "alphacraft:enderite_trash"
+    },
+    {
+      "item": "alphacraft:enderite_trash"
+    },
+    {
+      "item": "alphacraft:enderite_trash"
+    },
+    {
+      "tag": "forge:gems/diamond"
+    },
+    {
+      "tag": "forge:gems/diamond"
+    },
+    {
+      "tag": "forge:gems/diamond"
+    },
+    {
+      "tag": "forge:gems/diamond"
+    }
+  ],
+  "result": {
+    "item": "alphacraft:enderite_ingot"
+  }
+}

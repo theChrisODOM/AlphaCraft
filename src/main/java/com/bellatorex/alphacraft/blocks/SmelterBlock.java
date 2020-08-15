@@ -1,13 +1,9 @@
 package com.bellatorex.alphacraft.blocks;
 
-import com.bellatorex.alphacraft.tileentity.DarkChestTileEntity;
 import com.bellatorex.alphacraft.tileentity.SmelterTileEntity;
 import com.bellatorex.alphacraft.util.AlphaTileEntityRegistry;
-import com.bellatorex.alphacraft.util.BlockRegistry;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockRenderType;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.HorizontalBlock;
+import net.minecraft.block.*;
+import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.inventory.InventoryHelper;
@@ -18,19 +14,19 @@ import net.minecraft.state.BooleanProperty;
 import net.minecraft.state.DirectionProperty;
 import net.minecraft.state.StateContainer;
 import net.minecraft.state.properties.BlockStateProperties;
-import net.minecraft.tileentity.AbstractFurnaceTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.BlockRayTraceResult;
-import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraftforge.common.ToolType;
 import net.minecraftforge.fml.network.NetworkHooks;
 
 import java.util.Random;
+import java.util.function.ToIntFunction;
 
 public class SmelterBlock extends Block {
 
@@ -38,10 +34,20 @@ public class SmelterBlock extends Block {
     public static final BooleanProperty LIT = BlockStateProperties.LIT;
 
     public SmelterBlock() {
-        super(Properties.from(BlockRegistry.DARK_COBBLESTONE.get()));
+        super(Block.Properties.create(Material.ROCK)
+                .hardnessAndResistance(5.0f, 6.0f)
+                .sound(SoundType.STONE)
+                .harvestLevel(0)
+                .harvestTool(ToolType.PICKAXE)
+                .setRequiresTool()
+                .setLightLevel(getLightValueLit(10)));
         this.setDefaultState(this.stateContainer.getBaseState().with(FACING, Direction.NORTH).with(LIT, Boolean.valueOf(false)));
     }
-
+    public static ToIntFunction<BlockState> getLightValueLit(int lightValue) {
+        return (p_235421_1_) -> {
+            return p_235421_1_.get(BlockStateProperties.LIT) ? lightValue : 0;
+        };
+    }
     @Override
     public boolean hasTileEntity(BlockState state) {
         return true;
@@ -82,15 +88,11 @@ public class SmelterBlock extends Block {
 
     @Override
     public void onReplaced(BlockState state, World worldIn, BlockPos pos, BlockState newState, boolean isMoving) {
-        if (!state.isIn(newState.getBlock())) {
-            TileEntity tileentity = worldIn.getTileEntity(pos);
-            if (tileentity instanceof AbstractFurnaceTileEntity) {
-                InventoryHelper.dropInventoryItems(worldIn, pos, (SmelterTileEntity)tileentity);
-                ((SmelterTileEntity)tileentity).func_235640_a_(worldIn, Vector3d.copyCentered(pos));
-                worldIn.updateComparatorOutputLevel(pos, this);
+        if(state.getBlock() != newState.getBlock()){
+            TileEntity te = worldIn.getTileEntity(pos);
+            if(te instanceof SmelterTileEntity){
+                InventoryHelper.dropItems(worldIn, pos, ((SmelterTileEntity) te).getItems());
             }
-
-            super.onReplaced(state, worldIn, pos, newState, isMoving);
         }
     }
     public boolean hasComparatorInputOverride(BlockState state) {
@@ -105,15 +107,14 @@ public class SmelterBlock extends Block {
     public void animateTick(BlockState stateIn, World worldIn, BlockPos pos, Random rand) {
         if (stateIn.get(LIT)) {
             double d0 = (double)pos.getX() + 0.5D;
-            double d1 = (double)pos.getY();
+            double d1 = pos.getY();
             double d2 = (double)pos.getZ() + 0.5D;
             if (rand.nextDouble() < 0.1D) {
-                worldIn.playSound(d0, d1, d2, SoundEvents.BLOCK_FURNACE_FIRE_CRACKLE, SoundCategory.BLOCKS, 1.0F, 1.0F, false);
+                worldIn.playSound(d0, d1, d2, SoundEvents.BLOCK_BLASTFURNACE_FIRE_CRACKLE, SoundCategory.BLOCKS, 1.0F, 1.0F, false);
             }
 
             Direction direction = stateIn.get(FACING);
             Direction.Axis direction$axis = direction.getAxis();
-            double d3 = 0.52D;
             double d4 = rand.nextDouble() * 0.6D - 0.3D;
             double d5 = direction$axis == Direction.Axis.X ? (double)direction.getXOffset() * 0.52D : d4;
             double d6 = rand.nextDouble() * 6.0D / 16.0D;
@@ -124,3 +125,5 @@ public class SmelterBlock extends Block {
     }
 
 }
+
+

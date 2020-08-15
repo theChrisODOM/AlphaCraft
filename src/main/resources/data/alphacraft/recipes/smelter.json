@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "ddd",
+    "dfd",
+    "ppp"
+  ],
+  "key": {
+    "p": {
+      "item": "alphacraft:enderite_plate"
+    },
+    "f": {
+      "item": "minecraft:furnace"
+    },
+    "d": {
+      "item": "alphacraft:dark_cobblestone"
+    }
+  },
+  "result": {
+    "item": "alphacraft:smelter",
+    "count": 1
+  }
+}

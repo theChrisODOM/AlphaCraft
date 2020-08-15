@@ -22,7 +22,7 @@ import net.minecraftforge.fml.network.NetworkHooks;
 
 public class DarkChestBlock extends Block {
     public DarkChestBlock() {
-        super(Block.Properties.from(BlockRegistry.DARK_COBBLESTONE.get()));
+        super(Block.Properties.from(BlockRegistry.DARK_PLANKS.get()));
         this.setDefaultState(this.stateContainer.getBaseState());
     }
 

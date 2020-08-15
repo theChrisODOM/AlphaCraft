@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "eue",
+    "uiu",
+    "eue"
+  ],
+  "key": {
+    "u": {
+      "item": "alphacraft:ultra_ingot"
+    },
+    "i": {
+      "item": "minecraft:iron_ingot"
+    },
+    "e": {
+      "item": "alphacraft:enderite_dust"
+    }
+  },
+  "result": {
+    "item": "alphacraft:enderite_plate",
+    "count": 1
+  }
+}

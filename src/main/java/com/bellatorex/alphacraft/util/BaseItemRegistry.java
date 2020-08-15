@@ -20,10 +20,12 @@ public class BaseItemRegistry {
 
     //Items
     public static final RegistryObject<Item> BALL = ITEMS.register("ball", ItemBase::new);
-    public static final RegistryObject<Item> ULTRA_INGOT = ITEMS.register("ultra_ingot", ItemBase::new);
-    public static final RegistryObject<Item> ENDERITE_INGOT = ITEMS.register("enderite_ingot", ItemBase::new);
     public static final RegistryObject<Item> DARK_BRICK = ITEMS.register("dark_brick", ItemBase::new);
     public static final RegistryObject<Item> DARK_CLAY = ITEMS.register("dark_clay", ItemBase::new);
+    public static final RegistryObject<Item> ULTRA_INGOT = ITEMS.register("ultra_ingot", ItemBase::new);
     public static final RegistryObject<Item> ENDERITE_DUST = ITEMS.register("enderite_dust", ItemBase::new);
+    public static final RegistryObject<Item> ENDERITE_PLATE = ITEMS.register("enderite_plate", ItemBase::new);
+    public static final RegistryObject<Item> ENDERITE_TRASH = ITEMS.register("enderite_trash", ItemBase::new);
+    public static final RegistryObject<Item> ENDERITE_INGOT = ITEMS.register("enderite_ingot", ItemBase::new);
     public static final RegistryObject<Item> POOP = ITEMS.register("poop", ItemBase::new);
 }
