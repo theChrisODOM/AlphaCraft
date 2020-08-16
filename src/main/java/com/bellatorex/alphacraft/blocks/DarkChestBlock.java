@@ -66,6 +66,7 @@ public class DarkChestBlock extends ContainerBlock {
             TileEntity te = worldIn.getTileEntity(pos);
             if(te instanceof DarkChestTileEntity){
                 InventoryHelper.dropItems(worldIn, pos, ((DarkChestTileEntity) te).getItems());
+                te.remove();
             }
         }
     }

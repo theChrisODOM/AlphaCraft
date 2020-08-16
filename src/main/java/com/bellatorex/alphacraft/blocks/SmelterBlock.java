@@ -118,6 +118,7 @@ public class SmelterBlock extends ContainerBlock {
                 InventoryHelper.dropItems(worldIn, pos, ((SmelterTileEntity) te).getItems());
                 ((SmelterTileEntity) te).furnaceData.set(0,0);
                 ((SmelterTileEntity) te).furnaceData.set(2,0);
+                te.remove();
             }
         }
     }

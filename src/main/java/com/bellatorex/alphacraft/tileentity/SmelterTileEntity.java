@@ -1,16 +1,13 @@
 package com.bellatorex.alphacraft.tileentity;
 
 import com.bellatorex.alphacraft.AlphaCraft;
-import com.bellatorex.alphacraft.blocks.SmelterBlock;
 import com.bellatorex.alphacraft.inventory.containers.SmelterContainer;
 import com.bellatorex.alphacraft.recipes.IAlphaRecipeType;
-import com.bellatorex.alphacraft.util.AlphaContainerRegistry;
 import com.bellatorex.alphacraft.util.AlphaTileEntityRegistry;
 import com.google.common.collect.Lists;
 import it.unimi.dsi.fastutil.objects.Object2IntMap;
 import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
 import net.minecraft.block.AbstractFurnaceBlock;
-import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.item.ExperienceOrbEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -27,14 +24,11 @@ import net.minecraft.item.crafting.RecipeItemHelper;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.tileentity.*;
 import net.minecraft.util.*;
-import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TranslationTextComponent;
-import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
-import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.items.IItemHandlerModifiable;
 import net.minecraftforge.items.wrapper.InvWrapper;
@@ -45,9 +39,9 @@ import java.util.List;
 public class SmelterTileEntity extends LockableLootTileEntity implements ISidedInventory, IRecipeHolder, IRecipeHelperPopulator, ITickableTileEntity {
 
 
-    private static final int[] SLOTS_UP = new int[]{0};
-    private static final int[] SLOTS_DOWN = new int[]{2, 1};
-    private static final int[] SLOTS_HORIZONTAL = new int[]{1};
+    private static final int[] SLOTS_UP = new int[]{0, 1};
+    private static final int[] SLOTS_DOWN = new int[]{3};
+    private static final int[] SLOTS_HORIZONTAL = new int[]{2};
     private NonNullList<ItemStack> itemsInSmelter = NonNullList.withSize(4, ItemStack.EMPTY);
     private int burnTime;
     private int recipesUsed;
@@ -87,43 +81,34 @@ public class SmelterTileEntity extends LockableLootTileEntity implements ISidedI
     };
     private final Object2IntOpenHashMap<ResourceLocation> recipes = new Object2IntOpenHashMap<>();
     protected final IRecipeType<? extends AbstractCookingRecipe> recipeType;
-    protected int numPlayersUsing;
-    private IItemHandlerModifiable items = createHandler();
-    private LazyOptional<IItemHandlerModifiable> itemHandler = LazyOptional.of(()->items);
+    private final IItemHandlerModifiable items = createHandler();
+    private final LazyOptional<IItemHandlerModifiable> itemHandler = LazyOptional.of(()->items);
     private net.minecraftforge.common.util.LazyOptional<net.minecraftforge.items.IItemHandlerModifiable> chestHandler;
 
     public SmelterTileEntity(TileEntityType<?> tileEntityTypeIn) {
         super(tileEntityTypeIn);
         this.recipeType= IAlphaRecipeType.SMELTER; // hard coding this tile entity to the smelter recipe type
     }
-
     @Override
     protected ITextComponent getDefaultName() {
         return new TranslationTextComponent("container.smelter");
     }
-
     @Override
     protected Container createMenu(int id, PlayerInventory player) {
         return new SmelterContainer( id, player,this);
     }
-
     public SmelterTileEntity() {
         this(AlphaTileEntityRegistry.SMELTER.get());
     }
-
-    @Override
-    public int getSizeInventory() {
-        return 4;
-    }
-
     public NonNullList<ItemStack> getItems() {
         return this.itemsInSmelter;
     }
-
     public void setItems(NonNullList<ItemStack> itemsIn){
         this.itemsInSmelter = itemsIn;
     }
-
+    private boolean isBurning() {
+        return this.burnTime > 0;
+    }
     public CompoundNBT write(CompoundNBT compound) {
         super.write(compound);
         compound.putInt("BurnTime", this.burnTime);
@@ -154,105 +139,12 @@ public class SmelterTileEntity extends LockableLootTileEntity implements ISidedI
         }
 
     }
-
-    private void playSound(SoundEvent sound){
-        double dx = (double)this.pos.getX() + 0.5D;
-        double dy = (double)this.pos.getY() + 0.5D;
-        double dz = (double)this.pos.getZ() + 0.5D;
-        this.world.playSound((PlayerEntity)null, dx, dy, dz, sound, SoundCategory.AMBIENT, 0.5f, this.world.rand.nextFloat() * 0.1f + 0.9f);
-    }
-
-    @Override
-    public boolean receiveClientEvent(int id, int type) {
-        if(id == 1){
-            this.numPlayersUsing = type;
-            return true;
-        }else{
-            return super.receiveClientEvent(id, type);
-        }
-    }
-
-    @Override
-    public void openInventory(PlayerEntity player) {
-        if(!player.isSpectator()){
-            if(this.numPlayersUsing < 0){
-                this.numPlayersUsing = 0;
-            }
-            ++this.numPlayersUsing;
-            this.onOpenOrClose();
-        }
-    }
-
-    @Override
-    public void closeInventory(PlayerEntity player) {
-        if(!player.isSpectator()){
-            --this.numPlayersUsing;
-            this.onOpenOrClose();
-        }
-    }
-
-    protected void onOpenOrClose() {
-        Block block = this.getBlockState().getBlock();
-        if (block instanceof SmelterBlock) {
-            this.world.addBlockEvent(this.pos, block, 1, this.numPlayersUsing);
-            this.world.notifyNeighborsOfStateChange(this.pos, block);
-        }
-    }
-
-    public static int getPlayersUsing(IBlockReader reader, BlockPos pos){
-        BlockState blockstate = reader.getBlockState(pos);
-        if(blockstate.hasTileEntity()){
-            TileEntity te = reader.getTileEntity(pos);
-            if(te instanceof SmelterTileEntity){
-                return((SmelterTileEntity)te).numPlayersUsing;
-            }
-        }
-        return 0;
-    }
-
-    public static void swapContents(SmelterTileEntity te, SmelterTileEntity otherTe){
-        NonNullList<ItemStack> list = te.getItems();
-        te.setItems(otherTe.getItems());
-        otherTe.setItems(list);
-    }
-
-    @Override
-    public void updateContainingBlockInfo() {
-        super.updateContainingBlockInfo();
-        if(this.itemHandler != null){
-            this.itemHandler.invalidate();
-            this.itemHandler = null;
-        }
-    }
-
-    @Override
-    public <T> LazyOptional<T> getCapability(Capability<T> cap, Direction side) {
-        if (!this.removed && cap == net.minecraftforge.items.CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) {
-            if (this.chestHandler == null)
-                this.chestHandler = net.minecraftforge.common.util.LazyOptional.of(this::createHandler);
-            return this.chestHandler.cast();
-        }
-        return super.getCapability(cap, side);
-    }
-
-    private IItemHandlerModifiable createHandler(){
-        return new InvWrapper(this);
-    }
-    @Override
-    public void remove(){
-        super.remove();
-        if(itemHandler != null){
-            itemHandler.invalidate();
-        }
-    }
-
     public void tick() {
         boolean ifSmelterIsCurrentlyBurning = this.isBurning();
         boolean flag1 = false;
         if (this.isBurning()) {
             --this.burnTime;
         }
-
         if (!this.world.isRemote) {
             ItemStack fuelItemStack = this.itemsInSmelter.get(2);
             // this runs if the furnace is burning and there is fuel in the fuel slot and there are items in both inputs
@@ -286,28 +178,23 @@ public class SmelterTileEntity extends LockableLootTileEntity implements ISidedI
                 } else {
                     this.cookTime = 0;
                 }
-            // this runs if the furnace is burning and one of the input slots is missing an item
+                // this runs if the furnace is burning and one of the input slots is missing an item
             }else if (this.isBurning() && (this.itemsInSmelter.get(0).isEmpty() || this.itemsInSmelter.get(1).isEmpty())){
                 this.cookTime = 0;
-            // this runs if the furnace is not burning and for whatever reason the cook time is above 0 like when it runs out of fuel but it was mid cook
+                // this runs if the furnace is not burning and for whatever reason the cook time is above 0 like when it runs out of fuel but it was mid cook
             } else if (!this.isBurning() && this.cookTime > 0) {
                 this.cookTime = MathHelper.clamp(this.cookTime - 2, 0, this.cookTimeTotal);
-            // this runs if the furnace is not on, but there is burn time
+                // this runs if the furnace is not on, but there is burn time
             }
-
             if (ifSmelterIsCurrentlyBurning != this.isBurning()) {
                 flag1 = true;
                 this.world.setBlockState(this.pos, this.world.getBlockState(this.pos).with(AbstractFurnaceBlock.LIT, Boolean.valueOf(this.isBurning())), 3);
             }
         }
-
         if (flag1) {
             this.markDirty();
         }
-
     }
-
-
     protected boolean canSmelt(@Nullable IRecipe<?> recipeIn) {
         if (!this.itemsInSmelter.get(0).isEmpty() && !this.itemsInSmelter.get(1).isEmpty() && recipeIn != null) {
             ItemStack recipeOutputStack = recipeIn.getRecipeOutput();
@@ -329,9 +216,7 @@ public class SmelterTileEntity extends LockableLootTileEntity implements ISidedI
             return false;
         }
     }
-    
     private void smelt(@Nullable IRecipe<?> recipe) {
-        
         if (recipe != null && this.canSmelt(recipe)) {
             ItemStack itemstackPrimary = this.itemsInSmelter.get(0);
             ItemStack itemstackSecondary = this.itemsInSmelter.get(1);
@@ -342,24 +227,18 @@ public class SmelterTileEntity extends LockableLootTileEntity implements ISidedI
             } else if (itemstackOutput.getItem() == itemstackRecipeOutput.getItem()) { // increment output slot by 1 if ingredients can make it
                 itemstackOutput.grow(itemstackRecipeOutput.getCount());
             }
-
             if (!this.world.isRemote) {
                 this.setRecipeUsed(recipe);
             }
-
             itemstackPrimary.shrink(1); // remove 1 ingredient from both primary slot
             itemstackSecondary.shrink(1); // and from secondary slot
         }
     }
-
-    private boolean isBurning() {
-        return this.burnTime > 0;
+    protected int getBurnTime(ItemStack fuel) { return fuel.isEmpty() ? 0 : net.minecraftforge.common.ForgeHooks.getBurnTime(fuel); }
+    protected int getCookTime() {
+        return 200;
     }
-
-    public static boolean isFuel(ItemStack stack) {
-        return net.minecraftforge.common.ForgeHooks.getBurnTime(stack) > 0;
-    }
-
+    public static boolean isFuel(ItemStack stack) { return net.minecraftforge.common.ForgeHooks.getBurnTime(stack) > 0; }
     @Override
     public int[] getSlotsForFace(Direction side) {
         if (side == Direction.DOWN) {
@@ -368,7 +247,6 @@ public class SmelterTileEntity extends LockableLootTileEntity implements ISidedI
             return side == Direction.UP ? SLOTS_UP : SLOTS_HORIZONTAL;
         }
     }
-
     @Override
     public boolean canInsertItem(int index, ItemStack itemStackIn, Direction direction) {
         return this.isItemValidForSlot(index, itemStackIn);
@@ -385,12 +263,55 @@ public class SmelterTileEntity extends LockableLootTileEntity implements ISidedI
 
         return true;
     }
-
     @Override
-    public void fillStackedContents(RecipeItemHelper helper) {
-
+    public int getSizeInventory() {
+        return 4;
     }
-
+    public boolean isEmpty() {
+        for(ItemStack itemstack : this.itemsInSmelter) {
+            if (!itemstack.isEmpty()) {
+                return false;
+            }
+        }
+        return true;
+    }
+    public ItemStack getStackInSlot(int index) {
+        return this.itemsInSmelter.get(index);
+    }
+    public ItemStack decrStackSize(int index, int count) { return ItemStackHelper.getAndSplit(this.itemsInSmelter, index, count); }
+    public ItemStack removeStackFromSlot(int index) {
+        return ItemStackHelper.getAndRemove(this.itemsInSmelter, index);
+    }
+    public void setInventorySlotContents(int index, ItemStack stack) {
+        ItemStack itemstack = this.itemsInSmelter.get(index);
+        boolean flag = !stack.isEmpty() && stack.isItemEqual(itemstack) && ItemStack.areItemStackTagsEqual(stack, itemstack);
+        this.itemsInSmelter.set(index, stack);
+        if (stack.getCount() > this.getInventoryStackLimit()) {
+            stack.setCount(this.getInventoryStackLimit());
+        }
+        if (index == 0 && !flag) {
+            this.cookTimeTotal = this.getCookTime();
+            this.cookTime = 0;
+            this.markDirty();
+        }
+    }
+    public boolean isUsableByPlayer(PlayerEntity player) {
+        if (this.world.getTileEntity(this.pos) != this) {
+            return false;
+        } else {
+            return player.getDistanceSq((double)this.pos.getX() + 0.5D, (double)this.pos.getY() + 0.5D, (double)this.pos.getZ() + 0.5D) <= 64.0D;
+        }
+    }
+    public boolean isItemValidForSlot(int index, ItemStack stack) {
+        if (index == 3) {
+            return false;
+        } else if (index != 2) {
+            return true;
+        } else {
+            ItemStack itemstack = this.itemsInSmelter.get(2);
+            return isFuel(stack) || stack.getItem() == Items.BUCKET && itemstack.getItem() != Items.BUCKET;
+        }
+    }
     @Override
     public void setRecipeUsed( IRecipe<?> recipe) {
         if (recipe != null) {
@@ -398,26 +319,8 @@ public class SmelterTileEntity extends LockableLootTileEntity implements ISidedI
             this.recipes.addTo(resourcelocation, 1);
         }
     }
-
     @Override
-    public IRecipe<?> getRecipeUsed() {
-        return null;
-    }
-
-
-    protected int getBurnTime(ItemStack fuel) {
-        if (fuel.isEmpty()) {
-            return 0;
-        } else {
-            Item item = fuel.getItem();
-            return net.minecraftforge.common.ForgeHooks.getBurnTime(fuel);
-        }
-    }
-
-    protected int getCookTime() {
-        return 200;
-    }
-
+    public IRecipe<?> getRecipeUsed() { return null; }
     public void func_235645_d_(PlayerEntity player) {
         List<IRecipe<?>> list = this.func_235640_a_(player.world, player.getPositionVec());
         player.unlockRecipes(list);
@@ -452,6 +355,49 @@ public class SmelterTileEntity extends LockableLootTileEntity implements ISidedI
         }
 
     }
+    public void fillStackedContents(RecipeItemHelper helper) {
+        for(ItemStack itemstack : this.itemsInSmelter) {
+            helper.accountStack(itemstack);
+        }
 
+    }
 
+    net.minecraftforge.common.util.LazyOptional<? extends net.minecraftforge.items.IItemHandler>[] handlers =
+            net.minecraftforge.items.wrapper.SidedInvWrapper.create(this, Direction.UP, Direction.DOWN, Direction.NORTH);
+    @Override
+    public <T> net.minecraftforge.common.util.LazyOptional<T> getCapability(net.minecraftforge.common.capabilities.Capability<T> capability, @Nullable Direction facing) {
+        if (!this.removed && facing != null && capability == net.minecraftforge.items.CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) {
+            if (facing == Direction.UP)
+                return handlers[0].cast();
+            else if (facing == Direction.DOWN)
+                return handlers[1].cast();
+            else
+                return handlers[2].cast();
+        }
+        return super.getCapability(capability, facing);
+    }
+
+    /**
+     * invalidates a tile entity
+     */
+    @Override
+    public void remove() {
+        super.remove();
+        for (int x = 0; x < handlers.length; x++)
+            handlers[x].invalidate();
+    }
+/*
+    @Override
+    public <T> LazyOptional<T> getCapability(Capability<T> cap, Direction side) {
+        if (!this.removed && cap == net.minecraftforge.items.CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) {
+            if (this.chestHandler == null)
+                this.chestHandler = net.minecraftforge.common.util.LazyOptional.of(this::createHandler);
+            return this.chestHandler.cast();
+        }
+        return super.getCapability(cap, side);
+    }
+*/
+    private IItemHandlerModifiable createHandler(){
+        return new InvWrapper(this);
+    }
 }
