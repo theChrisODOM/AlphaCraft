@@ -4,16 +4,22 @@ import com.bellatorex.alphacraft.tileentity.SmelterTileEntity;
 import com.bellatorex.alphacraft.util.AlphaTileEntityRegistry;
 import net.minecraft.block.*;
 import net.minecraft.block.material.Material;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.inventory.InventoryHelper;
 import net.minecraft.inventory.container.Container;
+import net.minecraft.inventory.container.INamedContainerProvider;
 import net.minecraft.item.BlockItemUseContext;
+import net.minecraft.item.ItemStack;
 import net.minecraft.particles.ParticleTypes;
 import net.minecraft.state.BooleanProperty;
 import net.minecraft.state.DirectionProperty;
 import net.minecraft.state.StateContainer;
 import net.minecraft.state.properties.BlockStateProperties;
+import net.minecraft.stats.Stats;
+import net.minecraft.tileentity.AbstractFurnaceTileEntity;
+import net.minecraft.tileentity.FurnaceTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
@@ -28,7 +34,7 @@ import net.minecraftforge.fml.network.NetworkHooks;
 import java.util.Random;
 import java.util.function.ToIntFunction;
 
-public class SmelterBlock extends Block {
+public class SmelterBlock extends ContainerBlock {
 
     public static final DirectionProperty FACING = HorizontalBlock.HORIZONTAL_FACING;
     public static final BooleanProperty LIT = BlockStateProperties.LIT;
@@ -48,60 +54,18 @@ public class SmelterBlock extends Block {
             return p_235421_1_.get(BlockStateProperties.LIT) ? lightValue : 0;
         };
     }
+    // code reference is furnace block
     @Override
-    public boolean hasTileEntity(BlockState state) {
-        return true;
+    public TileEntity createNewTileEntity(IBlockReader worldIn) {
+        return new SmelterTileEntity();
     }
-
-    @Override
-    public TileEntity createTileEntity(BlockState state, IBlockReader world) {
-        return AlphaTileEntityRegistry.SMELTER.get().create();
-    }
-    public BlockState getStateForPlacement(BlockItemUseContext context) {
-        return this.getDefaultState().with(FACING, context.getPlacementHorizontalFacing().getOpposite());
-    }
-    public BlockRenderType getRenderType(BlockState state) {
-        return BlockRenderType.MODEL;
-    }
-
-    public BlockState rotate(BlockState state, Rotation rot) {
-        return state.with(FACING, rot.rotate(state.get(FACING)));
-    }
-
-    protected void fillStateContainer(StateContainer.Builder<Block, BlockState> builder) {
-        builder.add(FACING, LIT);
-    }
-
-    public BlockState mirror(BlockState state, Mirror mirrorIn) {
-        return state.rotate(mirrorIn.toRotation(state.get(FACING)));
-    }
-    @Override
-    public ActionResultType onBlockActivated(BlockState state, World worldIn, BlockPos pos, PlayerEntity player, Hand handIn, BlockRayTraceResult hit) {
-        TileEntity tile = worldIn.getTileEntity(pos);
-        if (worldIn.isRemote) {
-            return ActionResultType.SUCCESS;
-        } else {
-            NetworkHooks.openGui((ServerPlayerEntity)player, (SmelterTileEntity)tile, pos);
-            return ActionResultType.CONSUME;
+    protected void interactWith(World worldIn, BlockPos pos, PlayerEntity player) {
+        TileEntity tileentity = worldIn.getTileEntity(pos);
+        if (tileentity instanceof FurnaceTileEntity) {
+            player.openContainer((INamedContainerProvider)tileentity);
+            player.addStat(Stats.INTERACT_WITH_FURNACE);
         }
-    }
 
-    @Override
-    public void onReplaced(BlockState state, World worldIn, BlockPos pos, BlockState newState, boolean isMoving) {
-        if(state.getBlock() != newState.getBlock()){
-            TileEntity te = worldIn.getTileEntity(pos);
-            if(te instanceof SmelterTileEntity){
-                InventoryHelper.dropItems(worldIn, pos, ((SmelterTileEntity) te).getItems());
-            }
-        }
-    }
-    public boolean hasComparatorInputOverride(BlockState state) {
-        return true;
-    }
-
-
-    public int getComparatorInputOverride(BlockState blockState, World worldIn, BlockPos pos) {
-        return Container.calcRedstone(worldIn.getTileEntity(pos));
     }
     @OnlyIn(Dist.CLIENT)
     public void animateTick(BlockState stateIn, World worldIn, BlockPos pos, Random rand) {
@@ -123,6 +87,61 @@ public class SmelterBlock extends Block {
             worldIn.addParticle(ParticleTypes.FLAME, d0 + d5, d1 + d6, d2 + d7, 0.0D, 0.0D, 0.0D);
         }
     }
+    // code reference is abstract furnace block
+    @Override
+    public ActionResultType onBlockActivated(BlockState state, World worldIn, BlockPos pos, PlayerEntity player, Hand handIn, BlockRayTraceResult hit) {
+        TileEntity tile = worldIn.getTileEntity(pos);
+        if (worldIn.isRemote) {
+            return ActionResultType.SUCCESS;
+        } else {
+            NetworkHooks.openGui((ServerPlayerEntity)player, (SmelterTileEntity)tile, pos);
+            return ActionResultType.CONSUME;
+        }
+    }
+    public BlockState getStateForPlacement(BlockItemUseContext context) {
+        return this.getDefaultState().with(FACING, context.getPlacementHorizontalFacing().getOpposite());
+    }
+    @Override
+    public void onBlockPlacedBy(World worldIn, BlockPos pos, BlockState state, LivingEntity placer, ItemStack stack) {
+        if (stack.hasDisplayName()) {
+            TileEntity tileentity = worldIn.getTileEntity(pos);
+            if (tileentity instanceof SmelterTileEntity) {
+                ((SmelterTileEntity)tileentity).setCustomName(stack.getDisplayName());
+            }
+        }
+    }
+    @Override
+    public void onReplaced(BlockState state, World worldIn, BlockPos pos, BlockState newState, boolean isMoving) {
+        if(state.getBlock() != newState.getBlock()){
+            TileEntity te = worldIn.getTileEntity(pos);
+            if(te instanceof SmelterTileEntity){
+                InventoryHelper.dropItems(worldIn, pos, ((SmelterTileEntity) te).getItems());
+                ((SmelterTileEntity) te).furnaceData.set(0,0);
+                ((SmelterTileEntity) te).furnaceData.set(2,0);
+            }
+        }
+    }
+    @Override
+    public boolean hasComparatorInputOverride(BlockState state) {
+        return true;
+    }
+    @Override
+    public int getComparatorInputOverride(BlockState blockState, World worldIn, BlockPos pos) { return Container.calcRedstone(worldIn.getTileEntity(pos)); }
+    @Override
+    public BlockRenderType getRenderType(BlockState state) {
+        return BlockRenderType.MODEL;
+    }
+    @Override
+    public BlockState rotate(BlockState state, Rotation rot) { return state.with(FACING, rot.rotate(state.get(FACING))); }
+    @Override
+    public BlockState mirror(BlockState state, Mirror mirrorIn) { return state.rotate(mirrorIn.toRotation(state.get(FACING))); }
+    @Override
+    protected void fillStateContainer(StateContainer.Builder<Block, BlockState> builder) {
+        builder.add(FACING, LIT);
+    }
+
+
+
 
 }
 

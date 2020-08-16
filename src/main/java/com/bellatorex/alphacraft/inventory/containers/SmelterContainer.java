@@ -20,9 +20,12 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.IIntArray;
 import net.minecraft.util.IWorldPosCallable;
 import net.minecraft.world.World;
+import net.minecraft.world.biome.Biome;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraftforge.registries.ForgeRegistries;
 
+import java.util.Collection;
 import java.util.Objects;
 
 public class SmelterContainer extends RecipeBookContainer<IInventory> {
@@ -36,7 +39,6 @@ public class SmelterContainer extends RecipeBookContainer<IInventory> {
     public SmelterContainer(final int windowId, final PlayerInventory playerInventory, final PacketBuffer data){
         this(windowId, playerInventory, getTileEntity(playerInventory, data));
     }
-
     public SmelterContainer(final int windowId, final PlayerInventory playerInventoryIn, final SmelterTileEntity tileEntity) {
         super(AlphaContainerRegistry.SMELTER.get(), windowId);
         this.tileEntity = tileEntity;
@@ -68,23 +70,18 @@ public class SmelterContainer extends RecipeBookContainer<IInventory> {
     public void clear() {
         this.tileEntity.clear();
     }
-
-
     @Override
     public void fillStackedContents(RecipeItemHelper itemHelperIn) {
 
     }
-
     @Override
     public boolean matches(IRecipe<? super IInventory> recipeIn) {
         return recipeIn.matches(this.tileEntity, this.world);
     }
-
     @Override
     public boolean canInteractWith(PlayerEntity playerIn) {
         return isWithinUsableDistance(canInteractWithCallable, playerIn, BlockRegistry.SMELTER.get());
     }
-
     private static SmelterTileEntity getTileEntity(final PlayerInventory playerInventory, final PacketBuffer data){
         Objects.requireNonNull(playerInventory, "player inv cannot be null");
         Objects.requireNonNull(data, "data cannot be null");
@@ -94,9 +91,6 @@ public class SmelterContainer extends RecipeBookContainer<IInventory> {
         }
         throw new IllegalStateException("Tile entity is not correct!" +tileAtPos); // this should never be thrown
     }
-
-
-
     @Override
     public ItemStack transferStackInSlot(PlayerEntity playerIn, int index) {
         ItemStack itemstack = ItemStack.EMPTY;
@@ -108,7 +102,6 @@ public class SmelterContainer extends RecipeBookContainer<IInventory> {
                 if (!this.mergeItemStack(itemstack1, 3, 39, true)) {
                     return ItemStack.EMPTY;
                 }
-
                 slot.onSlotChange(itemstack1, itemstack);
             } else if (index != 1 && index != 0 && index != 2) { // if you are not shift clicking in the smelter, ie if you are shift clicking from inventory into the smelter
                 if (this.hasRecipe(itemstack1)) {
@@ -145,11 +138,9 @@ public class SmelterContainer extends RecipeBookContainer<IInventory> {
 
         return itemstack;
     }
-
     protected boolean hasRecipe(ItemStack stack) {
         return this.world.getRecipeManager().getRecipe((IRecipeType)this.recipeType, new Inventory(stack), this.world).isPresent();
     }
-
     @Override
     public int getOutputSlot() { return 3; }
     @Override
@@ -169,17 +160,14 @@ public class SmelterContainer extends RecipeBookContainer<IInventory> {
         int j = this.furnaceData.get(3);
         return j != 0 && i != 0 ? i * 24 / j : 0;
     }
-
     @OnlyIn(Dist.CLIENT)
     public int getBurnLeftScaled() {
         int i = this.furnaceData.get(1);
         if (i == 0) {
             i = 200;
         }
-
         return this.furnaceData.get(0) * 13 / i;
     }
-
     @OnlyIn(Dist.CLIENT)
     public boolean isBurning() {
         return this.furnaceData.get(0) > 0;

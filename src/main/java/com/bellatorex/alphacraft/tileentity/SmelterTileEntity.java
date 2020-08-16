@@ -255,8 +255,9 @@ public class SmelterTileEntity extends LockableLootTileEntity implements ISidedI
 
         if (!this.world.isRemote) {
             ItemStack fuelItemStack = this.itemsInSmelter.get(2);
+            // this runs if the furnace is burning and there is fuel in the fuel slot and there are items in both inputs
             if ((this.isBurning() || !fuelItemStack.isEmpty()) && !this.itemsInSmelter.get(0).isEmpty() && !this.itemsInSmelter.get(1).isEmpty()) {
-                IRecipe<?> irecipe = this.world.getRecipeManager().getRecipe((IRecipeType<AbstractCookingRecipe>)this.recipeType, this, this.world).orElse(null);
+                IRecipe<?> irecipe = this.world.getRecipeManager().getRecipe((IRecipeType<AbstractCookingRecipe>) this.recipeType, this, this.world).orElse(null);
                 // this runs if the furnace is off but there is a recipe in the furnace
                 if (!this.isBurning() && this.canSmelt(irecipe)) {
                     this.burnTime = this.getBurnTime(fuelItemStack);
@@ -265,8 +266,7 @@ public class SmelterTileEntity extends LockableLootTileEntity implements ISidedI
                         flag1 = true;
                         if (fuelItemStack.hasContainerItem())
                             this.itemsInSmelter.set(2, fuelItemStack.getContainerItem());
-                        else
-                        if (!fuelItemStack.isEmpty()) {
+                        else if (!fuelItemStack.isEmpty()) {
                             fuelItemStack.shrink(1);
                             if (fuelItemStack.isEmpty()) {
                                 this.itemsInSmelter.set(2, fuelItemStack.getContainerItem());
@@ -286,8 +286,13 @@ public class SmelterTileEntity extends LockableLootTileEntity implements ISidedI
                 } else {
                     this.cookTime = 0;
                 }
+            // this runs if the furnace is burning and one of the input slots is missing an item
+            }else if (this.isBurning() && (this.itemsInSmelter.get(0).isEmpty() || this.itemsInSmelter.get(1).isEmpty())){
+                this.cookTime = 0;
+            // this runs if the furnace is not burning and for whatever reason the cook time is above 0 like when it runs out of fuel but it was mid cook
             } else if (!this.isBurning() && this.cookTime > 0) {
                 this.cookTime = MathHelper.clamp(this.cookTime - 2, 0, this.cookTimeTotal);
+            // this runs if the furnace is not on, but there is burn time
             }
 
             if (ifSmelterIsCurrentlyBurning != this.isBurning()) {
