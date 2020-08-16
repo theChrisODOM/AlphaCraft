@@ -1,7 +1,7 @@
 {
   "parent": "minecraft:block/cube_bottom_top",
   "textures": {
-    "top": "alphacraft:blocks/dark_chest_top",
+    "top": "alphacraft:blocks/dark_chest_top_open",
     "bottom": "alphacraft:blocks/dark_chest_bottom",
     "side": "alphacraft:blocks/dark_chest_side"
   }

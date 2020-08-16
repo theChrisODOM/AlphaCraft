@@ -2,15 +2,11 @@ package com.bellatorex.alphacraft.util;
 
 import com.bellatorex.alphacraft.AlphaCraft;
 import com.bellatorex.alphacraft.blocks.*;
-import com.bellatorex.alphacraft.world.AlphaBiomeFeatures;
 import com.bellatorex.alphacraft.world.gen.feature.DarkAshTree;
 import com.bellatorex.alphacraft.world.gen.feature.NastyPoopTree;
-import com.mojang.serialization.Codec;
 import net.minecraft.block.*;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
-import net.minecraft.world.gen.feature.Feature;
-import net.minecraft.world.gen.feature.HugeFungusConfig;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.DeferredRegister;
@@ -53,10 +49,10 @@ public class BlockRegistry {
     public static final RegistryObject<Block> ENDERITE_BLOCK = BLOCKS.register("enderite_block", EnderiteBlock::new);
     public static final RegistryObject<Block> ULTRA_ORE = BLOCKS.register("ultra_ore", UltraOre::new);
     public static final RegistryObject<Block> ALPHA_PORTAL_BLOCK = BLOCKS.register("alpha_portal_block", AlphaPortalBlock::new);
-    public static final RegistryObject<Block> DARK_TREE_SAPLING = BLOCKS.register("dark_tree_sapling", () -> new DarkSapling(()-> new DarkAshTree(), Block.Properties.from(Blocks.OAK_SAPLING)));
-    public static final RegistryObject<Block> NASTY_TREE_SAPLING = BLOCKS.register("nasty_tree_sapling", () -> new DarkSapling(()-> new NastyPoopTree(), Block.Properties.from(Blocks.OAK_SAPLING)));
-    public static final RegistryObject<Block> SMELTER = BLOCKS.register("smelter", ()-> new SmelterBlock());
-    public static final RegistryObject<Block> DARK_CHEST = BLOCKS.register("dark_chest", ()-> new DarkChestBlock());
+    public static final RegistryObject<Block> DARK_TREE_SAPLING = BLOCKS.register("dark_tree_sapling", () -> new DarkSapling(DarkAshTree::new, Block.Properties.from(Blocks.OAK_SAPLING)));
+    public static final RegistryObject<Block> NASTY_TREE_SAPLING = BLOCKS.register("nasty_tree_sapling", () -> new DarkSapling(NastyPoopTree::new, Block.Properties.from(Blocks.OAK_SAPLING)));
+    public static final RegistryObject<Block> SMELTER = BLOCKS.register("smelter", SmelterBlock::new);
+    public static final RegistryObject<Block> DARK_CHEST = BLOCKS.register("dark_chest", DarkChestBlock::new);
 
 
 

@@ -1,5 +1,56 @@
 {
   "variants": {
-    "": { "model": "alphacraft:block/dark_chest" }
+    "facing=down,open=false": {
+      "x": 180,
+      "model": "alphacraft:block/dark_chest"
+    },
+    "facing=down,open=true": {
+      "x": 180,
+      "model": "alphacraft:block/dark_chest_open"
+    },
+    "facing=east,open=false": {
+      "x": 90,
+      "y": 90,
+      "model": "alphacraft:block/dark_chest"
+    },
+    "facing=east,open=true": {
+      "x": 90,
+      "y": 90,
+      "model": "alphacraft:block/dark_chest_open"
+    },
+    "facing=north,open=false": {
+      "x": 90,
+      "model": "alphacraft:block/dark_chest"
+    },
+    "facing=north,open=true": {
+      "x": 90,
+      "model": "alphacraft:block/dark_chest_open"
+    },
+    "facing=south,open=false": {
+      "x": 90,
+      "y": 180,
+      "model": "alphacraft:block/dark_chest"
+    },
+    "facing=south,open=true": {
+      "x": 90,
+      "y": 180,
+      "model": "alphacraft:block/dark_chest_open"
+    },
+    "facing=up,open=false": {
+      "model": "alphacraft:block/dark_chest"
+    },
+    "facing=up,open=true": {
+      "model": "alphacraft:block/dark_chest_open"
+    },
+    "facing=west,open=false": {
+      "x": 90,
+      "y": 270,
+      "model": "alphacraft:block/dark_chest"
+    },
+    "facing=west,open=true": {
+      "x": 90,
+      "y": 270,
+      "model": "alphacraft:block/dark_chest_open"
+    }
   }
 }

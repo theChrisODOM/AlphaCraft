@@ -25,8 +25,8 @@ public class DarkChestContainer extends Container {
         this.canInteractWithCallable = IWorldPosCallable.of(tileEntity.getWorld(), tileEntity.getPos());
 
         // Main Inventory
-        int startX = 8;  // X and Y values for first ingredient, second ingredient, fuel, then result
-        int startY = 18;   // the index for this is primary ingredient = 0, secondary ingredient = 1, fuel = 2, result = 3
+        int startX = 8;  
+        int startY = 18;
 
         for(int row = 0; row < 4; row++){
             for(int column = 0; column < 9; column++){
@@ -89,5 +89,9 @@ public class DarkChestContainer extends Container {
             }
         }
         return itemStack;
+    }
+    public void onContainerClosed(PlayerEntity playerIn) {
+        super.onContainerClosed(playerIn);
+        this.tileEntity.closeInventory(playerIn);
     }
 }

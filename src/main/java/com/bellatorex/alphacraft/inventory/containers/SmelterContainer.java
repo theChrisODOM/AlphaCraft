@@ -3,13 +3,11 @@ package com.bellatorex.alphacraft.inventory.containers;
 import com.bellatorex.alphacraft.inventory.containers.slots.SmelterFuelSlot;
 import com.bellatorex.alphacraft.inventory.containers.slots.SmelterResultSlot;
 import com.bellatorex.alphacraft.recipes.IAlphaRecipeType;
-import com.bellatorex.alphacraft.recipes.SmelterRecipe;
 import com.bellatorex.alphacraft.tileentity.SmelterTileEntity;
 import com.bellatorex.alphacraft.util.AlphaContainerRegistry;
 import com.bellatorex.alphacraft.util.BlockRegistry;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
-import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.inventory.container.*;
@@ -20,12 +18,9 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.IIntArray;
 import net.minecraft.util.IWorldPosCallable;
 import net.minecraft.world.World;
-import net.minecraft.world.biome.Biome;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.registries.ForgeRegistries;
 
-import java.util.Collection;
 import java.util.Objects;
 
 public class SmelterContainer extends RecipeBookContainer<IInventory> {
