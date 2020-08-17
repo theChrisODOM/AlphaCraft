@@ -54,6 +54,7 @@ public class BlockRegistry {
     public static final RegistryObject<Block> NASTY_TREE_SAPLING = BLOCKS.register("nasty_tree_sapling", () -> new DarkSapling(NastyPoopTree::new, Block.Properties.from(Blocks.OAK_SAPLING)));
     public static final RegistryObject<Block> SMELTER = BLOCKS.register("smelter", SmelterBlock::new);
     public static final RegistryObject<Block> DARK_CHEST = BLOCKS.register("dark_chest", DarkChestBlock::new);
+    public static final RegistryObject<Block> DARK_GRASS = BLOCKS.register("dark_grass", TallDarkGrassBlock::new);
 
 
 
@@ -93,14 +94,16 @@ public class BlockRegistry {
 
     //Decoration Blocks
 
+    // Saplings
+    public static final RegistryObject<Item> DARK_TREE_SAPLING_ITEM = ITEMS.register("dark_tree_sapling", () -> new BlockItem(DARK_TREE_SAPLING.get(), new Item.Properties().group(AlphaCraft.ALPHA_DECOR)));
+    public static final RegistryObject<Item> NASTY_TREE_SAPLING_ITEM = ITEMS.register("nasty_tree_sapling", () -> new BlockItem(NASTY_TREE_SAPLING.get(), new Item.Properties().group(AlphaCraft.ALPHA_DECOR)));
     // Leaves
     public static final RegistryObject<Item> DARK_LEAVES_ITEM = ITEMS.register("dark_leaves", () -> new BlockItem(DARK_LEAVES.get(), new Item.Properties().group(AlphaCraft.ALPHA_DECOR)));
     public static final RegistryObject<Item> NASTY_LEAVES_ITEM = ITEMS.register("nasty_leaves", () -> new BlockItem(NASTY_LEAVES.get(), new Item.Properties().group(AlphaCraft.ALPHA_DECOR)));
     public static final RegistryObject<Item> SMELTER_ITEM = ITEMS.register("smelter", () -> new BlockItem(SMELTER.get(), new Item.Properties().group(AlphaCraft.ALPHA_DECOR)));
     public static final RegistryObject<Item> DARK_CHEST_ITEM = ITEMS.register("dark_chest", () -> new BlockItem(DARK_CHEST.get(), new Item.Properties().group(AlphaCraft.ALPHA_DECOR)));
-    // Saplings
-    public static final RegistryObject<Item> DARK_TREE_SAPLING_ITEM = ITEMS.register("dark_tree_sapling", () -> new BlockItem(DARK_TREE_SAPLING.get(), new Item.Properties().group(AlphaCraft.ALPHA_DECOR)));
-    public static final RegistryObject<Item> NASTY_TREE_SAPLING_ITEM = ITEMS.register("nasty_tree_sapling", () -> new BlockItem(NASTY_TREE_SAPLING.get(), new Item.Properties().group(AlphaCraft.ALPHA_DECOR)));
+    // Bushes
+    public static final RegistryObject<Item> DARK_GRASS_ITEM = ITEMS.register("dark_grass", () -> new BlockItem(DARK_GRASS.get(), new Item.Properties().group(AlphaCraft.ALPHA_DECOR)));
     // Fences
     public static final RegistryObject<Item> DARK_PLANKS_FENCE_ITEM = ITEMS.register("dark_planks_fence", () -> new BlockItem(DARK_PLANKS_FENCE.get(), new Item.Properties().group(AlphaCraft.ALPHA_DECOR)));
     public static final RegistryObject<Item> NASTY_PLANKS_FENCE_ITEM = ITEMS.register("nasty_planks_fence", () -> new BlockItem(NASTY_PLANKS_FENCE.get(), new Item.Properties().group(AlphaCraft.ALPHA_DECOR)));

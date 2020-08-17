@@ -3,6 +3,7 @@ package com.bellatorex.alphacraft.items;
 import com.bellatorex.alphacraft.AlphaCraft;
 import com.bellatorex.alphacraft.entity.projectile.PoopEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.BoneMealItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.stats.Stats;
@@ -12,7 +13,7 @@ import net.minecraft.util.SoundCategory;
 import net.minecraft.util.SoundEvents;
 import net.minecraft.world.World;
 
-public class PoopItem extends Item {
+public class PoopItem extends BoneMealItem {
     public PoopItem() {
         super(new Item.Properties().group(AlphaCraft.ALPHA_ITEMS));
     }
@@ -36,4 +37,6 @@ public class PoopItem extends Item {
         }
         return ActionResult.func_233538_a_(itemstack, worldIn.isRemote());
     }
+
+
 }
