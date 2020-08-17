@@ -47,6 +47,7 @@ public class BlockRegistry {
     public static final RegistryObject<Block> DARK_BRICKS_FENCE = BLOCKS.register("dark_bricks_fence", () -> new FenceBlock(Block.Properties.from(DARK_BRICKS.get())));
     public static final RegistryObject<Block> DARK_BRICKS_SLAB = BLOCKS.register("dark_bricks_slab", () -> new SlabBlock(Block.Properties.from(DARK_BRICKS.get())));
     public static final RegistryObject<Block> ENDERITE_BLOCK = BLOCKS.register("enderite_block", EnderiteBlock::new);
+    public static final RegistryObject<Block> ULTRA_BLOCK = BLOCKS.register("ultra_block", UltraBlock::new);
     public static final RegistryObject<Block> ULTRA_ORE = BLOCKS.register("ultra_ore", UltraOre::new);
     public static final RegistryObject<Block> ALPHA_PORTAL_BLOCK = BLOCKS.register("alpha_portal_block", AlphaPortalBlock::new);
     public static final RegistryObject<Block> DARK_TREE_SAPLING = BLOCKS.register("dark_tree_sapling", () -> new DarkSapling(DarkAshTree::new, Block.Properties.from(Blocks.OAK_SAPLING)));
@@ -85,6 +86,7 @@ public class BlockRegistry {
     public static final RegistryObject<Item> DARK_BRICKS_SLABS_ITEM = ITEMS.register("dark_bricks_slab", () -> new BlockItem(DARK_BRICKS_SLAB.get(), new Item.Properties().group(AlphaCraft.ALPHA_BLOCKS)));
     // Gem Blocks
     public static final RegistryObject<Item> ENDERITE_BLOCK_ITEM = ITEMS.register("enderite_block", () -> new BlockItem(ENDERITE_BLOCK.get(), new Item.Properties().group(AlphaCraft.ALPHA_BLOCKS)));
+    public static final RegistryObject<Item> ULTRA_BLOCK_ITEM = ITEMS.register("ultra_block", () -> new BlockItem(ULTRA_BLOCK.get(), new Item.Properties().group(AlphaCraft.ALPHA_BLOCKS)));
     // Misc
     public static final RegistryObject<Item> POOP_BLOCK_ITEM = ITEMS.register("poop_block", () -> new BlockItem(POOP_BLOCK.get(), new Item.Properties().group(AlphaCraft.ALPHA_BLOCKS)));
     public static final RegistryObject<Item> ALPHA_PORTAL_BLOCK_ITEM = ITEMS.register("alpha_portal_block", () -> new BlockItem(ALPHA_PORTAL_BLOCK.get(), new Item.Properties().group(AlphaCraft.ALPHA_BLOCKS)));

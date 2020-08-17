@@ -17,7 +17,7 @@
   "item.alphacraft.enderite_chestplate": "Enderite Chestplate",
   "item.alphacraft.enderite_leggings": "Enderite Leggings",
   "item.alphacraft.enderite_boots": "Enderite Boots",
-  "item.alphacraft.ultra_ingot": "Ultra Ingot",
+  "item.alphacraft.ultra_ingot": "Scapolite Ingot",
 
   "block.alphacraft.dark_grass_block": "Dark Grass Block",
   "block.alphacraft.dark_dirt_block": "Dark Dirt",
@@ -45,7 +45,8 @@
   "block.alphacraft.nasty_planks_stairs": "Nasty Planks Stairs",
   "block.alphacraft.nasty_planks_slab": "Nasty Planks Slab",
   "block.alphacraft.enderite_block": "Block of Enderite",
-  "block.alphacraft.ultra_ore": "Ultra Ore",
+  "block.alphacraft.ultra_block": "Block of Scapolite",
+  "block.alphacraft.ultra_ore": "Scapolite Ore",
   "block.alphacraft.alpha_portal_block": "The Alpha",
   "block.alphacraft.smelter": "Smelter",
   "block.alphacraft.dark_chest": "Dark Chest",

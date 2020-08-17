@@ -2,6 +2,7 @@ package com.bellatorex.alphacraft.util;
 
 import com.bellatorex.alphacraft.AlphaCraft;
 import com.bellatorex.alphacraft.items.ItemBase;
+import com.bellatorex.alphacraft.items.PoopItem;
 import net.minecraft.item.Item;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
@@ -27,5 +28,5 @@ public class BaseItemRegistry {
     public static final RegistryObject<Item> ENDERITE_PLATE = ITEMS.register("enderite_plate", ItemBase::new);
     public static final RegistryObject<Item> ENDERITE_TRASH = ITEMS.register("enderite_trash", ItemBase::new);
     public static final RegistryObject<Item> ENDERITE_INGOT = ITEMS.register("enderite_ingot", ItemBase::new);
-    public static final RegistryObject<Item> POOP = ITEMS.register("poop", ItemBase::new);
+    public static final RegistryObject<PoopItem> POOP = ITEMS.register("poop", PoopItem::new);
 }
