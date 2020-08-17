@@ -29,7 +29,7 @@
       },
       "noise": {
         "top_slide": {
-          "target": -4000,
+          "target": -2000,
           "size": 40,
           "offset": -35
         },
@@ -46,7 +46,7 @@
         },
         "size_vertical": 2,
         "size_horizontal": 1,
-        "height": 200,
+        "height": 156,
         "density_factor": 1,
         "density_offset": -0.4696969,
         "random_density_offset": true,

@@ -16,7 +16,7 @@ public class AlphaIslandStructures {
     public static void spawnPlatform(ServerWorld destination){
         //sets spawn platform
 
-        int i = 0;int j = 161;int k = 48;
+        int i = 0;int j = 112;int k = 48;
         BlockPos.getAllInBoxMutable(i - 2, j + 1, k - 2, i + 2, j + 20, k + 2).forEach((blockInBox) -> {
             destination.setBlockState(blockInBox, Blocks.AIR.getDefaultState());
         });
@@ -27,7 +27,7 @@ public class AlphaIslandStructures {
     }
 
     public static void spawnReturnPortal(ServerWorld destination){
-        int i = 0;int j=166;int k=0;
+        int i = 0;int j=123;int k=0;
 
         // Dark Bricks
         BlockPos.getAllInBoxMutable(i - 2, j, k - 2, i + 2, j+1, k + 2).forEach((blockInBox) -> { destination.setBlockState(blockInBox, BlockRegistry.DARK_BRICKS.get().getDefaultState()); });
