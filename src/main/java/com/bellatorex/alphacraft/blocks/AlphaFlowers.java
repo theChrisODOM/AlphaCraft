@@ -8,11 +8,8 @@ import net.minecraft.potion.Effect;
 import net.minecraft.potion.Effects;
 
 public class AlphaFlowers extends FlowerBlock {
-    public AlphaFlowers() {
-        super(Effects.GLOWING, 30, AbstractBlock.Properties.create(Material.TALL_PLANTS)
-                .doesNotBlockMovement()
-                .zeroHardnessAndResistance()
-                .sound(SoundType.PLANT)
-                .setLightLevel((p_235470_0_) -> { return 10;}));
+
+    public AlphaFlowers(Effect effect, int effectDuration, Properties properties) {
+        super(effect, effectDuration, properties);
     }
 }

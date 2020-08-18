@@ -2,18 +2,23 @@ package com.bellatorex.alphacraft;
 
 import com.bellatorex.alphacraft.client.gui.*;
 import com.bellatorex.alphacraft.util.*;
+import com.bellatorex.alphacraft.world.gen.AlphaWorldCarver;
 import net.minecraft.client.gui.ScreenManager;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.RenderTypeLookup;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
+import net.minecraft.world.biome.Biome;
+import net.minecraft.world.gen.feature.ProbabilityConfig;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.minecraftforge.registries.ForgeRegistries;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -45,12 +50,11 @@ public class AlphaCraft
         ToolRegistry.init();
         ArmorRegistry.init();
         RecipeSerializerRegistry.init();
+        AlphaCraftBiomesManager.init();
         MinecraftForge.EVENT_BUS.register(this);
     }
 
-    private void commonSetup(final FMLCommonSetupEvent event) {
-        AlphaCraftBiomesManager.setupBiomes();
-    }
+    private void commonSetup(final FMLCommonSetupEvent event) { AlphaCraftBiomesManager.setupBiomes(); }
 
     private void setup(final FMLCommonSetupEvent event) {
         AlphaCraftBiomesManager.setupBiomes();

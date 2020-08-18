@@ -42,19 +42,21 @@ public class DarkForest extends Biome
                         .build())
                 .parent((String)null));
 
+
+
+    }
+
+    public void init(){
         //Passives
         this.addSpawn(EntityClassification.CREATURE, new SpawnListEntry(EntityType.SALMON, 25, 2, 8));
         this.addSpawn(EntityClassification.CREATURE, new SpawnListEntry(EntityType.COD, 25, 2, 8));
-
         //Monsters
         this.addSpawn(EntityClassification.MONSTER, new SpawnListEntry(EntityType.PHANTOM, 5, 1, 1));
         this.addSpawn(EntityClassification.MONSTER, new SpawnListEntry(EntityType.STRAY, 50, 1, 1));
         this.addSpawn(EntityClassification.MONSTER, new SpawnListEntry(EntityType.RAVAGER, 5, 1, 2));
         this.addSpawn(EntityClassification.MONSTER, new SpawnListEntry(EntityType.GHAST, 10, 2, 2));
-
         //Ground Features
-        this.addFeature(GenerationStage.Decoration.LOCAL_MODIFICATIONS, Feature.FOREST_ROCK.withConfiguration(new BlockBlobConfig(DARK_COBBLESTONE, 0)).withPlacement(Placement.FOREST_ROCK.configure(new FrequencyConfig(1))));
-
+        this.addFeature(GenerationStage.Decoration.LOCAL_MODIFICATIONS, Feature.FOREST_ROCK.withConfiguration(new BlockBlobConfig(DARK_COBBLESTONE, 1)).withPlacement(Placement.FOREST_ROCK.configure(new FrequencyConfig(1))));
         //Trees
         AlphaBiomeFeatures.addDarkTrees(this);
         // Vegetation
@@ -63,8 +65,7 @@ public class DarkForest extends Biome
         this.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Feature.FLOWER.withConfiguration(DefaultBiomeFeatures.BLUE_ORCHID_CONFIG).withPlacement(Placement.COUNT_HEIGHTMAP_32.configure(new FrequencyConfig(5))));
         this.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Feature.SEAGRASS.withConfiguration(new SeaGrassConfig(80, 0.9D)).withPlacement(Placement.TOP_SOLID_HEIGHTMAP.configure(IPlacementConfig.NO_PLACEMENT_CONFIG)));
         // Ore Generation
-
-
-
+        AlphaBiomeFeatures.addAlphaOres(this);
+        AlphaBiomeFeatures.addAlphaCarvers(this);
     }
 }

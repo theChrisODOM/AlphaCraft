@@ -9,8 +9,8 @@ import net.minecraft.world.IWorldReader;
 
 public class AlphaOreBlock extends OreBlock{
 
-    public AlphaOreBlock() { super(Block.Properties.from(Blocks.ANCIENT_DEBRIS)); }
+    public AlphaOreBlock() { super(Block.Properties.from(Blocks.STONE)); }
     @Override
-    public int getExpDrop(BlockState state, IWorldReader reader, BlockPos pos, int fortune, int silktouch){ return 5; }
+    public int getExpDrop(BlockState state, IWorldReader reader, BlockPos pos, int fortune, int silktouch){ return 1; }
 
 }

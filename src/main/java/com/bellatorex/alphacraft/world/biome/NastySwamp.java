@@ -46,7 +46,9 @@ public class NastySwamp extends Biome
                         .setParticle(new net.minecraft.world.biome.ParticleEffectAmbience(ParticleTypes.MYCELIUM.getType(), 0.01f))
                         .build())
                 .parent((String)null));
+    }
 
+    public void init(){
         //Passives
         this.addSpawn(EntityClassification.CREATURE, new SpawnListEntry(EntityType.SALMON, 12, 2, 8));
         this.addSpawn(EntityClassification.CREATURE, new SpawnListEntry(EntityType.COD, 12, 2, 8));
@@ -71,9 +73,8 @@ public class NastySwamp extends Biome
         this.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Feature.RANDOM_PATCH.withConfiguration(DefaultBiomeFeatures.BROWN_MUSHROOM_CONFIG).withPlacement(Placement.COUNT_CHANCE_HEIGHTMAP.configure(new HeightWithChanceConfig(1, 0.25F))));
         this.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Feature.RANDOM_PATCH.withConfiguration(DefaultBiomeFeatures.RED_MUSHROOM_CONFIG).withPlacement(Placement.COUNT_CHANCE_HEIGHTMAP_DOUBLE.configure(new HeightWithChanceConfig(1, 0.125F))));
         // Ore Generation
-        DefaultBiomeFeatures.addOres(this);
-
-
+        AlphaBiomeFeatures.addAlphaOres(this);
+        AlphaBiomeFeatures.addAlphaCarvers(this);
     }
     @Override
     @OnlyIn(Dist.CLIENT)

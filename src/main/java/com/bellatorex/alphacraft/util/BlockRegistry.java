@@ -5,8 +5,10 @@ import com.bellatorex.alphacraft.blocks.*;
 import com.bellatorex.alphacraft.world.gen.feature.DarkAshTree;
 import com.bellatorex.alphacraft.world.gen.feature.NastyPoopTree;
 import net.minecraft.block.*;
+import net.minecraft.block.material.Material;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
+import net.minecraft.potion.Effects;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.DeferredRegister;
@@ -49,13 +51,15 @@ public class BlockRegistry {
     public static final RegistryObject<Block> ENDERITE_BLOCK = BLOCKS.register("enderite_block", EnderiteBlock::new);
     public static final RegistryObject<Block> ULTRA_BLOCK = BLOCKS.register("ultra_block", UltraBlock::new);
     public static final RegistryObject<Block> ULTRA_ORE = BLOCKS.register("ultra_ore", UltraOre::new);
+    public static final RegistryObject<Block> PINK_DIAMOND_ORE = BLOCKS.register("pink_diamond_ore", AlphaOreBlock::new);
+    public static final RegistryObject<Block> ANTHRACITE_ORE = BLOCKS.register("anthracite_ore", AlphaOreBlock::new);
     public static final RegistryObject<Block> ALPHA_PORTAL_BLOCK = BLOCKS.register("alpha_portal_block", AlphaPortalBlock::new);
     public static final RegistryObject<Block> DARK_TREE_SAPLING = BLOCKS.register("dark_tree_sapling", () -> new DarkSapling(DarkAshTree::new, Block.Properties.from(Blocks.OAK_SAPLING)));
     public static final RegistryObject<Block> NASTY_TREE_SAPLING = BLOCKS.register("nasty_tree_sapling", () -> new DarkSapling(NastyPoopTree::new, Block.Properties.from(Blocks.OAK_SAPLING)));
     public static final RegistryObject<Block> SMELTER = BLOCKS.register("smelter", SmelterBlock::new);
     public static final RegistryObject<Block> DARK_CHEST = BLOCKS.register("dark_chest", DarkChestBlock::new);
     public static final RegistryObject<Block> DARK_GRASS = BLOCKS.register("dark_grass", TallDarkGrassBlock::new);
-    public static final RegistryObject<Block> BRIGHT_FLOWER = BLOCKS.register("bright_flower", AlphaFlowers::new);
+    public static final RegistryObject<Block> BRIGHT_FLOWER = BLOCKS.register("bright_flower", () -> new FlowerBlock(Effects.GLOWING, 30, AbstractBlock.Properties.create(Material.TALL_PLANTS).doesNotBlockMovement().zeroHardnessAndResistance().sound(SoundType.PLANT).setLightLevel((p_235470_0_) -> { return 14;})));
 
 
 
@@ -78,6 +82,8 @@ public class BlockRegistry {
     // Ores
     public static final RegistryObject<Item> ENDERITE_ORE_BLOCK_ITEM = ITEMS.register("enderite_ore_block", () -> new BlockItem(ENDERITE_ORE.get(), new Item.Properties().group(AlphaCraft.ALPHA_BLOCKS)));
     public static final RegistryObject<Item> ULTRA_ORE_ITEM = ITEMS.register("ultra_ore", () -> new BlockItem(ULTRA_ORE.get(), new Item.Properties().group(AlphaCraft.ALPHA_BLOCKS)));
+    public static final RegistryObject<Item> PINK_DIAMOND_ORE_ITEM = ITEMS.register("pink_diamond_ore", () -> new BlockItem(PINK_DIAMOND_ORE.get(), new Item.Properties().group(AlphaCraft.ALPHA_BLOCKS)));
+    public static final RegistryObject<Item> ANTHRACITE_ORE_ITEM = ITEMS.register("anthracite_ore", () -> new BlockItem(ANTHRACITE_ORE.get(), new Item.Properties().group(AlphaCraft.ALPHA_BLOCKS)));
     // Stairs
     public static final RegistryObject<Item> DARK_PLANKS_STAIRS_ITEM = ITEMS.register("dark_planks_stairs", () -> new BlockItem(DARK_PLANKS_STAIRS.get(), new Item.Properties().group(AlphaCraft.ALPHA_BLOCKS)));
     public static final RegistryObject<Item> NASTY_PLANKS_STAIRS_ITEM = ITEMS.register("nasty_planks_stairs", () -> new BlockItem(NASTY_PLANKS_STAIRS.get(), new Item.Properties().group(AlphaCraft.ALPHA_BLOCKS)));

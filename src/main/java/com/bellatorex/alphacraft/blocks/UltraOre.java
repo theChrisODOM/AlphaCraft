@@ -18,12 +18,13 @@ public class UltraOre extends OreBlock {
                 .hardnessAndResistance(3.0f, 4.0f)
                 .sound(SoundType.STONE)
                 .harvestLevel(2)
-                .harvestTool(ToolType.PICKAXE));
+                .harvestTool(ToolType.PICKAXE)
+                .setLightLevel((p_235470_0_) -> { return 4;}));
     }
 
     @Override
     public int getExpDrop(BlockState state, IWorldReader reader, BlockPos pos, int fortune, int silktouch) {
-        return 1;
+        return 0;
     }
 
 }
