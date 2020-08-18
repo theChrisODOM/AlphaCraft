@@ -28,7 +28,7 @@ public class DarkForest extends Biome
         super((new Builder()
                 .surfaceBuilder(SurfaceBuilder.DEFAULT, new SurfaceBuilderConfig(DARK_GRASS_BLOCK, DARK_DIRT_BLOCK, DARK_DIRT_BLOCK))
                 .precipitation(RainType.RAIN)
-                .category(Category.FOREST)
+                .category(Category.ICY)
                 .depth(1.3F)
                 .scale(0.4F)
                 .temperature(0.6F)
@@ -48,7 +48,7 @@ public class DarkForest extends Biome
 
         //Monsters
         this.addSpawn(EntityClassification.MONSTER, new SpawnListEntry(EntityType.PHANTOM, 5, 1, 1));
-        this.addSpawn(EntityClassification.MONSTER, new SpawnListEntry(EntityType.GIANT, 50, 1, 1));
+        this.addSpawn(EntityClassification.MONSTER, new SpawnListEntry(EntityType.STRAY, 50, 1, 1));
         this.addSpawn(EntityClassification.MONSTER, new SpawnListEntry(EntityType.RAVAGER, 5, 1, 2));
         this.addSpawn(EntityClassification.MONSTER, new SpawnListEntry(EntityType.GHAST, 10, 2, 2));
 
@@ -59,6 +59,7 @@ public class DarkForest extends Biome
         AlphaBiomeFeatures.addDarkTrees(this);
         // Vegetation
         AlphaBiomeFeatures.addDenseBlueGrass(this);
+        AlphaBiomeFeatures.addBrightFlowers(this);
         this.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Feature.FLOWER.withConfiguration(DefaultBiomeFeatures.BLUE_ORCHID_CONFIG).withPlacement(Placement.COUNT_HEIGHTMAP_32.configure(new FrequencyConfig(5))));
         this.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Feature.SEAGRASS.withConfiguration(new SeaGrassConfig(80, 0.9D)).withPlacement(Placement.TOP_SOLID_HEIGHTMAP.configure(IPlacementConfig.NO_PLACEMENT_CONFIG)));
         // Ore Generation

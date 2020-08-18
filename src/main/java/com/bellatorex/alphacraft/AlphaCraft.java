@@ -62,6 +62,7 @@ public class AlphaCraft
         RenderTypeLookup.setRenderLayer(BlockRegistry.NASTY_TREE_SAPLING.get(), RenderType.getCutout());
         RenderTypeLookup.setRenderLayer(BlockRegistry.DARK_TREE_SAPLING.get(), RenderType.getCutout());
         RenderTypeLookup.setRenderLayer(BlockRegistry.DARK_GRASS.get(), RenderType.getCutout());
+        RenderTypeLookup.setRenderLayer(BlockRegistry.BRIGHT_FLOWER.get(), RenderType.getCutout());
 
         ScreenManager.registerFactory(AlphaContainerRegistry.SMELTER.get(), SmelterScreen::new);
         ScreenManager.registerFactory(AlphaContainerRegistry.DARK_CHEST.get(), DarkChestScreen::new);

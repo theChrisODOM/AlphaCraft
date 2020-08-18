@@ -35,7 +35,7 @@ public class DarkGrassBlock extends SpreadableSnowyDirtBlock implements IGrowabl
 
     public void grow(ServerWorld worldIn, Random rand, BlockPos currentBlockPos, BlockState state) {
         BlockPos blockAbovePos = currentBlockPos.up();
-        BlockState grassBlockState = Blocks.GRASS.getDefaultState(); // <--- this is the actually grass that grows, not the grass block
+        BlockState grassBlockState = BlockRegistry.DARK_GRASS.get().getDefaultState(); // <--- this is the actually grass that grows, not the grass block
 
         for(int i = 0; i < 128; ++i) {
             BlockPos blockpos1 = blockAbovePos;

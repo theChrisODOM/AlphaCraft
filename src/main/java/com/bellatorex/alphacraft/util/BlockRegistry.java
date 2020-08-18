@@ -55,6 +55,7 @@ public class BlockRegistry {
     public static final RegistryObject<Block> SMELTER = BLOCKS.register("smelter", SmelterBlock::new);
     public static final RegistryObject<Block> DARK_CHEST = BLOCKS.register("dark_chest", DarkChestBlock::new);
     public static final RegistryObject<Block> DARK_GRASS = BLOCKS.register("dark_grass", TallDarkGrassBlock::new);
+    public static final RegistryObject<Block> BRIGHT_FLOWER = BLOCKS.register("bright_flower", AlphaFlowers::new);
 
 
 
@@ -104,6 +105,7 @@ public class BlockRegistry {
     public static final RegistryObject<Item> DARK_CHEST_ITEM = ITEMS.register("dark_chest", () -> new BlockItem(DARK_CHEST.get(), new Item.Properties().group(AlphaCraft.ALPHA_DECOR)));
     // Bushes
     public static final RegistryObject<Item> DARK_GRASS_ITEM = ITEMS.register("dark_grass", () -> new BlockItem(DARK_GRASS.get(), new Item.Properties().group(AlphaCraft.ALPHA_DECOR)));
+    public static final RegistryObject<Item> BRIGHT_FLOWER_ITEM = ITEMS.register("bright_flower", () -> new BlockItem(BRIGHT_FLOWER.get(), new Item.Properties().group(AlphaCraft.ALPHA_DECOR)));
     // Fences
     public static final RegistryObject<Item> DARK_PLANKS_FENCE_ITEM = ITEMS.register("dark_planks_fence", () -> new BlockItem(DARK_PLANKS_FENCE.get(), new Item.Properties().group(AlphaCraft.ALPHA_DECOR)));
     public static final RegistryObject<Item> NASTY_PLANKS_FENCE_ITEM = ITEMS.register("nasty_planks_fence", () -> new BlockItem(NASTY_PLANKS_FENCE.get(), new Item.Properties().group(AlphaCraft.ALPHA_DECOR)));
