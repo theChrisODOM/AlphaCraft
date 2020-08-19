@@ -31,7 +31,7 @@ public class AlphaTeleporter implements ITeleporter {
             currentWorld.getProfiler().startSection("placing");
 
             if(entity.world.func_234923_W_() == World.field_234918_g_){
-                player.setLocationAndAngles(0, 114, 48, f1, f);
+                player.setLocationAndAngles(0, 114, 45, f1, f);
             }else{
                 BlockPos player_spawn = player.func_241140_K_();
                 if (player_spawn == null){
@@ -60,7 +60,7 @@ public class AlphaTeleporter implements ITeleporter {
             if (newEntity != null) {
                 newEntity.copyDataFromOld(entity);
                 if(entity.world.func_234923_W_() == World.field_234918_g_) {
-                    newEntity.moveToBlockPosAndAngles(new BlockPos(0, 114,48), newEntity.rotationYaw, newEntity.rotationPitch);
+                    newEntity.moveToBlockPosAndAngles(new BlockPos(0, 114,45), newEntity.rotationYaw, newEntity.rotationPitch);
                 }else{
                     newEntity.moveToBlockPosAndAngles(new BlockPos(destWorld.getWorldInfo().getSpawnX(), destWorld.getWorldInfo().getSpawnY(), destWorld.getWorldInfo().getSpawnZ()), newEntity.rotationYaw, newEntity.rotationPitch);
                 }

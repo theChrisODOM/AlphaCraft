@@ -15,26 +15,20 @@ public class AlphaIslandStructures {
 
     public static void spawnPlatform(ServerWorld destination){
         //sets spawn platform
-
-        int i = 0;int j = 112;int k = 48;
-        BlockPos.getAllInBoxMutable(i - 2, j + 1, k - 2, i + 2, j + 20, k + 2).forEach((blockInBox) -> {
-            destination.setBlockState(blockInBox, Blocks.AIR.getDefaultState());
-        });
-        BlockPos.getAllInBoxMutable(i - 2, j, k - 2, i + 2, j, k + 2).forEach((blockInBox) -> {
-            destination.setBlockState(blockInBox, BlockRegistry.DARK_COBBLESTONE.get().getDefaultState());
-        });
-
+        int i = 0;int j = 112;int k = 45;
+        BlockPos.getAllInBoxMutable(i - 2, j + 1, k - 2, i + 2, j + 20, k + 2).forEach((blockInBox) -> { destination.setBlockState(blockInBox, Blocks.AIR.getDefaultState()); });
+        BlockPos.getAllInBoxMutable(i - 2, j, k - 2, i + 2, j, k + 2).forEach((blockInBox) -> { destination.setBlockState(blockInBox, BlockRegistry.SMOOTH_OBSIDIAN.get().getDefaultState()); });
     }
 
     public static void spawnReturnPortal(ServerWorld destination){
         int i = 0;int j=123;int k=0;
 
         // Dark Bricks
-        BlockPos.getAllInBoxMutable(i - 2, j, k - 2, i + 2, j+1, k + 2).forEach((blockInBox) -> { destination.setBlockState(blockInBox, BlockRegistry.DARK_BRICKS.get().getDefaultState()); });
-        BlockPos.getAllInBoxMutable(i - 3, j, k - 1, i - 3, j+1, k + 1).forEach((blockInBox) -> { destination.setBlockState(blockInBox, BlockRegistry.DARK_BRICKS.get().getDefaultState()); });
-        BlockPos.getAllInBoxMutable(i + 3, j, k - 1, i + 3, j+1, k + 1).forEach((blockInBox) -> { destination.setBlockState(blockInBox, BlockRegistry.DARK_BRICKS.get().getDefaultState()); });
-        BlockPos.getAllInBoxMutable(i - 1, j, k + 3, i + 1, j+1, k + 3).forEach((blockInBox) -> { destination.setBlockState(blockInBox, BlockRegistry.DARK_BRICKS.get().getDefaultState()); });
-        BlockPos.getAllInBoxMutable(i - 1, j, k - 3, i + 1, j+1, k - 3).forEach((blockInBox) -> { destination.setBlockState(blockInBox, BlockRegistry.DARK_BRICKS.get().getDefaultState()); });
+        BlockPos.getAllInBoxMutable(i - 2, j, k - 2, i + 2, j+1, k + 2).forEach((blockInBox) -> { destination.setBlockState(blockInBox, BlockRegistry.SMOOTH_OBSIDIAN.get().getDefaultState()); });
+        BlockPos.getAllInBoxMutable(i - 3, j, k - 1, i - 3, j+1, k + 1).forEach((blockInBox) -> { destination.setBlockState(blockInBox, BlockRegistry.SMOOTH_OBSIDIAN.get().getDefaultState()); });
+        BlockPos.getAllInBoxMutable(i + 3, j, k - 1, i + 3, j+1, k + 1).forEach((blockInBox) -> { destination.setBlockState(blockInBox, BlockRegistry.SMOOTH_OBSIDIAN.get().getDefaultState()); });
+        BlockPos.getAllInBoxMutable(i - 1, j, k + 3, i + 1, j+1, k + 3).forEach((blockInBox) -> { destination.setBlockState(blockInBox, BlockRegistry.SMOOTH_OBSIDIAN.get().getDefaultState()); });
+        BlockPos.getAllInBoxMutable(i - 1, j, k - 3, i + 1, j+1, k - 3).forEach((blockInBox) -> { destination.setBlockState(blockInBox, BlockRegistry.SMOOTH_OBSIDIAN.get().getDefaultState()); });
         // Portal Blocks
         BlockPos.getAllInBoxMutable(i - 1, j+1, k - 1, i + 1, j+1, k + 1).forEach((blockInBox) -> { destination.setBlockState(blockInBox, BlockRegistry.ALPHA_PORTAL_BLOCK.get().getDefaultState()); });
         BlockPos.getAllInBoxMutable(i - 2, j+1, k - 1, i - 2, j+1, k + 1).forEach((blockInBox) -> { destination.setBlockState(blockInBox, BlockRegistry.ALPHA_PORTAL_BLOCK.get().getDefaultState()); });
@@ -44,6 +38,6 @@ public class AlphaIslandStructures {
         // air blocks
         BlockPos.getAllInBoxMutable(i - 4, j + 2, k - 4, i + 4, j + 20, k + 4).forEach((blockInBox) -> { destination.setBlockState(blockInBox, Blocks.AIR.getDefaultState()); });
         // thingy in the middle
-        BlockPos.getAllInBoxMutable(i , j+1, k, i, j+5, k).forEach((blockInBox) -> { destination.setBlockState(blockInBox, BlockRegistry.DARK_BRICKS.get().getDefaultState()); });
+        BlockPos.getAllInBoxMutable(i , j+1, k, i, j+5, k).forEach((blockInBox) -> { destination.setBlockState(blockInBox, BlockRegistry.SMOOTH_OBSIDIAN.get().getDefaultState()); });
     }
 }
