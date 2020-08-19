@@ -43,7 +43,7 @@ public class NastySwamp extends Biome
                         .setWaterColor(3108412)
                         .setWaterFogColor(1196810)
                         .setAmbientSound(SoundEvents.AMBIENT_CRIMSON_FOREST_LOOP)
-                        .setParticle(new net.minecraft.world.biome.ParticleEffectAmbience(ParticleTypes.MYCELIUM.getType(), 0.01f))
+                        .setParticle(new net.minecraft.world.biome.ParticleEffectAmbience(ParticleTypes.MYCELIUM.getType(), 0.02f))
                         .build())
                 .parent((String)null));
     }
@@ -53,7 +53,10 @@ public class NastySwamp extends Biome
         this.addSpawn(EntityClassification.CREATURE, new SpawnListEntry(EntityType.SALMON, 12, 2, 8));
         this.addSpawn(EntityClassification.CREATURE, new SpawnListEntry(EntityType.COD, 12, 2, 8));
         //Monsters
-        this.addSpawn(EntityClassification.MONSTER, new SpawnListEntry(EntityType.SLIME, 30, 2, 8));
+        this.addSpawn(EntityClassification.MONSTER, new SpawnListEntry(EntityType.PHANTOM, 5, 1, 1));
+        this.addSpawn(EntityClassification.MONSTER, new SpawnListEntry(EntityType.STRAY, 50, 1, 1));
+        this.addSpawn(EntityClassification.MONSTER, new SpawnListEntry(EntityType.RAVAGER, 5, 1, 2));
+        this.addSpawn(EntityClassification.MONSTER, new SpawnListEntry(EntityType.GHAST, 10, 2, 2));
         //Ground Features
         this.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, Feature.DISK.withConfiguration(new SphereReplaceConfig(DARK_CLAY_BLOCK, 4, 2, Lists.newArrayList(DARK_DIRT_BLOCK, DARK_CLAY_BLOCK))).withPlacement(Placement.COUNT_TOP_SOLID.configure(new FrequencyConfig(2))));
         this.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, Feature.DISK.withConfiguration(new SphereReplaceConfig(Blocks.CLAY.getDefaultState(), 4, 1, Lists.newArrayList(DARK_DIRT_BLOCK, DARK_DIRT_BLOCK))).withPlacement(Placement.COUNT_TOP_SOLID.configure(new FrequencyConfig(1))));

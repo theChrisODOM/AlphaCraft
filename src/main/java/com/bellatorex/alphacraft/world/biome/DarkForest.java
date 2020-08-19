@@ -56,7 +56,7 @@ public class DarkForest extends Biome
         this.addSpawn(EntityClassification.MONSTER, new SpawnListEntry(EntityType.RAVAGER, 5, 1, 2));
         this.addSpawn(EntityClassification.MONSTER, new SpawnListEntry(EntityType.GHAST, 10, 2, 2));
         //Ground Features
-        this.addFeature(GenerationStage.Decoration.LOCAL_MODIFICATIONS, Feature.FOREST_ROCK.withConfiguration(new BlockBlobConfig(DARK_COBBLESTONE, 1)).withPlacement(Placement.FOREST_ROCK.configure(new FrequencyConfig(1))));
+        this.addFeature(GenerationStage.Decoration.SURFACE_STRUCTURES, Feature.FOREST_ROCK.withConfiguration(new BlockBlobConfig(DARK_COBBLESTONE, 1)).withPlacement(Placement.FOREST_ROCK.configure(new FrequencyConfig(3))));
         //Trees
         AlphaBiomeFeatures.addDarkTrees(this);
         // Vegetation

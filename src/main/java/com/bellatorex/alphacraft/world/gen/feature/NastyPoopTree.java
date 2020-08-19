@@ -14,6 +14,6 @@ public class NastyPoopTree extends Tree {
 
     @Override
     protected ConfiguredFeature<BaseTreeFeatureConfig, ?> getTreeFeature(Random randomIn, boolean largeHive) {
-        return Feature.field_236291_c_.withConfiguration(AlphaBiomeFeatures.NASTY_TREE_CONFIG);
+        return Feature.field_236291_c_.withConfiguration(AlphaBiomeFeatures.NASTY_TREE_SAPLING_CONFIG);
     }
 }
