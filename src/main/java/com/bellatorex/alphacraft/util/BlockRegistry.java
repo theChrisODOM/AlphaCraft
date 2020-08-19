@@ -6,6 +6,7 @@ import com.bellatorex.alphacraft.world.gen.feature.DarkAshTree;
 import com.bellatorex.alphacraft.world.gen.feature.NastyPoopTree;
 import net.minecraft.block.*;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.material.MaterialColor;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.potion.Effects;
@@ -60,8 +61,9 @@ public class BlockRegistry {
     public static final RegistryObject<Block> DARK_CHEST = BLOCKS.register("dark_chest", DarkChestBlock::new);
     public static final RegistryObject<Block> DARK_GRASS = BLOCKS.register("dark_grass", TallDarkGrassBlock::new);
     public static final RegistryObject<Block> BRIGHT_FLOWER = BLOCKS.register("bright_flower", () -> new FlowerBlock(Effects.GLOWING, 30, AbstractBlock.Properties.create(Material.TALL_PLANTS).doesNotBlockMovement().zeroHardnessAndResistance().sound(SoundType.PLANT).setLightLevel((p_235470_0_) -> { return 14;})));
-
-
+    public static final RegistryObject<Block> BRIGHT_SAND = BLOCKS.register("bright_sand", () -> new BrightSand(14373781, AbstractBlock.Properties.create(Material.SAND, MaterialColor.SAND).hardnessAndResistance(0.5F).sound(SoundType.SAND)));
+    public static final RegistryObject<Block> BRIGHT_SANDSTONE = BLOCKS.register("bright_sandstone", DarkStoneBlock::new);
+    public static final RegistryObject<Block> SMOOTH_OBSIDIAN = BLOCKS.register("smooth_obsidian", () -> new CryingObsidianBlock(Block.Properties.from(Blocks.OBSIDIAN)));
 
     // Block Items  ======== This order determines order of appearance in creative tabs
 
@@ -73,12 +75,16 @@ public class BlockRegistry {
     public static final RegistryObject<Item> DARK_GRASS_BLOCK_ITEM = ITEMS.register("dark_grass_block", () -> new BlockItem(DARK_GRASS_BLOCK.get(), new Item.Properties().group(AlphaCraft.ALPHA_BLOCKS)));
     public static final RegistryObject<Item> DARK_COBBLESTONE_ITEM = ITEMS.register("dark_cobblestone", () -> new BlockItem(DARK_COBBLESTONE.get(), new Item.Properties().group(AlphaCraft.ALPHA_BLOCKS)));
     public static final RegistryObject<Item> DARK_CLAY_BLOCK_ITEM = ITEMS.register("dark_clay_block", () -> new BlockItem(DARK_CLAY_BLOCK.get(), new Item.Properties().group(AlphaCraft.ALPHA_BLOCKS)));
-    public static final RegistryObject<Item> DARK_BRICKS_ITEM = ITEMS.register("dark_bricks", () -> new BlockItem(DARK_BRICKS.get(), new Item.Properties().group(AlphaCraft.ALPHA_BLOCKS)));
+    public static final RegistryObject<Item> BRIGHT_SAND_ITEM = ITEMS.register("bright_sand", () -> new BlockItem(BRIGHT_SAND.get(), new Item.Properties().group(AlphaCraft.ALPHA_BLOCKS)));
+    public static final RegistryObject<Item> BRIGHT_SANDSTONE_ITEM = ITEMS.register("bright_sandstone", () -> new BlockItem(BRIGHT_SANDSTONE.get(), new Item.Properties().group(AlphaCraft.ALPHA_BLOCKS)));
+    public static final RegistryObject<Item> SMOOTH_OBSIDIAN_ITEM = ITEMS.register("smooth_obsidian", () -> new BlockItem(SMOOTH_OBSIDIAN.get(), new Item.Properties().group(AlphaCraft.ALPHA_BLOCKS)));
     // Woods
     public static final RegistryObject<Item> DARK_PLANKS_ITEM = ITEMS.register("dark_planks", () -> new BlockItem(DARK_PLANKS.get(), new Item.Properties().group(AlphaCraft.ALPHA_BLOCKS)));
     public static final RegistryObject<Item> NASTY_PLANKS_ITEM = ITEMS.register("nasty_planks", () -> new BlockItem(NASTY_PLANKS.get(), new Item.Properties().group(AlphaCraft.ALPHA_BLOCKS)));
     public static final RegistryObject<Item> DARK_LOG_ITEM = ITEMS.register("dark_log", () -> new BlockItem(DARK_LOG.get(), new Item.Properties().group(AlphaCraft.ALPHA_BLOCKS)));
     public static final RegistryObject<Item> NASTY_STEM_ITEM = ITEMS.register("nasty_stem", () -> new BlockItem(NASTY_STEM.get(), new Item.Properties().group(AlphaCraft.ALPHA_BLOCKS)));
+    // Building Blocks
+    public static final RegistryObject<Item> DARK_BRICKS_ITEM = ITEMS.register("dark_bricks", () -> new BlockItem(DARK_BRICKS.get(), new Item.Properties().group(AlphaCraft.ALPHA_BLOCKS)));
     // Ores
     public static final RegistryObject<Item> ENDERITE_ORE_BLOCK_ITEM = ITEMS.register("enderite_ore_block", () -> new BlockItem(ENDERITE_ORE.get(), new Item.Properties().group(AlphaCraft.ALPHA_BLOCKS)));
     public static final RegistryObject<Item> ULTRA_ORE_ITEM = ITEMS.register("ultra_ore", () -> new BlockItem(ULTRA_ORE.get(), new Item.Properties().group(AlphaCraft.ALPHA_BLOCKS)));

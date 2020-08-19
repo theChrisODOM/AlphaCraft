@@ -18,29 +18,16 @@ import net.minecraftforge.fml.event.lifecycle.FMLLoadCompleteEvent;
 import net.minecraftforge.registries.ForgeRegistries;
 
 @Mod.EventBusSubscriber(modid = AlphaCraft.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
-
-
 public class OreGenRegistry {
-
     public static OreFeatureConfig.FillerBlockType END_STONE = OreFeatureConfig.FillerBlockType.create("END_STONE", "end_stone", new BlockMatcher(Blocks.END_STONE));
-
-
     @SubscribeEvent
     public static void generateOres(FMLLoadCompleteEvent event) {
         for (Biome biome : ForgeRegistries.BIOMES) {
-            // Nether Generation
             if (biome.getCategory() == Biome.Category.NETHER) {
-
-            // End Generation
-            } else if (biome.getCategory() == Biome.Category.THEEND) {
-                genOre(biome, 20, 8, 5, 50, END_STONE, BlockRegistry.ENDERITE_ORE.get().getDefaultState(), 12);
-            // World Generation
-            } else {
-                genOre(biome, 20, 8, 5, 50, OreFeatureConfig.FillerBlockType.NATURAL_STONE, BlockRegistry.ULTRA_ORE.get().getDefaultState(), 12);
-            }
+            } else if (biome.getCategory() == Biome.Category.THEEND) { genOre(biome, 10, 8, 5, 20, END_STONE, BlockRegistry.ENDERITE_ORE.get().getDefaultState(), 4);
+            } else { genOre(biome, 15, 8, 5, 40, OreFeatureConfig.FillerBlockType.NATURAL_STONE, BlockRegistry.ULTRA_ORE.get().getDefaultState(), 10); }
         }
     }
-
     private static void genOre(Biome biome, int count, int bottomOffset, int topOffset, int max, OreFeatureConfig.FillerBlockType filler, BlockState defaultBlockstate, int size) {
         CountRangeConfig range = new CountRangeConfig(count, bottomOffset, topOffset, max);
         OreFeatureConfig feature = new OreFeatureConfig(filler, defaultBlockstate, size);

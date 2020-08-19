@@ -53,6 +53,10 @@
   "block.alphacraft.smelter": "Smelter",
   "block.alphacraft.dark_chest": "Dark Chest",
   "block.alphacraft.pink_diamond_ore": "Pink Diamond Ore",
+  "block.alphacraft.bright_sand": "Bright Sand",
+  "block.alphacraft.bright_sandstone": "Bright Sandstone",
+  "block.alphacraft.smooth_obsidian": "Smooth Obsidian",
+  "block.alphacraft.anthracite_ore": "Anthracite Ore",
 
   "container.smelter": "Two Item Smelter",
   "container.dark_chest": "Dark Chest",

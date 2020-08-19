@@ -64,6 +64,7 @@ public class DarkForest extends Biome
         AlphaBiomeFeatures.addBrightFlowers(this);
         this.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Feature.FLOWER.withConfiguration(DefaultBiomeFeatures.BLUE_ORCHID_CONFIG).withPlacement(Placement.COUNT_HEIGHTMAP_32.configure(new FrequencyConfig(5))));
         this.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Feature.SEAGRASS.withConfiguration(new SeaGrassConfig(80, 0.9D)).withPlacement(Placement.TOP_SOLID_HEIGHTMAP.configure(IPlacementConfig.NO_PLACEMENT_CONFIG)));
+        DefaultBiomeFeatures.addExtraKelp(this);
         // Ore Generation
         AlphaBiomeFeatures.addAlphaOres(this);
         AlphaBiomeFeatures.addAlphaCarvers(this);
