@@ -66,6 +66,7 @@ public class BlockRegistry {
     public static final RegistryObject<Block> SMOOTH_OBSIDIAN = BLOCKS.register("smooth_obsidian", () -> new CryingObsidianBlock(Block.Properties.from(Blocks.OBSIDIAN)));
     public static final RegistryObject<Block> ASH = BLOCKS.register("ash", () -> new BrightSand(14373781, AbstractBlock.Properties.create(Material.SAND, MaterialColor.SAND).hardnessAndResistance(0.5F).sound(SoundType.SAND)));
     public static final RegistryObject<Block> DARK_PODZOL = BLOCKS.register("dark_podzol", DarkEarthBlock::new);
+    public static final RegistryObject<Block> PORTAL_FRAME = BLOCKS.register("alpha_portal_frame", AlphaPortalFrameBlock::new);
 
     // Block Items  ======== This order determines order of appearance in creative tabs
 
@@ -123,6 +124,7 @@ public class BlockRegistry {
     // Containers
     public static final RegistryObject<Item> SMELTER_ITEM = ITEMS.register("smelter", () -> new BlockItem(SMELTER.get(), new Item.Properties().group(AlphaCraft.ALPHA_DECOR)));
     public static final RegistryObject<Item> DARK_CHEST_ITEM = ITEMS.register("dark_chest", () -> new BlockItem(DARK_CHEST.get(), new Item.Properties().group(AlphaCraft.ALPHA_DECOR)));
+    public static final RegistryObject<Item> ALPHA_PORTAL_FRAME_ITEM = ITEMS.register("alpha_portal_frame", () -> new BlockItem(PORTAL_FRAME.get(), new Item.Properties().group(AlphaCraft.ALPHA_DECOR)));
     // Fences
     public static final RegistryObject<Item> DARK_PLANKS_FENCE_ITEM = ITEMS.register("dark_planks_fence", () -> new BlockItem(DARK_PLANKS_FENCE.get(), new Item.Properties().group(AlphaCraft.ALPHA_DECOR)));
     public static final RegistryObject<Item> NASTY_PLANKS_FENCE_ITEM = ITEMS.register("nasty_planks_fence", () -> new BlockItem(NASTY_PLANKS_FENCE.get(), new Item.Properties().group(AlphaCraft.ALPHA_DECOR)));
