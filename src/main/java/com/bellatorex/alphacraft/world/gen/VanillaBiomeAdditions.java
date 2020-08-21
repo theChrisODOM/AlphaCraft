@@ -13,6 +13,7 @@ import net.minecraft.world.gen.feature.IFeatureConfig;
 import net.minecraft.world.gen.feature.OreFeatureConfig;
 import net.minecraft.world.gen.placement.ConfiguredPlacement;
 import net.minecraft.world.gen.placement.CountRangeConfig;
+import net.minecraft.world.gen.placement.DepthAverageConfig;
 import net.minecraft.world.gen.placement.Placement;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -28,19 +29,23 @@ public class VanillaBiomeAdditions {
             if (biome.getCategory() == Biome.Category.NETHER) { // the end
 
             } else if (biome.getCategory() == Biome.Category.THEEND) {  // the nether
-                genOre(biome, 10, 8, 5, 20, END_STONE, BlockRegistry.ENDERITE_ORE.get().getDefaultState(), 4);
+                genOre(biome, 5, 10, 5, 30, END_STONE, BlockRegistry.ENDERITE_ORE.get().getDefaultState(), 3, false);
             } else if (biome.getCategory() == Biome.Category.NONE ) { // the alpha
 
             }else {
-                genOre(biome, 15, 8, 5, 40, OreFeatureConfig.FillerBlockType.NATURAL_STONE, BlockRegistry.ULTRA_ORE.get().getDefaultState(), 10);
+                genOre(biome, 15, 8, 0, 40, OreFeatureConfig.FillerBlockType.NATURAL_STONE, BlockRegistry.ULTRA_ORE.get().getDefaultState(), 10, true);
                 biome.func_235063_a_(AlphacraftBiomesManager.ALPHA_PORTAL_CASTLE.func_236391_a_(IFeatureConfig.NO_FEATURE_CONFIG));
             }
         }
     }
-    private static void genOre(Biome biome, int count, int bottomOffset, int topOffset, int max, OreFeatureConfig.FillerBlockType filler, BlockState defaultBlockstate, int size) {
+    private static void genOre(Biome biome, int count, int bottomOffset, int topOffset, int max, OreFeatureConfig.FillerBlockType filler, BlockState defaultBlockstate, int size, boolean exposed) {
         CountRangeConfig range = new CountRangeConfig(count, bottomOffset, topOffset, max);
         OreFeatureConfig feature = new OreFeatureConfig(filler, defaultBlockstate, size);
         ConfiguredPlacement config = Placement.COUNT_RANGE.configure(range);
-        biome.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, Feature.ORE.withConfiguration(feature).withPlacement(config));
+        if(!exposed) {
+            biome.addFeature(GenerationStage.Decoration.UNDERGROUND_DECORATION, Feature.field_236289_V_.withConfiguration(feature).withPlacement(config));
+        }else{
+            biome.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, Feature.ORE.withConfiguration(feature).withPlacement(config));
+        }
     }
 }
