@@ -1,11 +1,8 @@
 package com.bellatorex.alphacraft.events;
 
 import com.bellatorex.alphacraft.AlphaCraft;
-import com.bellatorex.alphacraft.client.gui.SmelterScreen;
-import com.bellatorex.alphacraft.util.AlphaContainerRegistry;
 import com.bellatorex.alphacraft.util.AlphaDimensionsRegistry;
-import com.bellatorex.alphacraft.world.structure.AlphaIslandStructures;
-import net.minecraft.client.gui.ScreenManager;
+import com.bellatorex.alphacraft.world.gen.feature.structure.AlphaIslandStructures;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.util.text.TextFormatting;
@@ -15,7 +12,6 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.event.entity.EntityTravelToDimensionEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 
 @Mod.EventBusSubscriber(modid = AlphaCraft.MOD_ID, bus = Mod.EventBusSubscriber.Bus.FORGE, value = Dist.CLIENT)
 public class AlphaEventsClient {

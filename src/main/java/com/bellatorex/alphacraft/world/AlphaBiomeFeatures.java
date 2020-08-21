@@ -1,18 +1,14 @@
 package com.bellatorex.alphacraft.world;
 
-import com.bellatorex.alphacraft.AlphaCraft;
-import com.bellatorex.alphacraft.util.AlphaCraftBiomesManager;
+import com.bellatorex.alphacraft.util.AlphacraftBiomesManager;
 import com.bellatorex.alphacraft.util.BlockRegistry;
 import com.google.common.collect.ImmutableList;
-import net.minecraft.block.Blocks;
 import net.minecraft.block.pattern.BlockMatcher;
 import net.minecraft.world.biome.Biome;
-import net.minecraft.world.biome.DefaultBiomeFeatures;
 import net.minecraft.world.gen.GenerationStage;
 import net.minecraft.world.gen.Heightmap;
 import net.minecraft.world.gen.blockplacer.SimpleBlockPlacer;
 import net.minecraft.world.gen.blockstateprovider.SimpleBlockStateProvider;
-import net.minecraft.world.gen.carver.WorldCarver;
 import net.minecraft.world.gen.feature.*;
 import net.minecraft.world.gen.foliageplacer.BlobFoliagePlacer;
 import net.minecraft.world.gen.foliageplacer.DarkOakFoliagePlacer;
@@ -58,10 +54,10 @@ public class AlphaBiomeFeatures {
         biomeIn.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, Feature.ORE.withConfiguration(new OreFeatureConfig(DARK_STONE, BlockRegistry.ANTHRACITE_ORE.get().getDefaultState(), 12)).withPlacement(Placement.COUNT_RANGE.configure(new CountRangeConfig(5, 8, 0, 80))));
     }
     public static void addAlphaCarvers(Biome biomeIn) {
-        biomeIn.addCarver(GenerationStage.Carving.AIR, Biome.createCarver(AlphaCraftBiomesManager.ALPHA_CAVE.get(), new ProbabilityConfig(0.169F)));
+        biomeIn.addCarver(GenerationStage.Carving.AIR, Biome.createCarver(AlphacraftBiomesManager.ALPHA_CAVE.get(), new ProbabilityConfig(0.169F)));
     }
     public static void addSmoothObsidianSpikes(Biome biomeIn){
-        biomeIn.addFeature(GenerationStage.Decoration.SURFACE_STRUCTURES, AlphaCraftBiomesManager.SMOOTH_OBSIDIAN_SPIKE.get().withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG).withPlacement(Placement.COUNT_HEIGHTMAP.configure(new FrequencyConfig(1))));
+        biomeIn.addFeature(GenerationStage.Decoration.SURFACE_STRUCTURES, AlphacraftBiomesManager.SMOOTH_OBSIDIAN_SPIKE.get().withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG).withPlacement(Placement.COUNT_HEIGHTMAP.configure(new FrequencyConfig(1))));
     }
 
 }

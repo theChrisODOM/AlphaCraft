@@ -1,4 +1,4 @@
-package com.bellatorex.alphacraft.world.structure;
+package com.bellatorex.alphacraft.world.gen.feature.structure;
 
 import com.bellatorex.alphacraft.util.BlockRegistry;
 import net.minecraft.block.Blocks;
