@@ -27,20 +27,6 @@ public class AlphaPortalCastleStructure extends Structure<NoFeatureConfig> {
      * This is how the worldgen code will start the generation of our structure when it passes the checks.
      */
     public boolean func_230363_a_(ChunkGenerator chunkGen, BiomeProvider biomeManager, long seedModifier, SharedSeedRandom rand, int chunkPosX, int chunkPosZ, Biome biome, ChunkPos chunkPos, NoFeatureConfig config) {
-        // This is very similar to the code for making pillager outposts unable to spawn near villages.
-        /*
-        int i = chunkPosX >> 4;
-        int j = chunkPosZ >> 4;
-        rand.setSeed((long) (i ^ j << 4) ^ seedModifier);
-        for (int k = chunkPosX - 10; k <= chunkPosX + 10; ++k) {
-            for (int l = chunkPosZ - 10; l <= chunkPosZ + 10; ++l) {
-                ChunkPos chunkpos = Structure.field_236381_q_.func_236392_a_(chunkGen.func_235957_b_().func_236197_a_(Structure.field_236381_q_), seedModifier,
-                        rand, k, l);
-                if (k == chunkpos.x && l == chunkpos.z) {
-                    return false;
-                }
-            }
-        }*/
         return true;
     }
 
@@ -56,7 +42,6 @@ public class AlphaPortalCastleStructure extends Structure<NoFeatureConfig> {
 
         @Override
         public void func_230364_a_(ChunkGenerator generator, TemplateManager templateManagerIn, int chunkX, int chunkZ, Biome biomeIn, IFeatureConfig config) {
-            Rotation rotation = Rotation.values()[this.rand.nextInt(Rotation.values().length)];
 
             // Turns the chunk coordinates into actual coordinates we can use. (Gets center of that chunk)
             int x = (chunkX << 4) + 7;
@@ -67,8 +52,6 @@ public class AlphaPortalCastleStructure extends Structure<NoFeatureConfig> {
 
             BlockPos blockpos = new BlockPos(x, surfaceY, z);
             AlphaPortalCastlePieces.addPieces(generator, templateManagerIn, blockpos, this.components, this.rand);
-
-AlphaCraft.LOGGER.debug("checking if the components of the structure is null or not structure:    "+this.components);
 
             this.recalculateStructureSize();
         }

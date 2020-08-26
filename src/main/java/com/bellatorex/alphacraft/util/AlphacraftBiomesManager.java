@@ -69,7 +69,7 @@ public class AlphacraftBiomesManager
         BIOMES.register(FMLJavaModLoadingContext.get().getModEventBus());
     }
     public static void registerFeatures(RegistryEvent.Register<Feature<?>> event){
-        registerStructure(new ResourceLocation(AlphaCraft.MOD_ID, "portal"), ALPHA_PORTAL_CASTLE, GenerationStage.Decoration.SURFACE_STRUCTURES, new StructureSeparationSettings(100, 50, 69121598), false);
+        registerStructure(new ResourceLocation(AlphaCraft.MOD_ID, "portal"), ALPHA_PORTAL_CASTLE, GenerationStage.Decoration.UNDERGROUND_STRUCTURES, new StructureSeparationSettings(100, 50, 69121598), false);
         AlphacraftBiomesManager.registerAllPieces();
 
     }

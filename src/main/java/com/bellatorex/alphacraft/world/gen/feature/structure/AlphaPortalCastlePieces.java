@@ -21,16 +21,16 @@ public class AlphaPortalCastlePieces {
 
     public static void addPieces(ChunkGenerator chunkGeneratorIn, TemplateManager templateManagerIn, BlockPos posIn, List<StructurePiece> structurePieces, SharedSeedRandom p_215139_4_) {
         init();
-        JigsawManager.func_236823_a_(new ResourceLocation(AlphaCraft.MOD_ID+":dungeon_01/portal"), 6, AlphaPortalCastlePieces.AlphaPortalCastle::new, chunkGeneratorIn, templateManagerIn, posIn, structurePieces, p_215139_4_, false, false);
+        JigsawManager.func_236823_a_(new ResourceLocation(AlphaCraft.MOD_ID+":dungeon_01/portal"), 7, AlphaPortalCastlePieces.AlphaPortalCastle::new, chunkGeneratorIn, templateManagerIn, posIn, structurePieces, p_215139_4_, false, false);
     }
 
     public static void init() {
-        AlphaCraft.LOGGER.debug("registering jigsaw patters");
     }
 
     static {
-        JigsawManager.REGISTRY.register(new JigsawPattern(new ResourceLocation(AlphaCraft.MOD_ID+":dungeon_01/portal"), new ResourceLocation("empty"), ImmutableList.of(Pair.of(new LegacySingleJigsawPiece(AlphaCraft.MOD_ID+":dungeon_01/portal/portal"), 1)), JigsawPattern.PlacementBehaviour.RIGID));
-        JigsawManager.REGISTRY.register(new JigsawPattern(new ResourceLocation(AlphaCraft.MOD_ID+":dungeon_01/hall"), new ResourceLocation(AlphaCraft.MOD_ID+":dungeon_01/terminator"), ImmutableList.of(Pair.of(new LegacySingleJigsawPiece(AlphaCraft.MOD_ID+":dungeon_01/hall/cross_01"), 1), Pair.of(new LegacySingleJigsawPiece(AlphaCraft.MOD_ID+":dungeon_01/hall/cross_02"), 1), Pair.of(new LegacySingleJigsawPiece(AlphaCraft.MOD_ID+":dungeon_01/hall/hall_01"), 1), Pair.of(new LegacySingleJigsawPiece(AlphaCraft.MOD_ID+":dungeon_01/hall/hall_02"), 1), Pair.of(EmptyJigsawPiece.INSTANCE, 6)), JigsawPattern.PlacementBehaviour.RIGID));
+        JigsawManager.REGISTRY.register(new JigsawPattern(new ResourceLocation(AlphaCraft.MOD_ID+":dungeon_01/portal"), new ResourceLocation("empty"), ImmutableList.of(Pair.of(new LegacySingleJigsawPiece(AlphaCraft.MOD_ID+":dungeon_01/portal/portal"), 7)), JigsawPattern.PlacementBehaviour.RIGID));
+        JigsawManager.REGISTRY.register(new JigsawPattern(new ResourceLocation(AlphaCraft.MOD_ID+":dungeon_01/hall"), new ResourceLocation(AlphaCraft.MOD_ID+":dungeon_01/terminator"), ImmutableList.of(Pair.of(new LegacySingleJigsawPiece(AlphaCraft.MOD_ID+":dungeon_01/hall/cross_01"), 2), Pair.of(new LegacySingleJigsawPiece(AlphaCraft.MOD_ID+":dungeon_01/hall/cross_02"), 2), Pair.of(new LegacySingleJigsawPiece(AlphaCraft.MOD_ID+":dungeon_01/hall/hall_01"), 2), Pair.of(new LegacySingleJigsawPiece(AlphaCraft.MOD_ID+":dungeon_01/hall/hall_02"), 2), Pair.of(new LegacySingleJigsawPiece(AlphaCraft.MOD_ID+":dungeon_01/hall/loot_hall_01"), 2), Pair.of(EmptyJigsawPiece.INSTANCE, 6)), JigsawPattern.PlacementBehaviour.RIGID));
+        JigsawManager.REGISTRY.register(new JigsawPattern(new ResourceLocation(AlphaCraft.MOD_ID+":dungeon_01/loot"), new ResourceLocation(AlphaCraft.MOD_ID+":dungeon_01/terminator"), ImmutableList.of(Pair.of(new LegacySingleJigsawPiece(AlphaCraft.MOD_ID+":dungeon_01/hall/loot_01"), 2), Pair.of(EmptyJigsawPiece.INSTANCE, 6)), JigsawPattern.PlacementBehaviour.RIGID));
         JigsawManager.REGISTRY.register(new JigsawPattern(new ResourceLocation(AlphaCraft.MOD_ID+":dungeon_01/terminator"), new ResourceLocation("empty"), ImmutableList.of(Pair.of(new LegacySingleJigsawPiece(AlphaCraft.MOD_ID+":dungeon_01/terminator/terminator_01"), 1)), JigsawPattern.PlacementBehaviour.RIGID));
     }
 
