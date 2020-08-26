@@ -2,6 +2,7 @@ package com.bellatorex.alphacraft;
 
 import com.bellatorex.alphacraft.client.gui.*;
 import com.bellatorex.alphacraft.util.*;
+import com.bellatorex.alphacraft.world.gen.feature.structure.AlphaPortalCastlePieces;
 import net.minecraft.client.gui.ScreenManager;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.RenderTypeLookup;
@@ -48,6 +49,7 @@ public class AlphaCraft
         ArmorRegistry.init();
         RecipeSerializerRegistry.init();
         AlphacraftBiomesManager.init();
+
 
 
         MinecraftForge.EVENT_BUS.register(this);

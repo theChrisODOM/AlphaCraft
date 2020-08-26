@@ -2,68 +2,45 @@ package com.bellatorex.alphacraft.world.gen.feature.structure;
 
 import com.bellatorex.alphacraft.AlphaCraft;
 import com.bellatorex.alphacraft.util.AlphacraftBiomesManager;
-import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableList;
+import com.mojang.datafixers.util.Pair;
 import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.util.Mirror;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.Rotation;
+import net.minecraft.util.SharedSeedRandom;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MutableBoundingBox;
-import net.minecraft.world.IWorld;
-import net.minecraft.world.gen.feature.structure.StructurePiece;
-import net.minecraft.world.gen.feature.structure.TemplateStructurePiece;
-import net.minecraft.world.gen.feature.template.PlacementSettings;
-import net.minecraft.world.gen.feature.template.Template;
+import net.minecraft.world.gen.ChunkGenerator;
+import net.minecraft.world.gen.feature.jigsaw.*;
+import net.minecraft.world.gen.feature.structure.*;
 import net.minecraft.world.gen.feature.template.TemplateManager;
 
 import java.util.List;
-import java.util.Map;
-import java.util.Random;
 
 public class AlphaPortalCastlePieces {
 
-    private static final ResourceLocation PORTAL = new ResourceLocation(AlphaCraft.MOD_ID + ":alpha_portal_castle");
-    private static final Map<ResourceLocation, BlockPos> OFFSET = ImmutableMap.of(PORTAL, new BlockPos(0, 1, 0));
-
-    public static void start(TemplateManager tm, BlockPos pos, Rotation rot, List<StructurePiece> pieceList, Random rand){
-        pieceList.add(new AlphaPortalCastlePieces.Piece(tm, PORTAL, pos, rot));
+    public static void addPieces(ChunkGenerator chunkGeneratorIn, TemplateManager templateManagerIn, BlockPos posIn, List<StructurePiece> structurePieces, SharedSeedRandom p_215139_4_) {
+        init();
+        JigsawManager.func_236823_a_(new ResourceLocation(AlphaCraft.MOD_ID+":dungeon_01/portal"), 6, AlphaPortalCastlePieces.AlphaPortalCastle::new, chunkGeneratorIn, templateManagerIn, posIn, structurePieces, p_215139_4_, false, false);
     }
 
-    public static class Piece extends TemplateStructurePiece {
-        private ResourceLocation resourceLocation;
-        private Rotation rotation;
+    public static void init() {
+        AlphaCraft.LOGGER.debug("registering jigsaw patters");
+    }
 
-        public Piece(TemplateManager templateManagerIn, ResourceLocation resourceLocationIn, BlockPos pos, Rotation rotationIn) {
-            super(AlphacraftBiomesManager.APCP, 0);
-            this.resourceLocation = resourceLocationIn;
-            BlockPos blockpos = AlphaPortalCastlePieces.OFFSET.get(resourceLocation);
-            this.templatePosition = pos.add(blockpos.getX(), blockpos.getY(), blockpos.getZ());
-            this.rotation = rotationIn;
-            this.setupPiece(templateManagerIn);
+    static {
+        JigsawManager.REGISTRY.register(new JigsawPattern(new ResourceLocation(AlphaCraft.MOD_ID+":dungeon_01/portal"), new ResourceLocation("empty"), ImmutableList.of(Pair.of(new LegacySingleJigsawPiece(AlphaCraft.MOD_ID+":dungeon_01/portal/portal"), 1)), JigsawPattern.PlacementBehaviour.RIGID));
+        JigsawManager.REGISTRY.register(new JigsawPattern(new ResourceLocation(AlphaCraft.MOD_ID+":dungeon_01/hall"), new ResourceLocation(AlphaCraft.MOD_ID+":dungeon_01/terminator"), ImmutableList.of(Pair.of(new LegacySingleJigsawPiece(AlphaCraft.MOD_ID+":dungeon_01/hall/cross_01"), 1), Pair.of(new LegacySingleJigsawPiece(AlphaCraft.MOD_ID+":dungeon_01/hall/cross_02"), 1), Pair.of(new LegacySingleJigsawPiece(AlphaCraft.MOD_ID+":dungeon_01/hall/hall_01"), 1), Pair.of(new LegacySingleJigsawPiece(AlphaCraft.MOD_ID+":dungeon_01/hall/hall_02"), 1), Pair.of(EmptyJigsawPiece.INSTANCE, 6)), JigsawPattern.PlacementBehaviour.RIGID));
+        JigsawManager.REGISTRY.register(new JigsawPattern(new ResourceLocation(AlphaCraft.MOD_ID+":dungeon_01/terminator"), new ResourceLocation("empty"), ImmutableList.of(Pair.of(new LegacySingleJigsawPiece(AlphaCraft.MOD_ID+":dungeon_01/terminator/terminator_01"), 1)), JigsawPattern.PlacementBehaviour.RIGID));
+    }
+
+    public static class AlphaPortalCastle extends AbstractVillagePiece {
+        public AlphaPortalCastle(TemplateManager templateManagerIn, JigsawPiece jigsawPieceIn, BlockPos posIn, int p_i50560_4_, Rotation rotationIn, MutableBoundingBox boundsIn) {
+            super(AlphacraftBiomesManager.APCP, templateManagerIn, jigsawPieceIn, posIn, p_i50560_4_, rotationIn, boundsIn);
         }
 
-        public Piece(TemplateManager templateManagerIn, CompoundNBT tagCompound) {
-            super(AlphacraftBiomesManager.APCP, tagCompound);
-            this.resourceLocation = new ResourceLocation(tagCompound.getString("Template"));
-            this.rotation = Rotation.valueOf(tagCompound.getString("Rot"));
-            this.setupPiece(templateManagerIn);
-        }
-
-        private void setupPiece(TemplateManager templateManager) {
-            Template template = templateManager.getTemplateDefaulted(this.resourceLocation);
-            PlacementSettings placementsettings = (new PlacementSettings()).setRotation(this.rotation).setMirror(Mirror.NONE);
-            this.setup(template, this.templatePosition, placementsettings);
-        }
-        @Override
-        protected void readAdditional(CompoundNBT tagCompound) {
-            super.readAdditional(tagCompound);
-            tagCompound.putString("Template", this.resourceLocation.toString());
-            tagCompound.putString("Rot", this.rotation.name());
-
-        }
-        @Override
-        protected void handleDataMarker(String function, BlockPos pos, IWorld worldIn, Random rand, MutableBoundingBox sbb) {
-            // there is no additional data, like mobs or chests, leaving this here for referencing
+        public AlphaPortalCastle(TemplateManager templateManagerIn, CompoundNBT nbt) {
+            super(templateManagerIn, nbt, AlphacraftBiomesManager.APCP);
         }
     }
 }

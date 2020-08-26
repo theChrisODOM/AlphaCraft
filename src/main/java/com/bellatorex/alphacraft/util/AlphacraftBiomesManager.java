@@ -69,7 +69,7 @@ public class AlphacraftBiomesManager
         BIOMES.register(FMLJavaModLoadingContext.get().getModEventBus());
     }
     public static void registerFeatures(RegistryEvent.Register<Feature<?>> event){
-        registerStructure(new ResourceLocation(AlphaCraft.MOD_ID, "alpha_portal_castle"), ALPHA_PORTAL_CASTLE, GenerationStage.Decoration.SURFACE_STRUCTURES, new StructureSeparationSettings(100, 50, 69121598), true);
+        registerStructure(new ResourceLocation(AlphaCraft.MOD_ID, "portal"), ALPHA_PORTAL_CASTLE, GenerationStage.Decoration.SURFACE_STRUCTURES, new StructureSeparationSettings(100, 50, 69121598), false);
         AlphacraftBiomesManager.registerAllPieces();
 
     }
@@ -119,5 +119,5 @@ public class AlphacraftBiomesManager
     public static final RegistryObject<Feature<NoFeatureConfig>> SMOOTH_OBSIDIAN_SPIKE = FEATURES.register("smooth_obsidian_spike", ()-> new SmoothObsidianSpike(NoFeatureConfig.field_236558_a_));
     //Structures
     public static Structure<NoFeatureConfig> ALPHA_PORTAL_CASTLE = new AlphaPortalCastleStructure(NoFeatureConfig.field_236558_a_);
-    public static IStructurePieceType APCP = AlphaPortalCastlePieces.Piece::new;
+    public static IStructurePieceType APCP = AlphaPortalCastlePieces.AlphaPortalCastle::new;
 }
