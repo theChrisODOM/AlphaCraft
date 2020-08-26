@@ -49,8 +49,8 @@ public class AlphaCraft
         ArmorRegistry.init();
         RecipeSerializerRegistry.init();
         AlphacraftBiomesManager.init();
-
-
+        // Jigsaw initializations
+        AlphaPortalCastlePieces.init();
 
         MinecraftForge.EVENT_BUS.register(this);
     }
