@@ -1,0 +1,48 @@
+{
+  "parent": "minecraft:nether/obtain_ancient_debris",
+  "display": {
+    "icon": {
+      "item": "alphacraft:enderite_chestplate",
+      "nbt": "{Damage:0}"
+    },
+    "title": {
+      "translate": "alphacraft:advancements.alpha.enderite_armor.title"
+    },
+    "description": {
+      "translate": "alphacraft:advancements.alpha.enderite_armor.description"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "rewards": {
+    "experience": 500
+  },
+  "criteria": {
+    "netherite_armor": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "alphacraft:enderite_helmet"
+          },
+          {
+            "item": "alphacraft:enderite_chestplate"
+          },
+          {
+            "item": "alphacraft:enderite_leggings"
+          },
+          {
+            "item": "alphacraft:enderite_boots"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "enderite_armor"
+    ]
+  ]
+}

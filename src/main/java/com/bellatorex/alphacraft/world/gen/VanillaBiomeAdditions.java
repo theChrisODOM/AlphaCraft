@@ -13,7 +13,6 @@ import net.minecraft.world.gen.feature.IFeatureConfig;
 import net.minecraft.world.gen.feature.OreFeatureConfig;
 import net.minecraft.world.gen.placement.ConfiguredPlacement;
 import net.minecraft.world.gen.placement.CountRangeConfig;
-import net.minecraft.world.gen.placement.DepthAverageConfig;
 import net.minecraft.world.gen.placement.Placement;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -26,9 +25,9 @@ public class VanillaBiomeAdditions {
     @SubscribeEvent
     public static void generateOres(FMLLoadCompleteEvent event) {
         for (Biome biome : ForgeRegistries.BIOMES) {
-            if (biome.getCategory() == Biome.Category.NETHER) { // the end
+            if (biome.getCategory() == Biome.Category.NETHER) {// the nether
 
-            } else if (biome.getCategory() == Biome.Category.THEEND) {  // the nether
+            } else if (biome.getCategory() == Biome.Category.THEEND) {  // the end
                 genOre(biome, 5, 10, 5, 30, END_STONE, BlockRegistry.ENDERITE_ORE.get().getDefaultState(), 3, false);
             } else if (biome.getCategory() == Biome.Category.NONE ) { // the alpha
 

@@ -60,12 +60,17 @@
   "block.alphacraft.ash": "Ash",
   "block.alphacraft.dark_podzol": "Dark Podzol",
   "block.alphacraft.alpha_portal_frame": "Portal Frame",
+  "block.alphacraft.end_grass_block": "End Grass Block",
 
   "container.smelter": "Two Item Smelter",
   "container.dark_chest": "Dark Chest",
 
   "biome.alphacraft.nasty_swamp": "Nasty Swamp",
   "biome.alphacraft.dark_forest": "Darker Forest",
+
+
+  "advancements.alpha.enderite_armor.description": "Get all the Enderite Armor Pieces",
+
 
   "itemGroup.alphaCraftBlocksTab": "A: Building Blocks",
   "itemGroup.alphaCraftDecorTab": "A: Decoration Blocks",

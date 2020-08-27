@@ -68,6 +68,7 @@ public class BlockRegistry {
     public static final RegistryObject<Block> ASH = BLOCKS.register("ash", () -> new BrightSand(14373781, AbstractBlock.Properties.create(Material.SAND, MaterialColor.SAND).hardnessAndResistance(0.5F).sound(SoundType.SAND).harvestTool(ToolType.SHOVEL)));
     public static final RegistryObject<Block> DARK_PODZOL = BLOCKS.register("dark_podzol", DarkEarthBlock::new);
     public static final RegistryObject<Block> PORTAL_FRAME = BLOCKS.register("alpha_portal_frame", AlphaPortalFrameBlock::new);
+    public static final RegistryObject<Block> END_GRASS_BLOCK = BLOCKS.register("end_grass_block", () -> new Block(AbstractBlock.Properties.create(Material.ROCK, MaterialColor.SAND).sound(SoundType.PLANT).setRequiresTool().hardnessAndResistance(3.0F, 9.0F)));
 
     // Block Items  ======== This order determines order of appearance in creative tabs
 
@@ -84,6 +85,7 @@ public class BlockRegistry {
     public static final RegistryObject<Item> SMOOTH_OBSIDIAN_ITEM = ITEMS.register("smooth_obsidian", () -> new BlockItem(SMOOTH_OBSIDIAN.get(), new Item.Properties().group(AlphaCraft.ALPHA_BLOCKS)));
     public static final RegistryObject<Item> BRIGHT_SAND_ITEM = ITEMS.register("bright_sand", () -> new BlockItem(BRIGHT_SAND.get(), new Item.Properties().group(AlphaCraft.ALPHA_BLOCKS)));
     public static final RegistryObject<Item> BRIGHT_SANDSTONE_ITEM = ITEMS.register("bright_sandstone", () -> new BlockItem(BRIGHT_SANDSTONE.get(), new Item.Properties().group(AlphaCraft.ALPHA_BLOCKS)));
+    public static final RegistryObject<Item> END_GRASS_BLOCK_ITEM = ITEMS.register("end_grass_block", () -> new BlockItem(END_GRASS_BLOCK.get(), new Item.Properties().group(AlphaCraft.ALPHA_BLOCKS)));
     // Woods
     public static final RegistryObject<Item> DARK_PLANKS_ITEM = ITEMS.register("dark_planks", () -> new BlockItem(DARK_PLANKS.get(), new Item.Properties().group(AlphaCraft.ALPHA_BLOCKS)));
     public static final RegistryObject<Item> NASTY_PLANKS_ITEM = ITEMS.register("nasty_planks", () -> new BlockItem(NASTY_PLANKS.get(), new Item.Properties().group(AlphaCraft.ALPHA_BLOCKS)));
