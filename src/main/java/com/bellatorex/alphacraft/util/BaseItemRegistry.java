@@ -21,7 +21,7 @@ public class BaseItemRegistry {
     }
 
     //Items
-    public static final RegistryObject<Item> BALL = ITEMS.register("ball", TrophyItem::new);
+    public static final RegistryObject<Item> INFECTED_ENDER_PEARL = ITEMS.register("infected_ender_pearl", TrophyItem::new);
     public static final RegistryObject<Item> DARK_BRICK = ITEMS.register("dark_brick", ItemBase::new);
     public static final RegistryObject<Item> DARK_CLAY = ITEMS.register("dark_clay", ItemBase::new);
     public static final RegistryObject<Item> ULTRA_INGOT = ITEMS.register("ultra_ingot", ItemBase::new);

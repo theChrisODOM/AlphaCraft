@@ -20,13 +20,13 @@ public class ToolRegistry {
 
     //Tools
     public static final RegistryObject<SwordItem> ENDERITE_SWORD = ITEMS.register("enderite_sword", () ->
-            new SwordItem(AlphaMaterials.ENDERITE, 3, -2.4f, new Item.Properties().group(AlphaCraft.ALPHA_TOOLS)));
+            new SwordItem(AlphaMaterials.ENDERITE, 5, -2.4f, new Item.Properties().group(AlphaCraft.ALPHA_TOOLS)));
     public static final RegistryObject<PickaxeItem> ENDERITE_PICKAXE = ITEMS.register("enderite_pickaxe", () ->
-            new PickaxeItem(AlphaMaterials.ENDERITE, 1, -2.4f, new Item.Properties().group(AlphaCraft.ALPHA_TOOLS)));
+            new PickaxeItem(AlphaMaterials.ENDERITE, 2, -2.4f, new Item.Properties().group(AlphaCraft.ALPHA_TOOLS)));
     public static final RegistryObject<AxeItem> ENDERITE_AXE = ITEMS.register("enderite_axe", () ->
-            new AxeItem(AlphaMaterials.ENDERITE, 5, -3.0f, new Item.Properties().group(AlphaCraft.ALPHA_TOOLS)));
+            new AxeItem(AlphaMaterials.ENDERITE, 6, -3.0f, new Item.Properties().group(AlphaCraft.ALPHA_TOOLS)));
     public static final RegistryObject<ShovelItem> ENDERITE_SHOVEL = ITEMS.register("enderite_shovel", () ->
-            new ShovelItem(AlphaMaterials.ENDERITE, 0, -2.4f, new Item.Properties().group(AlphaCraft.ALPHA_TOOLS)));
+            new ShovelItem(AlphaMaterials.ENDERITE, 1, -2.4f, new Item.Properties().group(AlphaCraft.ALPHA_TOOLS)));
     public static final RegistryObject<HoeItem> ENDERITE_HOE = ITEMS.register("enderite_hoe", () ->
-            new HoeItem(AlphaMaterials.ENDERITE, 0, -2.0f, new Item.Properties().group(AlphaCraft.ALPHA_TOOLS)));
+            new HoeItem(AlphaMaterials.ENDERITE, 1, -2.0f, new Item.Properties().group(AlphaCraft.ALPHA_TOOLS)));
 }

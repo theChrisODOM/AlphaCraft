@@ -1,5 +1,5 @@
 {
-  "parent": "minecraft:block/stairs_inner",
+  "parent": "minecraft:block/inner_stairs",
   "textures": {
     "bottom": "alphacraft:blocks/dark_planks",
     "top": "alphacraft:blocks/dark_planks",

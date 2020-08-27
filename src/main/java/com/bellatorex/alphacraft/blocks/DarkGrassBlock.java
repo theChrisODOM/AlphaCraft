@@ -2,6 +2,8 @@ package com.bellatorex.alphacraft.blocks;
 
 import com.bellatorex.alphacraft.util.BlockRegistry;
 import net.minecraft.block.*;
+import net.minecraft.block.material.Material;
+import net.minecraft.block.material.MaterialColor;
 import net.minecraft.tags.FluidTags;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
@@ -13,6 +15,7 @@ import net.minecraft.world.gen.feature.DecoratedFeatureConfig;
 import net.minecraft.world.gen.feature.FlowersFeature;
 import net.minecraft.world.lighting.LightEngine;
 import net.minecraft.world.server.ServerWorld;
+import net.minecraftforge.common.ToolType;
 
 import java.util.List;
 import java.util.Random;
@@ -20,7 +23,7 @@ import java.util.Random;
 public class DarkGrassBlock extends SpreadableSnowyDirtBlock implements IGrowable {
 
     public DarkGrassBlock() {
-        super(AbstractBlock.Properties.from(Blocks.GRASS_BLOCK));
+        super(AbstractBlock.Properties.create(Material.EARTH, MaterialColor.DIRT).hardnessAndResistance(0.6F).sound(SoundType.PLANT).harvestTool(ToolType.SHOVEL));
     }
     /**
      * Whether this IGrowable can grow

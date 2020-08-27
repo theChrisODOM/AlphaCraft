@@ -10,6 +10,7 @@ import net.minecraft.block.material.MaterialColor;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.potion.Effects;
+import net.minecraftforge.common.ToolType;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.DeferredRegister;
@@ -61,10 +62,10 @@ public class BlockRegistry {
     public static final RegistryObject<Block> DARK_CHEST = BLOCKS.register("dark_chest", DarkChestBlock::new);
     public static final RegistryObject<Block> DARK_GRASS = BLOCKS.register("dark_grass", TallDarkGrassBlock::new);
     public static final RegistryObject<Block> BRIGHT_FLOWER = BLOCKS.register("bright_flower", () -> new FlowerBlock(Effects.GLOWING, 30, AbstractBlock.Properties.create(Material.TALL_PLANTS).doesNotBlockMovement().zeroHardnessAndResistance().sound(SoundType.PLANT).setLightLevel((p_235470_0_) -> { return 14;})));
-    public static final RegistryObject<Block> BRIGHT_SAND = BLOCKS.register("bright_sand", () -> new BrightSand(14373781, AbstractBlock.Properties.create(Material.SAND, MaterialColor.SAND).hardnessAndResistance(0.5F).sound(SoundType.SAND)));
+    public static final RegistryObject<Block> BRIGHT_SAND = BLOCKS.register("bright_sand", () -> new BrightSand(14373781, AbstractBlock.Properties.create(Material.SAND, MaterialColor.SAND).hardnessAndResistance(0.5F).sound(SoundType.SAND).harvestTool(ToolType.SHOVEL)));
     public static final RegistryObject<Block> BRIGHT_SANDSTONE = BLOCKS.register("bright_sandstone", DarkStoneBlock::new);
     public static final RegistryObject<Block> SMOOTH_OBSIDIAN = BLOCKS.register("smooth_obsidian", () -> new CryingObsidianBlock(Block.Properties.from(Blocks.OBSIDIAN)));
-    public static final RegistryObject<Block> ASH = BLOCKS.register("ash", () -> new BrightSand(14373781, AbstractBlock.Properties.create(Material.SAND, MaterialColor.SAND).hardnessAndResistance(0.5F).sound(SoundType.SAND)));
+    public static final RegistryObject<Block> ASH = BLOCKS.register("ash", () -> new BrightSand(14373781, AbstractBlock.Properties.create(Material.SAND, MaterialColor.SAND).hardnessAndResistance(0.5F).sound(SoundType.SAND).harvestTool(ToolType.SHOVEL)));
     public static final RegistryObject<Block> DARK_PODZOL = BLOCKS.register("dark_podzol", DarkEarthBlock::new);
     public static final RegistryObject<Block> PORTAL_FRAME = BLOCKS.register("alpha_portal_frame", AlphaPortalFrameBlock::new);
 
