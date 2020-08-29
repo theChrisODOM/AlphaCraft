@@ -334,7 +334,7 @@ public class SmelterTileEntity extends LockableLootTileEntity implements ISidedI
             worldIn.getRecipeManager().getRecipe(entry.getKey()).ifPresent((recipe) -> {
                 list.add(recipe);
                 AlphaCraft.LOGGER.debug("Xp from recipe: "+((AbstractCookingRecipe)recipe).getExperience());
-                giveExperience(worldIn, vector, entry.getIntValue(), ((AbstractCookingRecipe)recipe).getExperience());
+                giveExperience(worldIn, vector, entry.getIntValue(), 1.0F);
             });
         }
 
@@ -386,17 +386,6 @@ public class SmelterTileEntity extends LockableLootTileEntity implements ISidedI
         for (int x = 0; x < handlers.length; x++)
             handlers[x].invalidate();
     }
-/*
-    @Override
-    public <T> LazyOptional<T> getCapability(Capability<T> cap, Direction side) {
-        if (!this.removed && cap == net.minecraftforge.items.CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) {
-            if (this.chestHandler == null)
-                this.chestHandler = net.minecraftforge.common.util.LazyOptional.of(this::createHandler);
-            return this.chestHandler.cast();
-        }
-        return super.getCapability(cap, side);
-    }
-*/
     private IItemHandlerModifiable createHandler(){
         return new InvWrapper(this);
     }
