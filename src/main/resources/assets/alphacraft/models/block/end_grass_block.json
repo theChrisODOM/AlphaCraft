@@ -2,7 +2,7 @@
   "parent": "minecraft:block/cube_bottom_top",
   "textures": {
     "top": "alphacraft:blocks/end_grass_block_top",
-    "bottom": "alphacraft:blocks/end_stone",
-    "side": "minecraft:block/end_grass_block_side"
+    "bottom": "minecraft:block/end_stone",
+    "side": "alphacraft:blocks/end_grass_block"
   }
 }
