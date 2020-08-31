@@ -3,6 +3,8 @@ package com.bellatorex.alphacraft.util;
 import com.bellatorex.alphacraft.AlphaCraft;
 import com.bellatorex.alphacraft.world.biome.*;
 import com.bellatorex.alphacraft.world.gen.AlphaWorldCarver;
+import com.bellatorex.alphacraft.world.gen.feature.AlphaDiskFeature;
+import com.bellatorex.alphacraft.world.gen.feature.AlphaTreeFeature;
 import com.bellatorex.alphacraft.world.gen.feature.SmoothObsidianSpike;
 import com.bellatorex.alphacraft.world.gen.feature.structure.AlphaPortalCastlePieces;
 import com.bellatorex.alphacraft.world.gen.feature.structure.AlphaPortalCastleStructure;
@@ -15,10 +17,7 @@ import net.minecraft.world.gen.DimensionSettings;
 import net.minecraft.world.gen.FlatGenerationSettings;
 import net.minecraft.world.gen.GenerationStage;
 import net.minecraft.world.gen.carver.WorldCarver;
-import net.minecraft.world.gen.feature.Feature;
-import net.minecraft.world.gen.feature.IFeatureConfig;
-import net.minecraft.world.gen.feature.NoFeatureConfig;
-import net.minecraft.world.gen.feature.ProbabilityConfig;
+import net.minecraft.world.gen.feature.*;
 import net.minecraft.world.gen.feature.structure.IStructurePieceType;
 import net.minecraft.world.gen.feature.structure.Structure;
 import net.minecraft.world.gen.settings.DimensionStructuresSettings;
@@ -57,7 +56,7 @@ public class AlphacraftBiomesManager
         BiomeDictionary.addTypes(ASH_DUNES.get(), Type.DRY);
         BiomeDictionary.addTypes(END_FOREST.get(), Type.FOREST);
         DARK_FOREST.get().init();
-        DARK_FOREST.get().init();
+        ASH_DUNES.get().init();
         NASTY_SWAMP.get().init();
         BRIGHT_DUNES.get().init();
         END_FOREST.get().init();
@@ -118,6 +117,8 @@ public class AlphacraftBiomesManager
     public static final RegistryObject<WorldCarver<ProbabilityConfig>> ALPHA_CAVE = ALPHA_CARVERS.register("alpha_carver" ,() -> new AlphaWorldCarver(ProbabilityConfig.field_236576_b_, 256));
     //Features
     public static final RegistryObject<Feature<NoFeatureConfig>> SMOOTH_OBSIDIAN_SPIKE = FEATURES.register("smooth_obsidian_spike", ()-> new SmoothObsidianSpike(NoFeatureConfig.field_236558_a_));
+    public static final RegistryObject<Feature<BaseTreeFeatureConfig>> ALPHA_TREE = FEATURES.register("alpha_tree", ()-> new AlphaTreeFeature(BaseTreeFeatureConfig.CODEC_BASE_TREE_FEATURE_CONFIG));
+    public static final RegistryObject<Feature<SphereReplaceConfig>> ALPHA_DISK = FEATURES.register("alpha_disk", ()-> new AlphaDiskFeature(SphereReplaceConfig.field_236516_a_));
     //Structures
     public static Structure<NoFeatureConfig> ALPHA_PORTAL_CASTLE = new AlphaPortalCastleStructure(NoFeatureConfig.field_236558_a_);
     public static IStructurePieceType APCP = AlphaPortalCastlePieces.AlphaPortalCastle::new;

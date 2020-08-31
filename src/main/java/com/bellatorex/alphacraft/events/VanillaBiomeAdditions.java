@@ -1,8 +1,9 @@
-package com.bellatorex.alphacraft.world.gen;
+package com.bellatorex.alphacraft.events;
 
 import com.bellatorex.alphacraft.AlphaCraft;
 import com.bellatorex.alphacraft.util.AlphacraftBiomesManager;
 import com.bellatorex.alphacraft.util.BlockRegistry;
+import com.bellatorex.alphacraft.world.AlphaBiomeFeatures;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.pattern.BlockMatcher;
@@ -23,11 +24,12 @@ import net.minecraftforge.registries.ForgeRegistries;
 public class VanillaBiomeAdditions {
     public static OreFeatureConfig.FillerBlockType END_STONE = OreFeatureConfig.FillerBlockType.create("END_STONE", "end_stone", new BlockMatcher(Blocks.END_STONE));
     @SubscribeEvent
-    public static void generateOres(FMLLoadCompleteEvent event) {
+    public static void addThingsToVanilla(FMLLoadCompleteEvent event) {
         for (Biome biome : ForgeRegistries.BIOMES) {
             if (biome.getCategory() == Biome.Category.NETHER) {// the nether
 
             } else if (biome.getCategory() == Biome.Category.THEEND) {  // the end
+                AlphaBiomeFeatures.addEndGrass(biome);
                 genOre(biome, 5, 10, 5, 30, END_STONE, BlockRegistry.ENDERITE_ORE.get().getDefaultState(), 3, false);
             } else if (biome.getCategory() == Biome.Category.NONE ) { // the alpha
 

@@ -2,6 +2,8 @@ package com.bellatorex.alphacraft.world.biome;
 
 import com.bellatorex.alphacraft.util.BlockRegistry;
 import com.bellatorex.alphacraft.world.AlphaBiomeFeatures;
+import com.google.common.collect.Lists;
+import net.minecraft.block.Blocks;
 import net.minecraft.entity.EntityClassification;
 import net.minecraft.entity.EntityType;
 import net.minecraft.particles.ParticleTypes;
@@ -9,6 +11,11 @@ import net.minecraft.util.SoundEvents;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.BiomeAmbience;
 import net.minecraft.world.biome.DefaultBiomeFeatures;
+import net.minecraft.world.gen.GenerationStage;
+import net.minecraft.world.gen.feature.Feature;
+import net.minecraft.world.gen.feature.SphereReplaceConfig;
+import net.minecraft.world.gen.placement.FrequencyConfig;
+import net.minecraft.world.gen.placement.Placement;
 import net.minecraft.world.gen.surfacebuilders.SurfaceBuilder;
 import net.minecraft.world.gen.surfacebuilders.SurfaceBuilderConfig;
 
@@ -37,6 +44,9 @@ public class AshDunes extends Biome {
         DefaultBiomeFeatures.addExtraKelp(this);
         AlphaBiomeFeatures.addAlphaOres(this);
         AlphaBiomeFeatures.addAlphaCarvers(this);
+
+        AlphaBiomeFeatures.addMoltenTerrain(this);
+
         //Monsters
         this.addSpawn(EntityClassification.MONSTER, new SpawnListEntry(EntityType.PHANTOM, 5, 1, 1));
         this.addSpawn(EntityClassification.MONSTER, new SpawnListEntry(EntityType.STRAY, 50, 1, 1));

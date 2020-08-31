@@ -38,8 +38,9 @@ public class BrightDunes extends Biome {
 
         AlphaBiomeFeatures.addSmoothObsidianSpikes(this);
         DefaultBiomeFeatures.addExtraKelp(this);
-        this.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Feature.RANDOM_PATCH.withConfiguration(DefaultBiomeFeatures.CACTUS_CONFIG).withPlacement(Placement.COUNT_HEIGHTMAP_DOUBLE.configure(new FrequencyConfig(50))));
         AlphaBiomeFeatures.addAlphaOres(this);
         AlphaBiomeFeatures.addAlphaCarvers(this);
+        AlphaBiomeFeatures.addMoltenTerrain(this);
+        this.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Feature.RANDOM_PATCH.withConfiguration(DefaultBiomeFeatures.CACTUS_CONFIG).withPlacement(Placement.COUNT_HEIGHTMAP_DOUBLE.configure(new FrequencyConfig(50))));
     }
 }

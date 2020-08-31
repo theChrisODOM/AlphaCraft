@@ -8,6 +8,8 @@
     "minecraft:mycelium",
     "alphacraft:dark_dirt_block",
     "alphacraft:dark_grass_block",
-    "alphacraft:dark_podzol"
+    "alphacraft:dark_podzol",
+    "alphacraft:ash",
+    "alphacraft:end_grass_block"
   ]
 }
