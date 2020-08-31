@@ -29,6 +29,9 @@ public class VanillaBiomeAdditions {
             if (biome.getCategory() == Biome.Category.NETHER) {// the nether
 
             } else if (biome.getCategory() == Biome.Category.THEEND) {  // the end
+                if(biome.getClass() != net.minecraft.world.biome.TheEndBiome.class){
+                    AlphaBiomeFeatures.addEndTrees(biome);
+                }
                 AlphaBiomeFeatures.addEndGrass(biome);
                 genOre(biome, 5, 10, 5, 30, END_STONE, BlockRegistry.ENDERITE_ORE.get().getDefaultState(), 3, false);
             } else if (biome.getCategory() == Biome.Category.NONE ) { // the alpha

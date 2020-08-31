@@ -67,6 +67,7 @@ public class AlphaCraft
         RenderTypeLookup.setRenderLayer(BlockRegistry.NASTY_TREE_SAPLING.get(), RenderType.getCutout());
         RenderTypeLookup.setRenderLayer(BlockRegistry.DARK_TREE_SAPLING.get(), RenderType.getCutout());
         RenderTypeLookup.setRenderLayer(BlockRegistry.DARK_GRASS.get(), RenderType.getCutout());
+        RenderTypeLookup.setRenderLayer(BlockRegistry.END_GRASS.get(), RenderType.getCutout());
         RenderTypeLookup.setRenderLayer(BlockRegistry.BRIGHT_FLOWER.get(), RenderType.getCutout());
 
         ScreenManager.registerFactory(AlphaContainerRegistry.SMELTER.get(), SmelterScreen::new);
@@ -80,7 +81,7 @@ public class AlphaCraft
         }
     }
     public static final ItemGroup ALPHA_BLOCKS = new ItemGroup("alphaCraftBlocksTab") {@Override public ItemStack createIcon() { return new ItemStack(BlockRegistry.DARK_GRASS_BLOCK.get()); }};
-    public static final ItemGroup ALPHA_DECOR = new ItemGroup("alphaCraftDecorTab") {@Override public ItemStack createIcon() { return new ItemStack(BlockRegistry.DARK_LEAVES.get()); }};
+    public static final ItemGroup ALPHA_DECOR = new ItemGroup("alphaCraftDecorTab") {@Override public ItemStack createIcon() { return new ItemStack(BlockRegistry.END_GRASS_BLOCK.get()); }};
     public static final ItemGroup ALPHA_TOOLS = new ItemGroup("alphaCraftToolsTab") {@Override public ItemStack createIcon() { return new ItemStack(ToolRegistry.ENDERITE_AXE.get()); }};
     public static final ItemGroup ALPHA_ITEMS = new ItemGroup("alphaCraftItemsTab") {@Override public ItemStack createIcon() { return new ItemStack(BaseItemRegistry.ENDERITE_INGOT.get()); }};
 

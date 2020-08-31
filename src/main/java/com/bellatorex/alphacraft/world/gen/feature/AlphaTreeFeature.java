@@ -84,7 +84,7 @@ public class AlphaTreeFeature extends Feature<BaseTreeFeatureConfig> {
     }
 
     public static boolean isReplaceableAt(IWorldGenerationBaseReader p_236404_0_, BlockPos p_236404_1_) {
-        return isValidToPlace(p_236404_0_,p_236404_1_) ||isAirOrLeavesAt(p_236404_0_, p_236404_1_) || isTallPlantAt(p_236404_0_, p_236404_1_) || isWaterAt(p_236404_0_, p_236404_1_);
+        return isAirOrLeavesAt(p_236404_0_, p_236404_1_) || isTallPlantAt(p_236404_0_, p_236404_1_) || isWaterAt(p_236404_0_, p_236404_1_);
     }
 
     /**

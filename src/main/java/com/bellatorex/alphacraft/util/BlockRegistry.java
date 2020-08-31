@@ -61,6 +61,7 @@ public class BlockRegistry {
     public static final RegistryObject<Block> SMELTER = BLOCKS.register("smelter", SmelterBlock::new);
     public static final RegistryObject<Block> DARK_CHEST = BLOCKS.register("dark_chest", DarkChestBlock::new);
     public static final RegistryObject<Block> DARK_GRASS = BLOCKS.register("dark_grass", TallDarkGrassBlock::new);
+    public static final RegistryObject<Block> END_GRASS = BLOCKS.register("end_grass", TallDarkGrassBlock::new);
     public static final RegistryObject<Block> BRIGHT_FLOWER = BLOCKS.register("bright_flower", () -> new FlowerBlock(Effects.GLOWING, 30, AbstractBlock.Properties.create(Material.TALL_PLANTS).doesNotBlockMovement().zeroHardnessAndResistance().sound(SoundType.PLANT).setLightLevel((p_235470_0_) -> { return 14;})));
     public static final RegistryObject<Block> BRIGHT_SAND = BLOCKS.register("bright_sand", () -> new BrightSand(14373781, AbstractBlock.Properties.create(Material.SAND, MaterialColor.SAND).hardnessAndResistance(0.5F).sound(SoundType.SAND).harvestTool(ToolType.SHOVEL)));
     public static final RegistryObject<Block> BRIGHT_SANDSTONE = BLOCKS.register("bright_sandstone", DarkStoneBlock::new);
@@ -68,7 +69,7 @@ public class BlockRegistry {
     public static final RegistryObject<Block> ASH = BLOCKS.register("ash", () -> new BrightSand(14373781, AbstractBlock.Properties.create(Material.SAND, MaterialColor.SAND).hardnessAndResistance(0.5F).sound(SoundType.SAND).harvestTool(ToolType.SHOVEL)));
     public static final RegistryObject<Block> DARK_PODZOL = BLOCKS.register("dark_podzol", DarkEarthBlock::new);
     public static final RegistryObject<Block> PORTAL_FRAME = BLOCKS.register("alpha_portal_frame", AlphaPortalFrameBlock::new);
-    public static final RegistryObject<Block> END_GRASS_BLOCK = BLOCKS.register("end_grass_block", () -> new Block(AbstractBlock.Properties.create(Material.ROCK, MaterialColor.SAND).sound(SoundType.PLANT).setRequiresTool().hardnessAndResistance(3.0F, 9.0F)));
+    public static final RegistryObject<Block> END_GRASS_BLOCK = BLOCKS.register("end_grass_block", () -> new Block(AbstractBlock.Properties.create(Material.ROCK, MaterialColor.SAND).sound(SoundType.NYLIUM).setRequiresTool().harvestTool(ToolType.SHOVEL).hardnessAndResistance(2.0F, 7.0F)));
 
     // Block Items  ======== This order determines order of appearance in creative tabs
 
@@ -123,6 +124,7 @@ public class BlockRegistry {
     public static final RegistryObject<Item> NASTY_LEAVES_ITEM = ITEMS.register("nasty_leaves", () -> new BlockItem(NASTY_LEAVES.get(), new Item.Properties().group(AlphaCraft.ALPHA_DECOR)));
     // Bushes
     public static final RegistryObject<Item> DARK_GRASS_ITEM = ITEMS.register("dark_grass", () -> new BlockItem(DARK_GRASS.get(), new Item.Properties().group(AlphaCraft.ALPHA_DECOR)));
+    public static final RegistryObject<Item> END_GRASS_TEM = ITEMS.register("end_grass", () -> new BlockItem(END_GRASS.get(), new Item.Properties().group(AlphaCraft.ALPHA_DECOR)));
     public static final RegistryObject<Item> BRIGHT_FLOWER_ITEM = ITEMS.register("bright_flower", () -> new BlockItem(BRIGHT_FLOWER.get(), new Item.Properties().group(AlphaCraft.ALPHA_DECOR)));
     // Containers
     public static final RegistryObject<Item> SMELTER_ITEM = ITEMS.register("smelter", () -> new BlockItem(SMELTER.get(), new Item.Properties().group(AlphaCraft.ALPHA_DECOR)));
